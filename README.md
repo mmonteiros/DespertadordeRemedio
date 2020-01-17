@@ -4,10 +4,10 @@
   git clone https://github.com/YodaDevs/DespertadordeRemedio.git
 
 2. Navigate to clonned folder and Install dependencies<p>
-  cd DespertadordeRemedio && yarn install
+  cd DespertadordeRemedio && npx install
 
 # Open in your simulator
-  	yarn run:android
+  	npx react-native run-android
 
 
 
