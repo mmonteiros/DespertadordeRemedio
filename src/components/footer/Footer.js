@@ -9,53 +9,59 @@ import {
   BottomNavigation,
   BottomNavigationTab,
   Icon,
-  Layout,
 } from '@ui-kitten/components';
+import { SafeAreaView } from 'react-navigation';
 
-const PersonIcon = (style) => (
-  <Icon {...style} name='person-outline'/>
+const HomeIcon = (style) => (
+  <Icon {...style} name='home'/>
 );
 
-const BellIcon = (style) => (
-  <Icon {...style} name='bell-outline'/>
+const CalendarIcon = (style) => (
+  <Icon {...style} name='calendar'/>
 );
 
-const EmailIcon = (style) => (
-  <Icon {...style} name='email-outline'/>
+const ReportIcon = (style) => (
+  <Icon {...style} name='archive'/>
 );
 
-export const BottomNavigationWithIconsShowcase = () => {
+const ProfileIcon = (style) => (
+  <Icon {...style} name='people'/>
+);
 
-  const [topSelectedIndex, setTopSelectedIndex] = React.useState(0);
-  const [bottomSelectedIndex, setBottomSelectedIndex] = React.useState(0);
+export const TabBarComponent = ({ navigation }) => {
+
+  const onSelect = (index) => {
+    const selectedTabRoute = navigation.state.routes[index];
+    navigation.navigate(selectedTabRoute.routeName);
+  };
 
   return (
-    <Layout>
-
-      <BottomNavigation
-        style={styles.bottomNavigation}
-        selectedIndex={topSelectedIndex}
-        onSelect={setTopSelectedIndex}>
-        <BottomNavigationTab icon={PersonIcon}/>
-        <BottomNavigationTab icon={BellIcon}/>
-        <BottomNavigationTab icon={EmailIcon}/>
+    <SafeAreaView style={styles.container}>
+      <BottomNavigation 
+      selectedIndex={navigation.state.index} 
+      onSelect={onSelect}>
+        <BottomNavigationTab icon={HomeIcon}/>
+        <BottomNavigationTab icon={CalendarIcon}/>
+        <BottomNavigationTab icon={ReportIcon}/>
+        <BottomNavigationTab icon={ProfileIcon}/>
       </BottomNavigation>
-
-      <BottomNavigation
-        style={styles.bottomNavigation}
-        selectedIndex={bottomSelectedIndex}
-        onSelect={setBottomSelectedIndex}>
-        <BottomNavigationTab title='USERS' icon={PersonIcon}/>
-        <BottomNavigationTab title='ORDERS' icon={BellIcon}/>
-        <BottomNavigationTab title='TRANSACTIONS' icon={EmailIcon}/>
-      </BottomNavigation>
-
-    </Layout>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  bottomNavigation: {
-    marginVertical: 8,
+  container: {
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    borderTopColor: "#fff",
+    borderTopWidth: 0.5,
+    backgroundColor: 'white',
+  },
+  title: {
+    fontSize: 19,
+    fontWeight: 'bold',
+  },
+  activeTitle: {
+    color: 'red',
   },
 });

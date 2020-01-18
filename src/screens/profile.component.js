@@ -6,7 +6,11 @@ const BackIcon = (style) => (
   <Icon {...style} name='arrow-back' />
 );
 
-export const DetailsScreen = ({ navigation }) => {
+const SearchIcon = (style) => (
+  <Icon {...style} name='search-outline'/>
+);
+
+export const ProfileScreen = ({ navigation }) => {
 
   const navigateBack = () => {
     navigation.goBack();
@@ -16,13 +20,18 @@ export const DetailsScreen = ({ navigation }) => {
     <TopNavigationAction icon={BackIcon} onPress={navigateBack}/>
   );
 
+  const renderSearchAction = () => (
+    <TopNavigationAction icon={SearchIcon}/>
+  );
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <TopNavigation title='Despertador de Remedio' alignment='center' backgroundColor= "#63CDDA" leftControl={BackAction()}/>
+      <TopNavigation title='Despertador de Remédio' alignment='center' backgroundColor= "white" leftControl={BackAction()} rightControls={renderSearchAction()}/>
       <Divider/>
       <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text category='h1'>DETAILS</Text>
+        <Text category='h1'>Profile</Text>
       </Layout>
+      
     </SafeAreaView>
   );
 };

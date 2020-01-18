@@ -1,20 +1,24 @@
 import React from 'react';
 import { SafeAreaView } from 'react-navigation';
-import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components';
+import { Button, Divider, Layout } from '@ui-kitten/components';
+import { TopNavigationWithMenuShowcase } from '../components/header/Header.js';
+import { Routes } from '../navigation';
+
 
 export const HomeScreen = ({ navigation }) => {
- 
-  const navigateDetails = () => {
-    navigation.navigate('Details');
+
+  const navigateCalendar = () => {
+    navigation.navigate(Routes.TabsCalendar);
   };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <TopNavigation title='Despertador de Remedio' backgroundColor= "#63CDDA" alignment='center'/>
+      <TopNavigationWithMenuShowcase/>
       <Divider/>
       <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Button onPress={navigateDetails}>OPEN DETAILS</Button>
+        <Button onPress={navigateCalendar}>Open Calendar</Button>
       </Layout>
+      
     </SafeAreaView>
   );
 };
