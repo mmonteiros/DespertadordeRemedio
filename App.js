@@ -11,18 +11,14 @@
  */
 
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { ApplicationProvider, Layout, IconRegistry } from '@ui-kitten/components';
+import { ApplicationProvider,Layout, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { mapping, dark as darkTheme } from '@eva-design/eva';
 import { default as appTheme } from './custom-theme.json'; // <-- Import app theme
-
-/**
- * Use any valid `name` property from eva icons (e.g `github`, or `heart-outline`)
- * https://akveo.github.io/eva-icons
- */
+import { AppNavigator } from './src/pages/navigation.component';
 
 const theme = { ...darkTheme, ...appTheme };
+
 
 const HomeScreen = () => (
   <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -31,26 +27,12 @@ const HomeScreen = () => (
 );
 
 const App = () => (
-  <>
+  <React.Fragment>
     <IconRegistry icons={EvaIconsPack}/>
     <ApplicationProvider mapping={mapping} theme={theme}>
       <HomeScreen/>
     </ApplicationProvider>
-  </>
+  </React.Fragment>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    textAlign: 'center',
-  },
-  likeButton: {
-    marginVertical: 16,
-  },
-});
 
 export default App;
