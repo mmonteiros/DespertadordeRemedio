@@ -15,7 +15,7 @@ import { ApplicationProvider,Layout, IconRegistry } from '@ui-kitten/components'
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { mapping, dark as darkTheme } from '@eva-design/eva';
 import { default as appTheme } from './custom-theme.json'; // <-- Import app theme
-import { AppNavigator } from './src/pages/navigation.component';
+import { AppNavigator } from './src/screens/navigation.component';
 
 const theme = { ...darkTheme, ...appTheme };
 
