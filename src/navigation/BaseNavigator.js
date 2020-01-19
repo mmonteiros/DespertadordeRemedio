@@ -127,7 +127,7 @@ const TabsNavigator = createBottomTabNavigator({
 
 const BaseNavigatorContainer = createAppContainer(createStackNavigator({
     [Routes.Tabs]: TabsNavigator,
-    [Routes.OtherScreen]: ProfileScreen,
+    [Routes.OtherScreen]: ProfileScreen
 }, {
     headerMode: 'none'
 }));

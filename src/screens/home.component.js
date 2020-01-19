@@ -11,6 +11,8 @@ export const HomeScreen = ({ navigation }) => {
     navigation.navigate(Routes.TabsCalendar);
   };
 
+ 
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TopNavigationWithMenuShowcase/>

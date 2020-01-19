@@ -22,9 +22,8 @@ export const TopNavigationWithMenuShowcase = () => {
   );
 
   const renderMenuAction = () => (
-    <TopNavigationAction icon={MenuIcon}/>
+    <TopNavigationAction icon={MenuIcon}/> 
   );
-
 
   return (
     <Layout style={styles.container}>

@@ -6,6 +6,4 @@
   *
   */ 
 
-export * from './DrawerTrigger';
-export * from './Header';
-export * from './ScreenName';
+export * from './Drawer';
