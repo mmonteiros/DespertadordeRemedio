@@ -11,43 +11,16 @@ import {
   Icon,
 } from '@ui-kitten/components';
 
-const PersonIcon = (style) => (
-  <Icon {...style} name='person'/>
-);
+export const DrawerComponent = ({ navigation }) => {
 
-const Header = () => (
-  <DrawerHeaderFooter
-    title='John Doe'
-    description='React Native Developer'
-    icon={PersonIcon}
-  />
-);
-
-const drawerData = [
-  { title: 'Dashboard' },
-  { title: 'Messages' },
-  { title: 'Settings' },
-  { title: 'Articles' },
-  { title: 'Ecommerce' },
-  { title: 'Chat' },
-];
-
-export const DrawerHeaderShowcase = () => {
-
-  const onRouteSelect = (index) => {
-    const route = drawerData[index];
-    // navigate with React Navigation
-    // this.props.navigation.navigate(route.title);
+  const onSelect = (index) => {
+    const { [index]: selectedTabRoute } = navigation.state.routes;
+    navigation.navigate(selectedTabRoute.routeName);
   };
 
   return (
     <SafeAreaView>
-      <Drawer
-        data={drawerData}
-        header={Header}
-        onSelect={onRouteSelect}
-      />
+      <Drawer data={[{ title: 'Home' }, { title: 'Settings' }]} onSelect={onSelect} />
     </SafeAreaView>
   );
-
 };

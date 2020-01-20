@@ -1,11 +1,13 @@
 import React from 'react';
-import {createAppContainer} from 'react-navigation';
+import {createAppContainer } from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {MultiBar, MultiBarToggle} from 'react-native-multibar';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {CalendarScreen, HomeScreen, ProfileScreen, ReportScreen} from "../screens";
 import {Routes} from "./Routes";
+import { DrawerScreen } from '../components/drawer/Drawer.component';
+import { createDrawerNavigator } from 'react-navigation-drawer';   
 
 const TabsNavigator = createBottomTabNavigator({
     [Routes.TabsHome]: {
@@ -125,11 +127,23 @@ const TabsNavigator = createBottomTabNavigator({
     }
 });
 
+
+const DrawerNavigator = createDrawerNavigator({
+    [Routes.Tabs]: {screen: TabsNavigator},
+    [Routes.OtherScreen]: ProfileScreen,
+  }, {
+    initialRouteName: 'TABS',
+    contentComponent: DrawerScreen,
+    drawerWidth: 300,
+  });
+
 const BaseNavigatorContainer = createAppContainer(createStackNavigator({
-    [Routes.Tabs]: TabsNavigator,
-    [Routes.OtherScreen]: ProfileScreen
+    DrawerNavigator:{
+        screen: DrawerNavigator
+    },
+    DrawerScreen: DrawerScreen,
 }, {
-    headerMode: 'none'
+    headerMode: false,
 }));
 
 export {BaseNavigatorContainer as BaseNavigator};

@@ -1,13 +1,17 @@
 import React from 'react';
 import {View,Text} from 'react-native';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import {createAppContainer} from 'react-navigation';
 
 import {CalendarScreen, HomeScreen, ProfileScreen, ReportScreen} from '../screens';
-import { DrawerHeaderShowcase } from "../components/drawer/Drawer";
+import { DrawerComponent } from "../components/drawer/Drawer";
+import { DrawerScreen } from '../components/drawer/Drawer.component';
+import { TabsNavigator, Routes } from "./";
 
 const DrawerNavigator = createDrawerNavigator({
   Home: {screen: HomeScreen},
-  Drawer: {screen: DrawerHeaderShowcase},
+}, {
+  contentComponent: DrawerComponent,
 });
 
-export default DrawerNavigator;
+export const AppDrawerNavigator = createAppContainer(DrawerNavigator);
