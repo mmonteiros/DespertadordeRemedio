@@ -9,31 +9,92 @@ import {Routes} from "./Routes";
 import { DrawerScreen } from '../components/drawer/Drawer.component';
 import { createDrawerNavigator } from 'react-navigation-drawer';   
 
+
+const HomeStack = createStackNavigator({
+    Home: {screen:HomeScreen
+    },
+    Details:{screen: ProfileScreen,
+      navigationOptions: ({ navigation }) => ({
+        title: `Details`,
+        //headerLeft:  <Icon name='md-menu' size={30}/>,
+        headerStyle:{
+          alignContent: 'center',
+        }
+      }
+      ),
+    },
+  },{
+     initialRouteName: 'Home',
+     headerMode: false,
+     navigationOptions: () => ({
+        tabBarIcon: ({tintColor}) => (
+            <Icon
+                name="home"
+                color={tintColor}
+                size={24}
+            />
+        )
+    }),
+  }
+  );
+  
+  const CalendarStack = createStackNavigator({
+    calendar: {screen: CalendarScreen
+    },},{
+     initialRouteName: 'calendar',
+     headerMode: false,
+     navigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({tintColor}) => (
+            <Icon
+                name="calendar"
+                color={tintColor}
+                size={24}
+            />
+        )
+    }),
+  }
+  );
+
+  const ReportStack = createStackNavigator({
+    report: {screen: ReportScreen
+    },},{
+     initialRouteName: 'report',
+     headerMode: false,
+     navigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({tintColor}) => (
+            <Icon
+                name="archive"
+                color={tintColor}
+                size={24}
+            />
+        )
+    }),
+  }
+  );
+
+  const ProfileStack = createStackNavigator({
+    report: {screen: ProfileScreen
+    },},{
+     initialRouteName: 'report',
+     headerMode: false,
+     navigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({tintColor}) => (
+            <Icon
+                name="user"
+                color={tintColor}
+                size={24}
+            />
+        )
+    }),
+  }
+  );
+
+
 const TabsNavigator = createBottomTabNavigator({
-    [Routes.TabsHome]: {
-        screen: HomeScreen,
-        navigationOptions: () => ({
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                    name="home"
-                    color={tintColor}
-                    size={24}
-                />
-            )
-        })
-    },
-    [Routes.TabsCalendar]: {
-        screen: CalendarScreen,
-        navigationOptions: () => ({
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                    name="calendar"
-                    color={tintColor}
-                    size={24}
-                />
-            )
-        })
-    },
+    [Routes.TabsHome]:  { screen:HomeStack },
+
+    [Routes.TabsCalendar]: { screen: CalendarStack  },
+    
     MultiBar: {
         screen: () => null,
         navigationOptions: ({navigation}) => ({
@@ -90,34 +151,15 @@ const TabsNavigator = createBottomTabNavigator({
             navigationDisabled: true
         }
     },
-    [Routes.TabsReport]: {
-        screen: ReportScreen,
-        navigationOptions: () => ({
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                    name="archive"
-                    color={tintColor}
-                    size={24}
-                />
-            )
-        })
-    },
-    [Routes.TabsProfile]: {
-        screen: ProfileScreen,
-        navigationOptions: () => ({
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                    name="user"
-                    color={tintColor}
-                    size={24}
-                />
-            )
-        })
-    }
+    
+    [Routes.TabsReport]: { screen: ReportStack },
+    
+    [Routes.TabsProfile]: { screen: ProfileStack }
 }, {
+    initialRouteName: "TABS_HOME",
     tabBarComponent: MultiBar,
+    
     tabBarOptions: {
-        showLabel: false,
         activeTintColor: 'black',
         inactiveTintColor: '#586589',
         style: {
@@ -127,23 +169,11 @@ const TabsNavigator = createBottomTabNavigator({
     }
 });
 
+const dashboardStack = createAppContainer(createDrawerNavigator({
+    Home: TabsNavigator, 
+    Calendar: CalendarStack,
+    Report: ReportStack,
+    Profile: ProfileStack
+},));
 
-const DrawerNavigator = createDrawerNavigator({
-    [Routes.Tabs]: {screen: TabsNavigator},
-    [Routes.OtherScreen]: ProfileScreen,
-  }, {
-    initialRouteName: 'TABS',
-    contentComponent: DrawerScreen,
-    drawerWidth: 300,
-  });
-
-const BaseNavigatorContainer = createAppContainer(createStackNavigator({
-    DrawerNavigator:{
-        screen: DrawerNavigator
-    },
-    DrawerScreen: DrawerScreen,
-}, {
-    headerMode: false,
-}));
-
-export {BaseNavigatorContainer as BaseNavigator};
+export {dashboardStack as BaseNavigator};

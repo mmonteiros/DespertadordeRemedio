@@ -16,7 +16,7 @@ const SearchIcon = (style) => (
 export const HomeScreen = ({ navigation }) => {
 
   const navigateCalendar = () => {
-    navigation.navigate("DrawerScreen");
+    navigation.openDrawer();
   };
 
   const renderSearchAction = () => (

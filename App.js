@@ -30,7 +30,7 @@ const App = () => (
   <React.Fragment>
     <IconRegistry icons={EvaIconsPack}/>
     <ApplicationProvider mapping={mapping} theme={theme}>
-      <BaseNavigator/>
+      <HomeScreen/>
     </ApplicationProvider>
   </React.Fragment>
 );

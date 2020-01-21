@@ -13,7 +13,7 @@ const SearchIcon = (style) => (
 export const ProfileScreen = ({ navigation }) => {
 
   const navigateBack = () => {
-    navigation.goBack();
+    navigation.navigate("Home");
   };
 
   const BackAction = () => (
