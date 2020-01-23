@@ -1,94 +1,14 @@
 import React from 'react';
-import {createAppContainer } from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {MultiBar, MultiBarToggle} from 'react-native-multibar';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {CalendarScreen, HomeScreen, ProfileScreen, ReportScreen} from "../screens";
-import {Routes} from "./Routes";
-import { DrawerScreen } from '../components/drawer/Drawer.component';
+import { Routes } from "./Routes";
 import { createDrawerNavigator } from 'react-navigation-drawer';   
-
-
-const HomeStack = createStackNavigator({
-    Home: {screen:HomeScreen
-    },
-    Details:{screen: ProfileScreen,
-      navigationOptions: ({ navigation }) => ({
-        title: `Details`,
-        //headerLeft:  <Icon name='md-menu' size={30}/>,
-        headerStyle:{
-          alignContent: 'center',
-        }
-      }
-      ),
-    },
-  },{
-     initialRouteName: 'Home',
-     headerMode: false,
-     navigationOptions: () => ({
-        tabBarIcon: ({tintColor}) => (
-            <Icon
-                name="home"
-                color={tintColor}
-                size={24}
-            />
-        )
-    }),
-  }
-  );
-  
-  const CalendarStack = createStackNavigator({
-    calendar: {screen: CalendarScreen
-    },},{
-     initialRouteName: 'calendar',
-     headerMode: false,
-     navigationOptions: ({ navigation }) => ({
-        tabBarIcon: ({tintColor}) => (
-            <Icon
-                name="calendar"
-                color={tintColor}
-                size={24}
-            />
-        )
-    }),
-  }
-  );
-
-  const ReportStack = createStackNavigator({
-    report: {screen: ReportScreen
-    },},{
-     initialRouteName: 'report',
-     headerMode: false,
-     navigationOptions: ({ navigation }) => ({
-        tabBarIcon: ({tintColor}) => (
-            <Icon
-                name="archive"
-                color={tintColor}
-                size={24}
-            />
-        )
-    }),
-  }
-  );
-
-  const ProfileStack = createStackNavigator({
-    report: {screen: ProfileScreen
-    },},{
-     initialRouteName: 'report',
-     headerMode: false,
-     navigationOptions: ({ navigation }) => ({
-        tabBarIcon: ({tintColor}) => (
-            <Icon
-                name="user"
-                color={tintColor}
-                size={24}
-            />
-        )
-    }),
-  }
-  );
-
+import ReportStack  from "./stacks/ReportStack";
+import HomeStack from "./stacks/HomeStack";
+import CalendarStack from "./stacks/CalendarStack";
+import ProfileStack from "./stacks/ProfileStack";
 
 const TabsNavigator = createBottomTabNavigator({
     [Routes.TabsHome]:  { screen:HomeStack },
@@ -174,6 +94,8 @@ const dashboardStack = createAppContainer(createDrawerNavigator({
     Calendar: CalendarStack,
     Report: ReportStack,
     Profile: ProfileStack
-},));
+},
+    
+));
 
 export {dashboardStack as BaseNavigator};
