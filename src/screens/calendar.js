@@ -11,30 +11,36 @@ const SearchIcon = (style) => (
   <Icon {...style} name='search-outline'/>
 );
 
-export const CalendarScreen = ({ navigation }) => {
+class CalendarScreen extends React.Component {
+  
+  render(){
+    const { navigation } = this.props;
 
-  const navigateBack = () => {
-    navigation.navigate("Home");
+    const navigateBack = () => {
+      navigation.navigate("Home");
+    };
+
+    const BackAction = () => (
+      <TopNavigationAction icon={BackIcon} onPress={navigateBack}/>
+    );
+
+    const renderSearchAction = () => (
+      <TopNavigationAction icon={SearchIcon}/>
+    );
+
+    
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <TopNavigation title='Despertador de Remédio' alignment='center' backgroundColor= 'white' leftControl={BackAction()} rightControls={renderSearchAction()}/>
+        <Divider/>
+        <Layout style={styles.body}>
+          <Text category='h1'>Calendar</Text>
+        </Layout>
+        
+      </SafeAreaView>
+    );
   };
 
-  const BackAction = () => (
-    <TopNavigationAction icon={BackIcon} onPress={navigateBack}/>
-  );
-
-  const renderSearchAction = () => (
-    <TopNavigationAction icon={SearchIcon}/>
-  );
-
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <TopNavigation title='Despertador de Remédio' alignment='center' backgroundColor= 'white' leftControl={BackAction()} rightControls={renderSearchAction()}/>
-      <Divider/>
-      <Layout style={styles.body}>
-        <Text category='h1'>Calendar</Text>
-      </Layout>
-      
-    </SafeAreaView>
-  );
 };
 
 const styles = StyleSheet.create({
@@ -48,3 +54,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#63CDDA',
   },
 });
+
+export {CalendarScreen};

@@ -7,7 +7,7 @@
   cd DespertadordeRemedio && npm install
 
 # Open in your simulator
-  	npx react-native run-android
+  	npm run android
 
 
 

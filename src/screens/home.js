@@ -13,38 +13,42 @@ const SearchIcon = (style) => (
     <Icon {...style} name='search-outline'/>
   );
 
-export const HomeScreen = ({ navigation }) => {
+class HomeScreen extends React.Component {
+  
+  render(){
+    const navigateCalendar = () => {
+      navigation.openDrawer();
+    };
 
-  const navigateCalendar = () => {
-    navigation.openDrawer();
-  };
+    const renderSearchAction = () => (
+      <TopNavigationAction icon={SearchIcon}/>
+    );
 
-  const renderSearchAction = () => (
-    <TopNavigationAction icon={SearchIcon}/>
-  );
+    const renderMenuAction = () => (
+      <TopNavigationAction icon={MenuIcon} onPress={ navigateCalendar }/> 
+    );
+    
+    const { navigation } = this.props;
 
-  const renderMenuAction = () => (
-    <TopNavigationAction icon={MenuIcon} onPress={ navigateCalendar }/> 
-  );
-
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Layout style={styles.container}>
-      <TopNavigation
-        title='Despertador de Remédio'
-        alignment='center'
-        backgroundColor= 'white'
-        leftControl={renderMenuAction()}
-        rightControls={renderSearchAction()}
-      />
-    </Layout>
-      <Divider/>
-      <Layout style={styles.body}>
-        <Button onPress={navigateCalendar}>Open Calendar</Button>
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <Layout style={styles.container}>
+        <TopNavigation
+          title='Despertador de Remédio'
+          alignment='center'
+          backgroundColor= 'white'
+          leftControl={renderMenuAction()}
+          rightControls={renderSearchAction()}
+        />
       </Layout>
-      
-    </SafeAreaView>
-  );
+        <Divider/>
+        <Layout style={styles.body}>
+          <Button onPress={navigateCalendar}>Open Calendar</Button>
+        </Layout>
+        
+      </SafeAreaView>
+    );
+  };
 };
 
 const styles = StyleSheet.create({
@@ -58,3 +62,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#63CDDA',
   },
 });
+
+export {HomeScreen};

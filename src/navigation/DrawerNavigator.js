@@ -5,7 +5,6 @@ import {createAppContainer} from 'react-navigation';
 
 import {CalendarScreen, HomeScreen, ProfileScreen, ReportScreen} from '../screens';
 import { DrawerComponent } from "../components/drawer/Drawer";
-import { DrawerScreen } from '../components/drawer/Drawer.component';
 import { TabsNavigator, Routes } from "./";
 
 const DrawerNavigator = createDrawerNavigator({
