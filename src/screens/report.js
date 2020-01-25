@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 
@@ -10,7 +11,7 @@ const SearchIcon = (style) => (
   <Icon {...style} name='search-outline'/>
 );
 
-export const CalendarScreen = ({ navigation }) => {
+  export const ReportScreen = ({ navigation }) => {
 
   const navigateBack = () => {
     navigation.navigate("Home");
@@ -22,16 +23,28 @@ export const CalendarScreen = ({ navigation }) => {
 
   const renderSearchAction = () => (
     <TopNavigationAction icon={SearchIcon}/>
-  );
+ );
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <TopNavigation title='Despertador de Remédio' alignment='center' backgroundColor= 'white' leftControl={BackAction()} rightControls={renderSearchAction()}/>
+      <TopNavigation title='Despertador de Remédio' alignment='center' backgroundColor= "white" leftControl={BackAction()} rightControls={renderSearchAction()}/>
       <Divider/>
-      <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text category='h1'>Calendar</Text>
+      <Layout style={styles.body}>
+        <Text category='h1'>Report</Text>
       </Layout>
       
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    minHeight: 8,
+  },
+  body: {
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: '#63CDDA',
+  },
+});

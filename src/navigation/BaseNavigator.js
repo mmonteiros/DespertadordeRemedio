@@ -9,6 +9,7 @@ import ReportStack  from "./stacks/ReportStack";
 import HomeStack from "./stacks/HomeStack";
 import CalendarStack from "./stacks/CalendarStack";
 import ProfileStack from "./stacks/ProfileStack";
+import SideMenu  from '../components/drawer/Drawer';
 
 const TabsNavigator = createBottomTabNavigator({
     [Routes.TabsHome]:  { screen:HomeStack },
@@ -94,8 +95,13 @@ const dashboardStack = createAppContainer(createDrawerNavigator({
     Calendar: CalendarStack,
     Report: ReportStack,
     Profile: ProfileStack
-},
-    
-));
+},{
+    initialRouteName: 'Home',
+    contentComponent: SideMenu,
+    drawerOpenRoute: 'DrawerOpen',
+    drawerCloseRoute: 'DrawerClose',
+    drawerToggleRoute: 'DrawerToggle',
+    drawerWidth: 290,
+}));
 
 export {dashboardStack as BaseNavigator};

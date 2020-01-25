@@ -1,21 +1,11 @@
 import React from 'react';
 import {createStackNavigator} from 'react-navigation-stack';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {HomeScreen, ProfileScreen} from "../../screens";
+import { HomeScreen, ProfileScreen } from "../../screens";
 
 const HomeStack = createStackNavigator({
-    Home: {screen:HomeScreen
-    },
-    Details:{screen: ProfileScreen,
-      navigationOptions: ({ navigation }) => ({
-        title: `Details`,
-        //headerLeft:  <Icon name='md-menu' size={30}/>,
-        headerStyle:{
-          alignContent: 'center',
-        }
-      }
-      ),
-    },
+    Home: { screen: HomeScreen },
+    Details:{ screen: ProfileScreen },
   },{
      initialRouteName: 'Home',
      headerMode: false,

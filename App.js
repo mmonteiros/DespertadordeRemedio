@@ -13,11 +13,11 @@
 import React from 'react';
 import { ApplicationProvider,Layout, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { mapping, dark as darkTheme } from '@eva-design/eva';
+import { mapping, light as lightTheme } from '@eva-design/eva';
 import { default as appTheme } from './custom-theme.json'; // <-- Import app theme
 import { BaseNavigator } from './src/navigation';
 
-const theme = { ...darkTheme, ...appTheme };
+const theme = { ...lightTheme, ...appTheme };
 
 
 const HomeScreen = () => (

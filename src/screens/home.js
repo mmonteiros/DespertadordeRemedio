@@ -39,7 +39,7 @@ export const HomeScreen = ({ navigation }) => {
       />
     </Layout>
       <Divider/>
-      <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Layout style={styles.body}>
         <Button onPress={navigateCalendar}>Open Calendar</Button>
       </Layout>
       
@@ -50,5 +50,11 @@ export const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     minHeight: 8,
+  },
+  body: {
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: '#63CDDA',
   },
 });
