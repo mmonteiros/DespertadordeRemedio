@@ -1,7 +1,9 @@
 import React from 'react';
+import { Button, View, Text, SafeAreaView, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {MultiBar, MultiBarToggle} from 'react-native-multibar';
+import Ionicons from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Routes } from "./Routes";
 import { createDrawerNavigator } from 'react-navigation-drawer';   
@@ -10,81 +12,42 @@ import HomeStack from "./stacks/HomeStack";
 import CalendarStack from "./stacks/CalendarStack";
 import ProfileStack from "./stacks/ProfileStack";
 import SideMenu  from '../components/drawer/Drawer';
+import TabBar from '../components/footer/tabBar';
+import { registerMed } from '../screens/registerMed';
 
 const TabsNavigator = createBottomTabNavigator({
-    [Routes.TabsHome]:  { screen:HomeStack },
-
-    [Routes.TabsCalendar]: { screen: CalendarStack  },
-    
-    MultiBar: {
-        screen: () => null,
-        navigationOptions: ({navigation}) => ({
-            tabBarIcon: () => (
-                <MultiBarToggle
-                    navigation={navigation}
-                    actionSize={40}
-                    routes={[
-                        {
-                            routeName: Routes.OtherScreen,
-                            color: '#FF8360',
-                            icon: (
-                                <Icon
-                                    name="photo"
-                                    color="#333333"
-                                    size={15}
-                                />
-                            )
-                        },
-                        {
-                            routeName: Routes.OtherScreen,
-                            color: '#E8E288',
-                            icon: (
-                                <Icon
-                                    name="dashboard"
-                                    color="#333333"
-                                    size={15}
-                                />
-                            )
-                        },
-                        {
-                            routeName: Routes.OtherScreen,
-                            color: '#7DCE82',
-                            icon: (
-                                <Icon
-                                    name="gears"
-                                    color="#333333"
-                                    size={15}
-                                />
-                            )
-                        },
-                    ]}
-                    icon={(
-                        <Icon
-                            name="plus"
-                            color="#FFFFFF"
-                            size={32}
-                        />
-                    )}
-                />
-            )
-        }),
-        params: {
-            navigationDisabled: true
-        }
-    },
-    
-    [Routes.TabsReport]: { screen: ReportStack },
-    
-    [Routes.TabsProfile]: { screen: ProfileStack }
+    Home:  HomeStack,
+    Calendar: CalendarStack,
+    RegisterMed: {screen: registerMed, 
+        navigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({tintColor}) => (
+            <Icon
+                name="plus"
+                color={tintColor}
+                size={35}
+            />
+        )
+    }),},
+    Report: ReportStack,
+    Profile: ProfileStack,
 }, {
-    initialRouteName: "TABS_HOME",
-    tabBarComponent: MultiBar,
-    
+    initialRouteName: "Home",
+
+    tabBarComponent: (props) => <TabBar {...props}/>,
+
     tabBarOptions: {
-        activeTintColor: 'black',
-        inactiveTintColor: '#586589',
+        tabFeatured: 'RegisterMed',
+        backgroundFeaturedIcon: '#3DC1D3',
+        activeFeaturedTintColor: 'skyblue',
+        inactiveFeatureTintColor: 'white',
+        showLabel: true,
+        activeTintColor: '#63CDDA',
+        inactiveTintColor: '#E1E3DB',
         style: {
-            backgroundColor: 'white'
+            height: 60,
+            backgroundColor: '#FFFFFF',
+            borderTopWidth: 1,
+            borderTopColor: '#63CDDA',
         },
         tabStyle: {}
     }
@@ -93,8 +56,10 @@ const TabsNavigator = createBottomTabNavigator({
 const dashboardStack = createAppContainer(createDrawerNavigator({
     Home: TabsNavigator, 
     Calendar: CalendarStack,
+    Register: registerMed,
     Report: ReportStack,
-    Profile: ProfileStack
+    Profile: ProfileStack,
+
 },{
     initialRouteName: 'Home',
     contentComponent: SideMenu,

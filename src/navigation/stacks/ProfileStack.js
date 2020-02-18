@@ -1,19 +1,19 @@
 import React from 'react';
 import {createStackNavigator} from 'react-navigation-stack';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { ProfileScreen } from "../../screens";
 
 const ProfileStack = createStackNavigator({
-    report: {screen: ProfileScreen
-    },},{
+    report: ProfileScreen,
+    },{
      initialRouteName: 'report',
      headerMode: false,
      navigationOptions: ({ navigation }) => ({
         tabBarIcon: ({tintColor}) => (
             <Icon
-                name="user"
+                name="user-friends"
                 color={tintColor}
-                size={24}
+                size={34}
             />
         )
     }),

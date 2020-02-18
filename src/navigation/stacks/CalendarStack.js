@@ -1,11 +1,11 @@
 import React from 'react';
 import {createStackNavigator} from 'react-navigation-stack';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {CalendarScreen} from "../../screens";
 
 const CalendarStack = createStackNavigator({
-    calendar: {screen: CalendarScreen
-    },},{
+    calendar: CalendarScreen,
+    },{
      initialRouteName: 'calendar',
      headerMode: false,
      navigationOptions: ({ navigation }) => ({
@@ -13,7 +13,7 @@ const CalendarStack = createStackNavigator({
             <Icon
                 name="calendar"
                 color={tintColor}
-                size={24}
+                size={40}
             />
         )
     }),
