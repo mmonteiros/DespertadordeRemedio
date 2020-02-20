@@ -1,7 +1,11 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import { Divider, Icon, Layout,Button, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Divider, Icon, Layout,Button, Card, Text, TopNavigation, Input ,TopNavigationAction, CardHeader } from '@ui-kitten/components';
+
+const ArrowForwardIcon = (style) => (
+  <Icon {...style} name='arrow-forward' />
+);
 
 const BackIcon = (style) => (
   <Icon {...style} name='arrow-back' />
@@ -14,6 +18,22 @@ const SearchIcon = (style) => (
 class registerMed extends React.Component {
   
   render(){
+
+    const Header = () => (
+      <CardHeader
+        headerStyle={styles.HeaderCard}
+        title='Informações do Medicamento'
+
+      />
+    );
+    
+    const Footer = () => (
+      <View style={styles.footerContainer}>
+        <Button icon={ArrowForwardIcon}>
+        </Button>
+      </View>
+    );
+
     const navigateCalendar = () => {
         navigation.navigate("RegisterMed");
       };
@@ -41,9 +61,10 @@ class registerMed extends React.Component {
             </Layout>
             <Divider/>
             <Layout style={styles.body}>
-                <Button onPress={navigateCalendar}>Register</Button>
+            <Card header={Header} footer={Footer}>
+						    <Input placeholder='Nome do Medicamento' id="email" name="email" autoComplete="on" autoFocus />              
+            </Card>
             </Layout>
-        
         </SafeAreaView>
     );
   };
@@ -57,8 +78,20 @@ const styles = StyleSheet.create({
   body: {
     flex: 1, 
     justifyContent: 'center', 
-    alignItems: 'center',
     backgroundColor: '#63CDDA',
+  },
+  footerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  footerControl: {
+    marginHorizontal: 4,
+  },
+  HeaderCard: {
+    justifyContent: 'center',
+  },
+  cardChange: {
+
   },
 });
 

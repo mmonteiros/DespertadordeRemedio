@@ -8,7 +8,7 @@ const CalendarStack = createStackNavigator({
     },{
      initialRouteName: 'calendar',
      headerMode: false,
-     navigationOptions: ({ navigation }) => ({
+     navigationOptions: () => ({
         tabBarIcon: ({tintColor}) => (
             <Icon
                 name="calendar"

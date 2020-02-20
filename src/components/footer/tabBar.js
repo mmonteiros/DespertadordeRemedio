@@ -48,7 +48,15 @@ const TabBar = (props) => {
                         }}
                     >
                         <TouchableWithoutFeedback
-                            onPress={navigateRegister}
+                            onPress={
+                                () =>{ 
+                                if(route.key === 'RegisterMed') 
+                                    navigateRegister();
+                                else   
+                                    jumpTo(route.key)
+                                }
+                                
+                            }
                         >
                             <View style={styles.iconContainer}>
                                 <View style = {route.key == tabFeatured ? [{backgroundColor: backgroundFeaturedIcon}, styles.customIcon] : styles.defaultIcon}>

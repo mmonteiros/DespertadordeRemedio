@@ -19,7 +19,7 @@ const TabsNavigator = createBottomTabNavigator({
     Home:  HomeStack,
     Calendar: CalendarStack,
     RegisterMed: {screen: registerMed, 
-        navigationOptions: ({ navigation }) => ({
+        navigationOptions: () => ({
         tabBarIcon: ({tintColor}) => (
             <Icon
                 name="plus"

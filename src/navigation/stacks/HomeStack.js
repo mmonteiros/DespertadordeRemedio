@@ -5,7 +5,6 @@ import { HomeScreen, ProfileScreen } from "../../screens";
 
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
-    Details: ProfileScreen,
   },{
      initialRouteName: 'Home',
      headerMode: false,
