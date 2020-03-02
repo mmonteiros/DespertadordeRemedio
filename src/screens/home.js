@@ -43,7 +43,7 @@ class HomeScreen extends React.Component {
         </Layout>
         <Divider />
         <Layout style={styles.body}>
-          <Button onPress={navigateCalendar}>Open Calendar</Button>
+          <Button onPress={navigateCalendar}>Open Drawer</Button>
         </Layout>
       </SafeAreaView>
     );

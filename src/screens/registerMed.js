@@ -20,8 +20,8 @@ const BackIcon = style => <Icon {...style} name="arrow-back" />;
 
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
 
-class registerMed extends React.Component {
-  render() {
+function registerMed(props) {
+ 
     const Header = () => (
       <CardHeader
         headerStyle={styles.HeaderCard}
@@ -49,7 +49,7 @@ class registerMed extends React.Component {
 
     const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
 
-    const {navigation} = this.props;
+    const {navigation} = props;
 
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -81,7 +81,7 @@ class registerMed extends React.Component {
         </Layout>
       </SafeAreaView>
     );
-  }
+  
 }
 
 const styles = StyleSheet.create({
