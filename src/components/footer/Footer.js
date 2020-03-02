@@ -4,46 +4,37 @@
  */
 
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   BottomNavigation,
   BottomNavigationTab,
   Icon,
 } from '@ui-kitten/components';
-import { SafeAreaView } from 'react-navigation';
+import {SafeAreaView} from 'react-navigation';
 
-const HomeIcon = (style) => (
-  <Icon {...style} name='home'/>
-);
+const HomeIcon = style => <Icon {...style} name="home" />;
 
-const CalendarIcon = (style) => (
-  <Icon {...style} name='calendar'/>
-);
+const CalendarIcon = style => <Icon {...style} name="calendar" />;
 
-const ReportIcon = (style) => (
-  <Icon {...style} name='archive'/>
-);
+const ReportIcon = style => <Icon {...style} name="archive" />;
 
-const ProfileIcon = (style) => (
-  <Icon {...style} name='people'/>
-);
+const ProfileIcon = style => <Icon {...style} name="people" />;
 
-export const TabBarComponent = ({ navigation }) => {
-
-  const onSelect = (index) => {
+export const TabBarComponent = ({navigation}) => {
+  const onSelect = index => {
     const selectedTabRoute = navigation.state.routes[index];
     navigation.navigate(selectedTabRoute.routeName);
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <BottomNavigation 
-      selectedIndex={navigation.state.index} 
-      onSelect={onSelect}>
-        <BottomNavigationTab icon={HomeIcon}/>
-        <BottomNavigationTab icon={CalendarIcon}/>
-        <BottomNavigationTab icon={ReportIcon}/>
-        <BottomNavigationTab icon={ProfileIcon}/>
+      <BottomNavigation
+        selectedIndex={navigation.state.index}
+        onSelect={onSelect}>
+        <BottomNavigationTab icon={HomeIcon} />
+        <BottomNavigationTab icon={CalendarIcon} />
+        <BottomNavigationTab icon={ReportIcon} />
+        <BottomNavigationTab icon={ProfileIcon} />
       </BottomNavigation>
     </SafeAreaView>
   );
@@ -53,7 +44,7 @@ const styles = StyleSheet.create({
   container: {
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    borderTopColor: "#fff",
+    borderTopColor: '#fff',
     borderTopWidth: 0.5,
     backgroundColor: 'white',
   },
