@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "215246873989",
+    "firebase_url": "https://despertadorderemedio.firebaseio.com",
+    "project_id": "despertadorderemedio",
+    "storage_bucket": "despertadorderemedio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215246873989:android:ddcc3b6becb6d4742c90ec",
+        "android_client_info": {
+          "package_name": "com.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215246873989-8e0bipj6sga5jrtooanv6p95m1d4ufn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIG9cAl3WvYkNqfK_JGmI8eWK2Mba5JKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215246873989-8e0bipj6sga5jrtooanv6p95m1d4ufn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
