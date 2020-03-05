@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {StyleSheet} from 'react-native';
 import {colors} from '../../styles';
 
@@ -55,6 +56,8 @@ const styles = StyleSheet.create({
 
 export default styles;
 =======
+=======
+>>>>>>> parent of 41e5c69... Update
 import {StyleSheet} from 'react-native';
 import {colors} from '../../styles';
 
@@ -87,7 +90,11 @@ const styles = StyleSheet.create({
 
   // Cards
   cardMain: {
+<<<<<<< HEAD
     borderRadius: 20,
+=======
+    borderRadius: 14,
+>>>>>>> parent of 41e5c69... Update
   },
   cardContainer: {
     backgroundColor: colors.grayBackground,
@@ -95,7 +102,25 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     marginBottom: 20,
   },
+<<<<<<< HEAD
 });
 
 export default styles;
 >>>>>>> parent of 4f50b44... Update for registerMed
+=======
+  cardContent: {
+    backgroundColor: colors.grayBackground,
+    borderColor: colors.white,
+    borderRadius: 25,
+    width: 120,
+  },
+  cardPane: {
+    backgroundColor: colors.white,
+    borderColor: colors.gray,
+    borderRadius: 30,
+    //flexDirection: 'row',
+  },
+});
+
+export default styles;
+>>>>>>> parent of 41e5c69... Update

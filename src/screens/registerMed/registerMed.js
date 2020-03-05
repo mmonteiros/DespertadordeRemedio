@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import {StyleSheet, View, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
@@ -94,6 +95,8 @@ function registerMed(props) {
 
 export {registerMed};
 =======
+=======
+>>>>>>> parent of 41e5c69... Update
 import React from 'react';
 import {StyleSheet, View, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
@@ -110,7 +113,12 @@ import {
   CardHeader,
 } from '@ui-kitten/components';
 
+<<<<<<< HEAD
 //import styles from './styles'
+=======
+import {DropDownMenu} from '../../components/dropDownMenu';
+import styles from './styles';
+>>>>>>> parent of 41e5c69... Update
 
 const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" />;
 
@@ -148,10 +156,18 @@ function registerMed(props) {
   const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
 
   const {navigation} = props;
+<<<<<<< HEAD
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <Layout style={styles.container}>
+=======
+  const data = ['Comprimido(s)', ' Gota(s)'];
+
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <Layout style={styles.safeArea}>
+>>>>>>> parent of 41e5c69... Update
         <TopNavigation
           title="Despertador de Remédio"
           alignment="center"
@@ -162,18 +178,34 @@ function registerMed(props) {
         <Divider />
       </Layout>
       <Divider />
+<<<<<<< HEAD
       <Layout style={styles.body}>
         <Card style={styles.Card} header={Header} footer={Footer}>
           <Input
             style={styles.CardContainer}
+=======
+      <Layout style={styles.container}>
+        <Card style={styles.cardMain} header={Header} footer={Footer}>
+          <Input
+            style={styles.cardContainer}
+>>>>>>> parent of 41e5c69... Update
             placeholder="Nome do Medicamento"
             id="email"
             name="email"
             autoComplete="on"
             autoFocus
           />
+<<<<<<< HEAD
           <Card style={styles.CardPane}>
             <Input style={styles.CardContent} placeholder="Quantidade" />
+=======
+          <Card style={styles.cardPane}>
+            <Input style={styles.cardContent} placeholder="Quantidade" />
+            <DropDownMenu data={data} />
+          </Card>
+          <Card>
+            <Text>Validade do Medicamento</Text>
+>>>>>>> parent of 41e5c69... Update
           </Card>
         </Card>
       </Layout>
@@ -181,6 +213,7 @@ function registerMed(props) {
   );
 }
 
+<<<<<<< HEAD
 const styles = StyleSheet.create({
   container: {
     minHeight: 8,
@@ -226,3 +259,6 @@ const styles = StyleSheet.create({
 
 export {registerMed};
 >>>>>>> parent of 4f50b44... Update for registerMed
+=======
+export {registerMed};
+>>>>>>> parent of 41e5c69... Update
