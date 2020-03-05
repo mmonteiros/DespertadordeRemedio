@@ -14,7 +14,8 @@ import {
   CardHeader,
 } from '@ui-kitten/components';
 
-//import styles from './styles'
+import {DropDownMenu} from '../../components/dropDownMenu';
+import styles from './styles';
 
 const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" />;
 
@@ -52,10 +53,11 @@ function registerMed(props) {
   const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
 
   const {navigation} = props;
+  const data = ['Comprimido(s)', ' Gota(s)'];
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Layout style={styles.container}>
+      <Layout style={styles.safeArea}>
         <TopNavigation
           title="Despertador de Remédio"
           alignment="center"
@@ -66,66 +68,27 @@ function registerMed(props) {
         <Divider />
       </Layout>
       <Divider />
-      <Layout style={styles.body}>
-        <Card style={styles.Card} header={Header} footer={Footer}>
+      <Layout style={styles.container}>
+        <Card style={styles.cardMain} header={Header} footer={Footer}>
           <Input
-            style={styles.CardContainer}
+            style={styles.cardContainer}
             placeholder="Nome do Medicamento"
             id="email"
             name="email"
             autoComplete="on"
             autoFocus
           />
-          <Card style={styles.CardPane}>
-            <Input style={styles.CardContent} placeholder="Quantidade" />
+          <Card style={styles.cardPane}>
+            <Input style={styles.cardContent} placeholder="Quantidade" />
+            <DropDownMenu data={data} />
+          </Card>
+          <Card>
+            <Text>Validade do Medicamento</Text>
           </Card>
         </Card>
       </Layout>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    minHeight: 8,
-  },
-  body: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#63CDDA',
-  },
-  footerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },
-  footerControl: {
-    marginHorizontal: 4,
-  },
-  HeaderCard: {
-    justifyContent: 'center',
-    fontWeight: 'bold',
-  },
-  Card: {
-    borderRadius: 20,
-  },
-  CardContainer: {
-    backgroundColor: '#f2f2f2',
-    borderRadius: 30,
-    borderColor: '#FFF',
-    marginBottom: 20,
-  },
-  CardContent: {
-    backgroundColor: '#F2F2F2',
-    borderColor: '#FFF',
-    borderRadius: 30,
-    paddingEnd: 160,
-  },
-  CardPane: {
-    backgroundColor: '#FFF',
-    borderRadius: 30,
-    borderColor: '#404040',
-  },
-  cardChange: {},
-});
 
 export {registerMed};

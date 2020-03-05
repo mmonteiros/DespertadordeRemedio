@@ -30,13 +30,25 @@ const styles = StyleSheet.create({
 
   // Cards
   cardMain: {
-    borderRadius: 20,
+    borderRadius: 14,
   },
   cardContainer: {
     backgroundColor: colors.grayBackground,
     borderColor: colors.white,
     borderRadius: 30,
     marginBottom: 20,
+  },
+  cardContent: {
+    backgroundColor: colors.grayBackground,
+    borderColor: colors.white,
+    borderRadius: 25,
+    width: 120,
+  },
+  cardPane: {
+    backgroundColor: colors.white,
+    borderColor: colors.gray,
+    borderRadius: 30,
+    //flexDirection: 'row',
   },
 });
 
