@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../styles';
+import {colors, fonts} from '../../styles';
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.primary,
+    fontSize: fonts.big,
     flex: 1,
     justifyContent: 'center',
   },
@@ -16,6 +17,7 @@ const styles = StyleSheet.create({
   // Header Tittle
   headerCard: {
     justifyContent: 'center',
+    fontSize: fonts.bigger,
     fontWeight: 'bold',
   },
 
@@ -44,14 +46,24 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     //flex: 1,
     //flexDirection: 'row',
-    width: 120,
+    //marginRight: 20,
+    width: 150,
+    height: 55,
   },
   cardPane: {
     backgroundColor: colors.white,
     borderColor: colors.gray,
     borderRadius: 30,
-    //flexDirection: 'row',
+    flexDirection: 'row',
     marginBottom: 20,
+    justifyContent: 'space-between',
+  },
+
+  // Text
+  text: {
+    marginTop: 5,
+    fontSize: fonts.big,
+    fontWeight: fonts.semiBolt,
   },
 });
 

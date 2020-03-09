@@ -1,7 +1,11 @@
 export default {
-  bigger: 24,
-  big: 16,
-  regular: 14,
+  // Size
+  bigger: 21,
+  big: 18,
+  regular: 15,
   small: 12,
   smaller: 11,
+
+  // Weight
+  semiBolt: '200',
 };

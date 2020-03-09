@@ -26,7 +26,7 @@ const SearchIcon = style => <Icon {...style} name="search-outline" />;
 function registerMed(props) {
   const Header = () => (
     <CardHeader
-      headerStyle={styles.HeaderCard}
+      headerStyle={styles.headerCard}
       title="Informações do Medicamento"
     />
   );
@@ -78,14 +78,22 @@ function registerMed(props) {
             autoComplete="on"
             autoFocus
           />
-          <Card style={styles.cardPane}>
-            <Input style={styles.cardContent} placeholder="Quantidade" />
+          <View style={styles.cardPane}>
+            <Input
+              style={styles.cardContent}
+              placeholder="Quantidade"
+              keyboardType="numeric"
+            />
             <DropDownMenu data={data} />
-          </Card>
-          <Card style={styles.cardPane}>
-            <Text>Validade do Medicamento</Text>
-            <Input style={styles.cardContent} placeholder="MM/AAAA" />
-          </Card>
+          </View>
+          <View style={styles.cardPane}>
+            <Text style={styles.text}>{'Validade do \nMedicamento'}</Text>
+            <Input
+              style={styles.cardContent}
+              placeholder="MM/AAAA"
+              keyboardType="numeric"
+            />
+          </View>
         </Card>
       </Layout>
     </SafeAreaView>
