@@ -34,7 +34,7 @@ function registerMed(props) {
   // Button next
   const Footer = () => (
     <View style={styles.footerContainer}>
-      <Button icon={ArrowForwardIcon}></Button>
+      <Button style={styles.button} icon={ArrowForwardIcon}></Button>
     </View>
   );
 
@@ -53,7 +53,13 @@ function registerMed(props) {
   const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
 
   const {navigation} = props;
-  const data = ['Comprimido(s)', ' Gota(s)'];
+  const options = [
+    {text: 'Comprimido(s)'},
+    {text: 'Gota(s)'},
+    {text: 'Mg'},
+    {text: 'Ml'},
+    {text: 'Unidade(s)'},
+  ];
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -84,7 +90,7 @@ function registerMed(props) {
               placeholder="Quantidade"
               keyboardType="numeric"
             />
-            <DropDownMenu data={data} />
+            <DropDownMenu options={options} name={'Unidade'} />
           </View>
           <View style={styles.cardPane}>
             <Text style={styles.text}>{'Validade do \nMedicamento'}</Text>

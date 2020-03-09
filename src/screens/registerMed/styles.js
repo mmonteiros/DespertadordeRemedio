@@ -29,6 +29,21 @@ const styles = StyleSheet.create({
   footerControl: {
     marginHorizontal: 4,
   },
+  button: {
+    backgroundColor: colors.yellow,
+    borderColor: colors.yellow,
+    borderRadius: 50,
+    height: 60,
+    width: 60,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+  },
 
   // Cards
   cardMain: {
