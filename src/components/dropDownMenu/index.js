@@ -8,12 +8,13 @@ export const DropDownMenu = ({options, name}) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   return (
-    <Layout style={styles.container}>
+    <Layout>
       <Select
         data={options}
         placeholder={name}
         selectedOption={selectedOption}
         onSelect={setSelectedOption}
+        controlStyle={styles.container}
       />
     </Layout>
   );

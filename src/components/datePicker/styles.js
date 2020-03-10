@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     height: 55,
     width: 150,
+    //minHeight: 376,
   },
 });
 
