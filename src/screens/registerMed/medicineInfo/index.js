@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
@@ -66,6 +66,9 @@ function medicineInfo(props) {
     {text: 'Unidade(s)'},
   ];
 
+  const [nameMed, setNameMed] = useState('');
+  const [amountMed, setAmountMed] = useState('');
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <Layout style={styles.safeArea}>
@@ -88,6 +91,9 @@ function medicineInfo(props) {
             name="email"
             autoComplete="on"
             autoFocus
+            value={nameMed} 
+            onChangeText={setNameMed}
+
           />
           <View style={styles.paneBorder}>
             <Text style={[styles.tittlePaneBorder, styles.text]}>
@@ -97,6 +103,8 @@ function medicineInfo(props) {
               style={styles.cardContent}
               placeholder="Quantidade"
               keyboardType="numeric"
+              value={amountMed} 
+              onChangeText={setAmountMed}
             />
             <DropDownMenu name={'Unidade'} options={options} />
           </View>

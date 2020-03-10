@@ -16,6 +16,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { mapping, light as lightTheme } from '@eva-design/eva';
 import { default as appTheme } from './custom-theme.json'; // <-- Import app theme
 import { BaseNavigator } from './src/navigation';
+import firebase from 'react-native-firebase';
 
 const theme = { ...lightTheme, ...appTheme };
 
@@ -25,6 +26,14 @@ const HomeScreen = () => (
 
   </Layout>
 );
+
+firebase.auth()
+  .signInAnonymously()
+  .then(credential => {
+    if (credential) { 
+      console.log('default app user ->', credential.user.toJSON());
+    }
+  });
 
 const App = () => (
   <React.Fragment>
