@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Dimensions} from 'react-native';
+import {View, Dimensions, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
   Divider,
@@ -43,8 +43,8 @@ function treatmentInfo(props) {
     </View>
   );
 
-  const navigateCalendar = () => {
-    navigation.navigate('MedicineInfo');
+  const navigateMedicine = () => {
+    navigation.navigate('Home');
   };
 
   const navigateBack = () => {

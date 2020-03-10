@@ -20,6 +20,7 @@ import ReportStack from './stacks/ReportStack';
 import HomeStack from './stacks/HomeStack';
 import CalendarStack from './stacks/CalendarStack';
 import ProfileStack from './stacks/ProfileStack';
+import RegisterMedStack from './stacks/registerMedStack';
 import SideMenu from '../components/drawer/Drawer';
 import TabBar from '../components/footer/tabBar';
 import {medicineInfo} from '../screens/registerMed/medicineInfo';
@@ -28,14 +29,7 @@ const TabsNavigator = createBottomTabNavigator(
   {
     Home: HomeStack,
     Calendar: CalendarStack,
-    MedicineInfo: {
-      screen: medicineInfo,
-      navigationOptions: () => ({
-        tabBarIcon: ({tintColor}) => (
-          <Icon name="plus" color={tintColor} size={35} />
-        ),
-      }),
-    },
+    MedicineInfo: RegisterMedStack,
     Report: ReportStack,
     Profile: ProfileStack,
   },
@@ -68,7 +62,7 @@ const dashboardStack = createAppContainer(
     {
       Home: TabsNavigator,
       Calendar: CalendarStack,
-      Register: medicineInfo,
+      Register: RegisterMedStack,
       Report: ReportStack,
       Profile: ProfileStack,
     },

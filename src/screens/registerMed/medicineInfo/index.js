@@ -40,12 +40,12 @@ function medicineInfo(props) {
   // Button next
   const Footer = () => (
     <View style={styles.footerContainer}>
-      <Button style={styles.button} icon={ArrowForwardIcon}></Button>
+      <Button onPress={navigateMedicineInfo} style={styles.button} icon={ArrowForwardIcon}></Button>
     </View>
   );
 
-  const navigateCalendar = () => {
-    navigation.navigate('MedicineInfo');
+  const navigateMedicineInfo = () => {
+    navigation.navigate('treatmentInfo');
   };
 
   const navigateBack = () => {
