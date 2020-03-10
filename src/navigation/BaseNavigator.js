@@ -22,14 +22,14 @@ import CalendarStack from './stacks/CalendarStack';
 import ProfileStack from './stacks/ProfileStack';
 import SideMenu from '../components/drawer/Drawer';
 import TabBar from '../components/footer/tabBar';
-import {registerMed} from '../screens/registerMed/registerMed';
+import {medicineInfo} from '../screens/registerMed/medicineInfo';
 
 const TabsNavigator = createBottomTabNavigator(
   {
     Home: HomeStack,
     Calendar: CalendarStack,
-    RegisterMed: {
-      screen: registerMed,
+    MedicineInfo: {
+      screen: medicineInfo,
       navigationOptions: () => ({
         tabBarIcon: ({tintColor}) => (
           <Icon name="plus" color={tintColor} size={35} />
@@ -45,7 +45,7 @@ const TabsNavigator = createBottomTabNavigator(
     tabBarComponent: props => <TabBar {...props} />,
 
     tabBarOptions: {
-      tabFeatured: 'RegisterMed',
+      tabFeatured: 'MedicineInfo',
       backgroundFeaturedIcon: '#3DC1D3',
       activeFeaturedTintColor: 'skyblue',
       inactiveFeatureTintColor: 'white',
@@ -68,7 +68,7 @@ const dashboardStack = createAppContainer(
     {
       Home: TabsNavigator,
       Calendar: CalendarStack,
-      Register: registerMed,
+      Register: medicineInfo,
       Report: ReportStack,
       Profile: ProfileStack,
     },

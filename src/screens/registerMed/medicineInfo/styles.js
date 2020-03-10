@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors, fonts} from '../../styles';
+import {colors, fonts} from '../../../styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,19 +59,28 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grayBackground,
     borderColor: colors.white,
     borderRadius: 25,
-    //flex: 1,
-    //flexDirection: 'row',
-    //marginRight: 20,
     width: 150,
     height: 55,
   },
-  cardPane: {
+
+  // Panes
+  paneContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  paneBorder: {
     backgroundColor: colors.white,
     borderColor: colors.gray,
     borderRadius: 30,
+    borderWidth: 1,
     flexDirection: 'row',
-    marginBottom: 20,
     justifyContent: 'space-between',
+    marginBottom: 20,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
 
   // Text

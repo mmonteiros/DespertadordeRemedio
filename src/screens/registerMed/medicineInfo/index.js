@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Dimensions} from 'react-native';
+import {View, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
   Divider,
@@ -14,16 +14,22 @@ import {
   CardHeader,
 } from '@ui-kitten/components';
 
-import {DropDownMenu} from '../../components/dropDownMenu';
+import {DropDownMenu} from '../../../components/dropDownMenu';
+import {DatepickerIcon} from '../../../components/datePicker';
 import styles from './styles';
 
+// Icons
 const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" />;
-
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
-
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
 
-function registerMed(props) {
+function medicineInfo(props) {
+  const BackAction = () => (
+    <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
+  );
+
+  const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
+
   const Header = () => (
     <CardHeader
       headerStyle={styles.headerCard}
@@ -39,20 +45,19 @@ function registerMed(props) {
   );
 
   const navigateCalendar = () => {
-    navigation.navigate('RegisterMed');
+    navigation.navigate('MedicineInfo');
   };
 
   const navigateBack = () => {
     navigation.navigate('Home');
   };
 
-  const BackAction = () => (
-    <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
-  );
-
-  const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
+  const navigateNext = () => {
+    navigation.navigate('');
+  };
 
   const {navigation} = props;
+
   const options = [
     {text: 'Comprimido(s)'},
     {text: 'Gota(s)'},
@@ -84,21 +89,17 @@ function registerMed(props) {
             autoComplete="on"
             autoFocus
           />
-          <View style={styles.cardPane}>
+          <View style={styles.paneBorder}>
             <Input
               style={styles.cardContent}
               placeholder="Quantidade"
               keyboardType="numeric"
             />
-            <DropDownMenu options={options} name={'Unidade'} />
+            <DropDownMenu name={'Unidade'} options={options} />
           </View>
-          <View style={styles.cardPane}>
+          <View style={styles.paneContainer}>
             <Text style={styles.text}>{'Validade do \nMedicamento'}</Text>
-            <Input
-              style={styles.cardContent}
-              placeholder="MM/AAAA"
-              keyboardType="numeric"
-            />
+            <DatepickerIcon />
           </View>
         </Card>
       </Layout>
@@ -106,4 +107,4 @@ function registerMed(props) {
   );
 }
 
-export {registerMed};
+export {medicineInfo};
