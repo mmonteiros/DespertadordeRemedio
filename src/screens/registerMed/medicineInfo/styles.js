@@ -65,9 +65,10 @@ const styles = StyleSheet.create({
 
   // Panes
   paneContainer: {
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   paneBorder: {
     backgroundColor: colors.white,
@@ -88,6 +89,14 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: fonts.big,
     fontWeight: fonts.semiBolt,
+  },
+  tittlePaneBorder: {
+    backgroundColor: colors.white,
+    paddingRight: 5,
+    paddingLeft: 5,
+    position: 'absolute',
+    top: -15,
+    left: 50,
   },
 });
 

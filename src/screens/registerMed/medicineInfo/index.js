@@ -90,6 +90,9 @@ function medicineInfo(props) {
             autoFocus
           />
           <View style={styles.paneBorder}>
+            <Text style={[styles.tittlePaneBorder, styles.text]}>
+              {'Recipiente contém'}
+            </Text>
             <Input
               style={styles.cardContent}
               placeholder="Quantidade"

@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet} from 'react-native';
 import {Layout, Select} from '@ui-kitten/components';
 
 import styles from './styles';
 
-export const DropDownMenu = ({options, name}) => {
+export const DropDownMenu = ({name, options}) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   return (

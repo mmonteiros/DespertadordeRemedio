@@ -57,6 +57,14 @@ function treatmentInfo(props) {
 
   const {navigation} = props;
 
+  const options = [
+    {text: 'Comprimido(s)'},
+    {text: 'Gota(s)'},
+    {text: 'Mg'},
+    {text: 'Ml'},
+    {text: 'Unidade(s)'},
+  ];
+
   const optionsDuration = [
     {text: 'Dia(s)'},
     {text: 'Semana(s)'},
@@ -64,12 +72,18 @@ function treatmentInfo(props) {
     //{text: 'Data'},
   ];
 
-  const options = [
-    {text: 'Comprimido(s)'},
-    {text: 'Gota(s)'},
-    {text: 'Mg'},
-    {text: 'Ml'},
-    {text: 'Unidade(s)'},
+  const optionsFrequency = [
+    {text: 'Dia(s)'},
+    {text: 'Semana(s)'},
+    {text: 'Mês'},
+  ];
+
+  const optionsInstruction = [
+    {text: 'Tomar em jejum'},
+    {text: 'Antes das refeições'},
+    {text: 'Durante as refeições'},
+    {text: 'Após as refeições'},
+    {text: 'Não tomar com ...'},
   ];
 
   return (
@@ -86,40 +100,60 @@ function treatmentInfo(props) {
       </Layout>
       <Divider />
       <Layout style={styles.container}>
-        <View style={styles.paneBorder}>
-          <View style={styles.paneContainer}>
-            <Text style={styles.text}>{'Data de início'}</Text>
-            <DatepickerIcon />
-          </View>
-          <View style={styles.paneContainer}>
-            <Text style={styles.text}>{'Hora de início'}</Text>
-            <DatepickerIcon />
-          </View>
-          <View style={styles.paneContainer}>
-            <Text style={styles.text}>{'Frequência'}</Text>
-            <DropDownMenu name={'------'} options={optionsFreqeuncy} />
-          </View>
-          <View style={styles.paneContainer}>
-            <Text style={styles.text}>{'Duração do\nTratamento'}</Text>
-            <DropDownMenu name={'Dias'} options={optionsDuration} />
-            {/* Add condition*/}
-          </View>
-        </View>
-        <View style={styles.paneBorder}>
-          <Input
-            style={styles.cardContent}
-            placeholder="Quantidade"
-            keyboardType="numeric"
-          />
-          <DropDownMenu name={'Unidade'} options={options} />
-        </View>
-        <View style={styles.paneBorder}>
-          <DropDownMenu name={'Unidade'} options={optionsInstruction} />
-        </View>
-        <Input
-          placeholder="Digite as observações..."
-          style={styles.cardContainer}
-        />
+        <ScrollView>
+          <Card style={styles.cardMain} header={Header}>
+            <View style={[styles.paneBorder, {flexDirection: 'column'}]}>
+              <Text style={[styles.tittlePaneBorder, styles.text]}>
+                {'Duração'}
+              </Text>
+              <View style={styles.paneContainer}>
+                <Text style={styles.text}>{'Data de início'}</Text>
+                <DatepickerIcon />
+              </View>
+              <View style={styles.paneContainer}>
+                <Text style={styles.text}>{'Hora de início'}</Text>
+                <DatepickerIcon />
+              </View>
+              <View style={styles.paneContainer}>
+                <Text style={styles.text}>{'Frequência'}</Text>
+                <DropDownMenu name={'------'} options={optionsFrequency} />
+              </View>
+              <View style={styles.paneContainer}>
+                <Text style={styles.text}>{'Duração do\nTratamento'}</Text>
+                <DropDownMenu name={'Dias'} options={optionsDuration} />
+                {/* Add condition*/}
+              </View>
+            </View>
+            <View style={styles.paneBorder}>
+              <Text style={[styles.tittlePaneBorder, styles.text]}>
+                {'Dosagem'}
+              </Text>
+              <Input
+                style={styles.cardContent}
+                placeholder="Quantidade"
+                keyboardType="numeric"
+              />
+              <DropDownMenu
+                name={'Unidade'}
+                options={options}
+                controlStyle={{whidth: 300}}
+              />
+            </View>
+            <View style={styles.paneBorder}>
+              <Text style={[styles.tittlePaneBorder, styles.text]}>
+                {'Instruções'}
+              </Text>
+              <DropDownMenu
+                name={'Escolha a instrução...'}
+                options={optionsInstruction}
+              />
+            </View>
+            <Input
+              placeholder="Digite as observações..."
+              style={styles.cardContainer}
+            />
+          </Card>
+        </ScrollView>
       </Layout>
     </SafeAreaView>
   );
