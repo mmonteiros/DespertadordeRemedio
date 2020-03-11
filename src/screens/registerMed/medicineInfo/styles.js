@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  // Button next
+  // Button
   footerContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   footerControl: {
     marginHorizontal: 4,
   },
-  button: {
+  buttonRadius: {
     backgroundColor: colors.yellow,
     borderColor: colors.yellow,
     borderRadius: 50,
@@ -44,10 +44,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
   },
+  buttonMargin: {
+    alignItems: 'flex-end',
+    marginTop: 20,
+    marginRight: 20,
+    marginBottom: 20,
+  },
 
   // Cards
   cardMain: {
     borderRadius: 14,
+    marginTop: 20,
+    marginBottom: 20,
   },
   cardContainer: {
     backgroundColor: colors.grayBackground,

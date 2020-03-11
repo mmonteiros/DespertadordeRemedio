@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Dimensions, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
   Divider,
@@ -19,9 +19,7 @@ import {DatepickerIcon} from '../../../components/datePicker';
 import styles from '../medicineInfo/styles';
 
 // Icons
-const checkmarkIcon = style => (
-  <Icon {...style} name="arrow-checkmark-outline" />
-);
+const CheckmarkIcon = style => <Icon {...style} name="checkmark" />;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
 
@@ -39,16 +37,16 @@ function treatmentInfo(props) {
   // Button confirm
   const Footer = () => (
     <View style={styles.footerContainer}>
-      <Button style={styles.button} icon={ArrowForwardIcon}></Button>
+      <Button style={styles.button} icon={checkmarkIcon}></Button>
     </View>
   );
 
-  const navigateMedicine = () => {
+  const navigateHome = () => {
     navigation.navigate('Home');
   };
 
   const navigateBack = () => {
-    navigation.navigate('Home');
+    navigation.navigate('medicineInfo');
   };
 
   const navigateNext = () => {
@@ -90,7 +88,7 @@ function treatmentInfo(props) {
     <SafeAreaView style={{flex: 1}}>
       <Layout style={styles.safeArea}>
         <TopNavigation
-          title="Despertador de Remédio"
+          title="Registar Medicamento"
           alignment="center"
           backgroundColor="white"
           leftControl={BackAction()}
@@ -153,6 +151,12 @@ function treatmentInfo(props) {
               style={styles.cardContainer}
             />
           </Card>
+          <View style={styles.buttonMargin}>
+            <Button
+              onPress={navigateHome}
+              icon={CheckmarkIcon}
+              style={styles.buttonRadius}></Button>
+          </View>
         </ScrollView>
       </Layout>
     </SafeAreaView>
