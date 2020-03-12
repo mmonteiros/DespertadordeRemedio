@@ -16,6 +16,7 @@ import {
 
 import {DropDownMenu} from '../../../components/dropDownMenu';
 import {DatepickerIcon} from '../../../components/datePicker';
+import {Time} from '../../../components/timePicker';
 import styles from '../medicineInfo/styles';
 
 // Icons
@@ -32,13 +33,6 @@ function treatmentInfo(props) {
 
   const Header = () => (
     <CardHeader headerStyle={styles.headerCard} title="Tratamento" />
-  );
-
-  // Button confirm
-  const Footer = () => (
-    <View style={styles.footerContainer}>
-      <Button style={styles.button} icon={checkmarkIcon}></Button>
-    </View>
   );
 
   const navigateHome = () => {
@@ -110,7 +104,7 @@ function treatmentInfo(props) {
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Hora de início'}</Text>
-                <DatepickerIcon />
+                <Time />
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Frequência'}</Text>
