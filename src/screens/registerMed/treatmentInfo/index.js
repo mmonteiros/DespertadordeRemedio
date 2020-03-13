@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import React, {Children} from 'react';
+import React, {Children, useState}  from 'react';
 import {View, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
