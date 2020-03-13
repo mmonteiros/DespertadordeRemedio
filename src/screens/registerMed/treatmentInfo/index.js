@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
@@ -77,6 +77,21 @@ function treatmentInfo(props) {
     {text: 'Após as refeições'},
     {text: 'Não tomar com ...'},
   ];
+
+  const [DataMed, setDataMed] = useState({
+    InitialDate: '',
+    InitialHour: '',
+    Frequency: '',
+    DurationOfTreatment: '',
+    DosageQuantity: '',
+    DosageUnit: '',
+    Instructions: '',
+    Obs: '',
+  });
+
+  const handleChangeDataMed = name => event => {
+		setDataMed({ ...DataMed,[name]: event });
+	};
 
   return (
     <SafeAreaView style={{flex: 1}}>

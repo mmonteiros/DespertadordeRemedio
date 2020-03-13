@@ -3,7 +3,7 @@ import {Layout, Select} from '@ui-kitten/components';
 
 import styles from './styles';
 
-export const DropDownMenu = ({name, options}) => {
+export const DropDownMenu = ({name, options, DataMed}) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   return (

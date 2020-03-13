@@ -11,8 +11,9 @@ import styles from './styles';
 
 const CalendarIcon = style => <Icon {...style} name="calendar" />;
 
-export const DatepickerIcon = () => {
+export const DatepickerIcon = ({DataMed}) => {
   const [date, setDate] = React.useState(null);
+
 
   return (
     <Layout>

@@ -6,7 +6,7 @@ import { treatmentInfo } from "../../../screens/registerMed/treatmentInfo";
 
 const RegisterMedStack = createStackNavigator({
     medicineInfo: medicineInfo,
-    treatmentInfo: treatmentInfo,
+    treatmentInfo: treatmentInfo
   },{
      initialRouteName: 'medicineInfo',
      headerMode: false,

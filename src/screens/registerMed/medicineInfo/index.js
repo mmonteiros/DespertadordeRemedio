@@ -14,6 +14,9 @@ import {
   CardHeader,
 } from '@ui-kitten/components';
 
+import firebase from 'react-native-firebase';
+import firebaseConfig from "../../../firebase";
+
 import {DropDownMenu} from '../../../components/dropDownMenu';
 import {DatepickerIcon} from '../../../components/datePicker';
 import styles from './styles';
@@ -48,6 +51,7 @@ function medicineInfo(props) {
   );
 
   const navigateMedicineInfo = () => {
+    firebaseConfig.setData(DataMed.Name,DataMed);
     navigation.navigate('treatmentInfo');
   };
 
@@ -69,8 +73,16 @@ function medicineInfo(props) {
     {text: 'Unidade(s)'},
   ];
 
-  const [nameMed, setNameMed] = useState('');
-  const [amountMed, setAmountMed] = useState('');
+  const [DataMed, setDataMed] = useState({
+    Name: '',
+    ContainerAmount: '',
+    ContainerUnit: '',
+    ExpirationDate: ''
+  });
+
+  const handleChangeDataMed = name => event => {
+		setDataMed({ ...DataMed,[name]: event });
+	};
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -94,8 +106,8 @@ function medicineInfo(props) {
             name="email"
             autoComplete="on"
             autoFocus
-            value={nameMed}
-            onChangeText={setNameMed}
+            value={DataMed.Name}
+            onChangeText={handleChangeDataMed('Name')}
           />
           <View style={styles.paneBorder}>
             <Text style={[styles.tittlePaneBorder, styles.text]}>
@@ -105,14 +117,14 @@ function medicineInfo(props) {
               style={styles.cardContent}
               placeholder="Quantidade"
               keyboardType="numeric"
-              value={amountMed}
-              onChangeText={setAmountMed}
+              value={DataMed.ContainerAmount}
+              onChangeText={handleChangeDataMed('ContainerAmount')}
             />
-            <DropDownMenu name={'Unidade'} options={options} />
+            <DropDownMenu name={'Unidade'} options={options}/>
           </View>
           <View style={styles.paneContainer}>
             <Text style={styles.text}>{'Validade do \nMedicamento'}</Text>
-            <DatepickerIcon />
+            <DatepickerIcon/>
           </View>
         </Card>
       </Layout>
