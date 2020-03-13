@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import React, {useState} from 'react';
-=======
 import React, {Children} from 'react';
->>>>>>> 4d2b83363e3a054c1b8f5a679f72a129603f4635
 import {View, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
