@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Children} from 'react';
 import {View, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
@@ -17,6 +17,7 @@ import {
 import {DropDownMenu} from '../../../components/dropDownMenu';
 import {DatepickerIcon} from '../../../components/datePicker';
 import {Time} from '../../../components/timePicker';
+import {ModalWithBackdrop} from '../../../components/modal';
 import styles from '../medicineInfo/styles';
 
 // Icons
@@ -108,7 +109,9 @@ function treatmentInfo(props) {
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Frequência'}</Text>
-                <DropDownMenu name={'------'} options={optionsFrequency} />
+                <ModalWithBackdrop tittle={'- - - -'}>
+                  <DropDownMenu name={'------'} options={optionsFrequency} />
+                </ModalWithBackdrop>
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Duração do\nTratamento'}</Text>
@@ -138,11 +141,12 @@ function treatmentInfo(props) {
               <DropDownMenu
                 name={'Escolha a instrução...'}
                 options={optionsInstruction}
+                style={styles.instruction}
               />
             </View>
             <Input
               placeholder="Digite as observações..."
-              style={styles.cardContainer}
+              style={[styles.cardContainer, {}]}
             />
           </Card>
           <View style={styles.buttonMargin}>

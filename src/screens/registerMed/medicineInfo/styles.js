@@ -92,6 +92,15 @@ const styles = StyleSheet.create({
     paddingRight: 15,
   },
 
+  // Instructions
+  instruction: {
+    backgroundColor: colors.grayBackground,
+    borderColor: colors.white,
+    borderRadius: 30,
+    height: 55,
+    width: 300,
+  },
+
   // Text
   text: {
     marginTop: 5,
