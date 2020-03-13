@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {Datepicker, Icon, Layout} from '@ui-kitten/components';
 
 import styles from './styles';
@@ -13,7 +12,6 @@ const CalendarIcon = style => <Icon {...style} name="calendar" />;
 
 export const DatepickerIcon = ({DataMed}) => {
   const [date, setDate] = React.useState(null);
-
 
   return (
     <Layout>

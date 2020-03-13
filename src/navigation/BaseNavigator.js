@@ -21,8 +21,8 @@ import HomeStack from './stacks/HomeStack';
 import CalendarStack from './stacks/CalendarStack';
 import ProfileStack from './stacks/ProfileStack';
 import RegisterMedStack from './stacks/registerMedStack';
-import SideMenu from '../components/drawer/Drawer';
-import TabBar from '../components/footer/tabBar';
+import SideMenu from '../components/Drawer/Drawer';
+import TabBar from '../components/Footer/tabBar';
 import {medicineInfo} from '../screens/registerMed/medicineInfo';
 
 const TabsNavigator = createBottomTabNavigator(

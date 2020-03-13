@@ -15,10 +15,10 @@ import {
 } from '@ui-kitten/components';
 
 import firebase from 'react-native-firebase';
-import firebaseConfig from "../../../firebase";
+import firebaseConfig from '../../../firebase';
 
-import {DropDownMenu} from '../../../components/dropDownMenu';
-import {DatepickerIcon} from '../../../components/datePicker';
+import {DropDownMenu} from '../../../components/DropDownMenu';
+import {DatepickerIcon} from '../../../components/DatePicker';
 import styles from './styles';
 
 // Icons
@@ -51,7 +51,7 @@ function medicineInfo(props) {
   );
 
   const navigateMedicineInfo = () => {
-    firebaseConfig.setData(DataMed.Name,DataMed);
+    firebaseConfig.setData(DataMed.Name, DataMed);
     navigation.navigate('treatmentInfo');
   };
 
@@ -77,12 +77,12 @@ function medicineInfo(props) {
     Name: '',
     ContainerAmount: '',
     ContainerUnit: '',
-    ExpirationDate: ''
+    ExpirationDate: '',
   });
 
   const handleChangeDataMed = name => event => {
-		setDataMed({ ...DataMed,[name]: event });
-	};
+    setDataMed({...DataMed, [name]: event});
+  };
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -120,11 +120,11 @@ function medicineInfo(props) {
               value={DataMed.ContainerAmount}
               onChangeText={handleChangeDataMed('ContainerAmount')}
             />
-            <DropDownMenu name={'Unidade'} options={options}/>
+            <DropDownMenu name={'Unidade'} options={options} />
           </View>
           <View style={styles.paneContainer}>
             <Text style={styles.text}>{'Validade do \nMedicamento'}</Text>
-            <DatepickerIcon/>
+            <DatepickerIcon />
           </View>
         </Card>
       </Layout>

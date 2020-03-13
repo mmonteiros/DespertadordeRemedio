@@ -1,4 +1,4 @@
-import React, {Children, useState}  from 'react';
+import React, {Children, useState} from 'react';
 import {View, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
@@ -14,10 +14,10 @@ import {
   CardHeader,
 } from '@ui-kitten/components';
 
-import {DropDownMenu} from '../../../components/dropDownMenu';
-import {DatepickerIcon} from '../../../components/datePicker';
-import {Time} from '../../../components/timePicker';
-import {ModalWithBackdrop} from '../../../components/modal';
+import {DropDownMenu} from '../../../components/DropDownMenu';
+import {DatepickerIcon} from '../../../components/DatePicker';
+import {Time} from '../../../components/TimePicker';
+import {ModalWithBackdrop} from '../../../components/Modal';
 import styles from '../medicineInfo/styles';
 
 // Icons
@@ -66,9 +66,10 @@ function treatmentInfo(props) {
   ];
 
   const optionsFrequency = [
-    {text: 'Dia(s)'},
-    {text: 'Semana(s)'},
-    {text: 'Mês'},
+    {text: '4h em 4h'},
+    {text: '6h em 6h'},
+    {text: '8h em 8h'},
+    {text: '12h em 12h'},
   ];
 
   const optionsInstruction = [
@@ -91,8 +92,8 @@ function treatmentInfo(props) {
   });
 
   const handleChangeDataMed = name => event => {
-		setDataMed({ ...DataMed,[name]: event });
-	};
+    setDataMed({...DataMed, [name]: event});
+  };
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -124,9 +125,7 @@ function treatmentInfo(props) {
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Frequência'}</Text>
-                <ModalWithBackdrop tittle={'- - - -'}>
-                  <DropDownMenu name={'------'} options={optionsFrequency} />
-                </ModalWithBackdrop>
+                <DropDownMenu name={'------'} options={optionsFrequency} />
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Duração do\nTratamento'}</Text>

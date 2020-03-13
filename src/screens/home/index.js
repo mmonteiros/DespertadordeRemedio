@@ -9,8 +9,11 @@ import {
   TopNavigation,
   TopNavigationAction,
 } from '@ui-kitten/components';
-import {TopNavigationWithMenuShowcase} from '../components/header/Header.js';
-import {Routes, BaseNavigator} from '../navigation';
+import {TopNavigationWithMenuShowcase} from '../../components/Header/Header';
+import {Routes, BaseNavigator} from '../../navigation';
+
+import styles from './styles';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const MenuIcon = style => <Icon {...style} name="menu-outline" />;
 
@@ -43,23 +46,11 @@ class HomeScreen extends React.Component {
         </Layout>
         <Divider />
         <Layout style={styles.body}>
-          <Button onPress={navigateCalendar}>Open Drawer</Button>
+          <ScrollView></ScrollView>
         </Layout>
       </SafeAreaView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    minHeight: 8,
-  },
-  body: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#63CDDA',
-  },
-});
 
 export {HomeScreen};
