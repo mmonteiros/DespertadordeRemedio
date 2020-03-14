@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
   Icon,
@@ -9,11 +8,12 @@ import {
   TopNavigation,
   TopNavigationAction,
 } from '@ui-kitten/components';
+
 import {TopNavigationWithMenuShowcase} from '../../components/Header/Header';
+import {MedicinesList} from '../../components/MedicinesList';
 import {Routes, BaseNavigator} from '../../navigation';
 
 import styles from './styles';
-import {ScrollView} from 'react-native-gesture-handler';
 
 const MenuIcon = style => <Icon {...style} name="menu-outline" />;
 
@@ -35,7 +35,7 @@ class HomeScreen extends React.Component {
 
     return (
       <SafeAreaView style={{flex: 1}}>
-        <Layout style={styles.container}>
+        <Layout style={styles.safeArea}>
           <TopNavigation
             title="Despertador de Remédio"
             alignment="center"
@@ -45,9 +45,7 @@ class HomeScreen extends React.Component {
           />
         </Layout>
         <Divider />
-        <Layout style={styles.body}>
-          <ScrollView></ScrollView>
-        </Layout>
+        <Layout style={styles.container}></Layout>
       </SafeAreaView>
     );
   }

@@ -10,8 +10,7 @@ import styles from './styles';
 
 const CalendarIcon = style => <Icon {...style} name="calendar" />;
 
-export const DatepickerIcon = ({onSelect , date}) => {
-
+export const DatepickerIcon = ({onSelect, date}) => {
   return (
     <Layout>
       <Datepicker

@@ -38,7 +38,7 @@ function treatmentInfo(props) {
   );
 
   const navigateHome = () => {
-    if(DataMed.Obs.length > 0) firebaseConfig.updateData(DataMed);
+    if (DataMed.Obs.length > 0) firebaseConfig.updateData(DataMed);
     navigation.navigate('Home');
   };
 
@@ -119,7 +119,10 @@ function treatmentInfo(props) {
               </Text>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Data de início'}</Text>
-                <DatepickerIcon date={DataMed.InitialDate} onSelect={handleChangeDataMed('InitialDate')} />
+                <DatepickerIcon
+                  date={DataMed.InitialDate}
+                  onSelect={handleChangeDataMed('InitialDate')}
+                />
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Hora de início'}</Text>
@@ -127,11 +130,21 @@ function treatmentInfo(props) {
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Frequência'}</Text>
-                <DropDownMenu name={'------'} options={optionsFrequency}  selectedOption={DataMed.Frequency} setSelectedOption={handleChangeDataMed('Frequency')} />
+                <DropDownMenu
+                  name={'- - - - - - - - - -'}
+                  options={optionsFrequency}
+                  selectedOption={DataMed.Frequency}
+                  setSelectedOption={handleChangeDataMed('Frequency')}
+                />
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Duração do\nTratamento'}</Text>
-                <DropDownMenu name={'Dias'} options={optionsDuration} selectedOption={DataMed.DurationOfTreatment} setSelectedOption={handleChangeDataMed('DurationOfTreatment')} />
+                <DropDownMenu
+                  name={'Dias'}
+                  options={optionsDuration}
+                  selectedOption={DataMed.DurationOfTreatment}
+                  setSelectedOption={handleChangeDataMed('DurationOfTreatment')}
+                />
                 {/* Add condition*/}
               </View>
             </View>

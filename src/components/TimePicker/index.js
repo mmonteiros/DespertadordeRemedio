@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
-import {View, Button, Platform} from 'react-native';
+
+import {View, Platform} from 'react-native';
+import {Button, Text} from '@ui-kitten/components';
 import DateTimePicker from '@react-native-community/datetimepicker';
+
+import styles from './styles';
+import {Value} from 'react-native-reanimated';
 
 export const Time = () => {
   const [date, setDate] = useState(new Date(1598051730000));
@@ -25,7 +30,12 @@ export const Time = () => {
   return (
     <View>
       <View>
-        <Button onPress={showTimepicker} title="Show time picker!" />
+        <Button
+          onPress={showTimepicker}
+          style={styles.container}
+          textStyle={styles.text}>
+          {'Insira a Hora'}
+        </Button>
       </View>
       {show && (
         <DateTimePicker

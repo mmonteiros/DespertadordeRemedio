@@ -2,10 +2,10 @@ import {StyleSheet} from 'react-native';
 import {colors, fonts} from '../../styles';
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     minHeight: 8,
   },
-  body: {
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
