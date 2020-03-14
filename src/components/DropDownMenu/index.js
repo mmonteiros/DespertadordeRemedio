@@ -4,7 +4,13 @@ import {Layout, Select} from '@ui-kitten/components';
 
 import styles from './styles';
 
-export const DropDownMenu = ({name, options, type, selectedOption, setSelectedOption }) => {
+export const DropDownMenu = ({
+  name,
+  options,
+  width = 150,
+  selectedOption,
+  setSelectedOption,
+}) => {
   return (
     <Layout>
       <Select
@@ -12,8 +18,8 @@ export const DropDownMenu = ({name, options, type, selectedOption, setSelectedOp
         placeholder={name}
         selectedOption={selectedOption}
         onSelect={setSelectedOption}
-        controlStyle={styles.container}
-        type={type}
+        controlStyle={[styles.container, {width: width}]}
+        width={width}
       />
     </Layout>
   );

@@ -139,12 +139,22 @@ function treatmentInfo(props) {
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Duração do\nTratamento'}</Text>
-                <DropDownMenu
-                  name={'Dias'}
-                  options={optionsDuration}
-                  selectedOption={DataMed.DurationOfTreatment}
-                  setSelectedOption={handleChangeDataMed('DurationOfTreatment')}
-                />
+                <View style={{flexDirection: 'row'}}>
+                  <DropDownMenu
+                    name={'Dias'}
+                    options={optionsDuration}
+                    width={120}
+                    selectedOption={DataMed.DurationOfTreatment}
+                    setSelectedOption={handleChangeDataMed(
+                      'DurationOfTreatment',
+                    )}
+                  />
+                  <Input
+                    style={[styles.cardContent, {width: 70}]}
+                    placeholder="- - - - - -"
+                    keyboardType="numeric"
+                  />
+                </View>
                 {/* Add condition*/}
               </View>
             </View>
@@ -175,13 +185,15 @@ function treatmentInfo(props) {
                 name={'Escolha a instrução...'}
                 options={optionsInstruction}
                 style={styles.instruction}
+                width={330}
                 selectedOption={DataMed.Instructions}
                 setSelectedOption={handleChangeDataMed('Instructions')}
               />
             </View>
             <Input
               placeholder="Digite as observações..."
-              style={[styles.cardContainer, {}]}
+              style={styles.cardContainer}
+              textStyle={{marginBottom: 40}}
               value={DataMed.Obs}
               onChangeText={handleChangeDataMed('Obs')}
             />
