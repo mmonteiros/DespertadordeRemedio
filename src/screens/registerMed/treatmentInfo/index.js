@@ -19,6 +19,7 @@ import {DatepickerIcon} from '../../../components/DatePicker';
 import {Time} from '../../../components/TimePicker';
 import {ModalWithBackdrop} from '../../../components/Modal';
 import styles from '../medicineInfo/styles';
+import firebaseConfig from '../../../firebase';
 
 // Icons
 const CheckmarkIcon = style => <Icon {...style} name="checkmark" />;
@@ -37,6 +38,7 @@ function treatmentInfo(props) {
   );
 
   const navigateHome = () => {
+    if(DataMed.Obs.length > 0) firebaseConfig.updateData(DataMed);
     navigation.navigate('Home');
   };
 
@@ -117,7 +119,7 @@ function treatmentInfo(props) {
               </Text>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Data de início'}</Text>
-                <DatepickerIcon />
+                <DatepickerIcon date={DataMed.InitialDate} onSelect={handleChangeDataMed('InitialDate')} />
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Hora de início'}</Text>
@@ -125,11 +127,11 @@ function treatmentInfo(props) {
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Frequência'}</Text>
-                <DropDownMenu name={'------'} options={optionsFrequency} />
+                <DropDownMenu name={'------'} options={optionsFrequency}  selectedOption={DataMed.Frequency} setSelectedOption={handleChangeDataMed('Frequency')} />
               </View>
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Duração do\nTratamento'}</Text>
-                <DropDownMenu name={'Dias'} options={optionsDuration} />
+                <DropDownMenu name={'Dias'} options={optionsDuration} selectedOption={DataMed.DurationOfTreatment} setSelectedOption={handleChangeDataMed('DurationOfTreatment')} />
                 {/* Add condition*/}
               </View>
             </View>
@@ -141,11 +143,15 @@ function treatmentInfo(props) {
                 style={styles.cardContent}
                 placeholder="Quantidade"
                 keyboardType="numeric"
+                value={DataMed.DosageQuantity}
+                onChangeText={handleChangeDataMed('DosageQuantity')}
               />
               <DropDownMenu
                 name={'Unidade'}
                 options={options}
                 controlStyle={{whidth: 300}}
+                selectedOption={DataMed.DosageUnit}
+                setSelectedOption={handleChangeDataMed('DosageUnit')}
               />
             </View>
             <View style={styles.paneBorder}>
@@ -156,11 +162,15 @@ function treatmentInfo(props) {
                 name={'Escolha a instrução...'}
                 options={optionsInstruction}
                 style={styles.instruction}
+                selectedOption={DataMed.Instructions}
+                setSelectedOption={handleChangeDataMed('Instructions')}
               />
             </View>
             <Input
               placeholder="Digite as observações..."
               style={[styles.cardContainer, {}]}
+              value={DataMed.Obs}
+              onChangeText={handleChangeDataMed('Obs')}
             />
           </Card>
           <View style={styles.buttonMargin}>

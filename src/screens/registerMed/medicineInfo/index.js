@@ -51,7 +51,7 @@ function medicineInfo(props) {
   );
 
   const navigateMedicineInfo = () => {
-    firebaseConfig.setData(DataMed.Name, DataMed);
+    if(DataMed.Name.length > 0) firebaseConfig.setData(DataMed.Name, DataMed);
     navigation.navigate('treatmentInfo');
   };
 
@@ -76,8 +76,8 @@ function medicineInfo(props) {
   const [DataMed, setDataMed] = useState({
     Name: '',
     ContainerAmount: '',
-    ContainerUnit: '',
-    ExpirationDate: '',
+    ContainerUnit: null,
+    ExpirationDate: null,
   });
 
   const handleChangeDataMed = name => event => {
@@ -120,11 +120,11 @@ function medicineInfo(props) {
               value={DataMed.ContainerAmount}
               onChangeText={handleChangeDataMed('ContainerAmount')}
             />
-            <DropDownMenu name={'Unidade'} options={options} />
+            <DropDownMenu name={'Unidade'} options={options} selectedOption={DataMed.ContainerUnit} setSelectedOption={handleChangeDataMed('ContainerUnit')}/>
           </View>
           <View style={styles.paneContainer}>
             <Text style={styles.text}>{'Validade do \nMedicamento'}</Text>
-            <DatepickerIcon />
+            <DatepickerIcon  onSelect={handleChangeDataMed('ExpirationDate')} date={DataMed.ExpirationDate}   />
           </View>
         </Card>
       </Layout>

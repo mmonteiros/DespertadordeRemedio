@@ -3,15 +3,14 @@
  * https://akveo.github.io/react-native-ui-kitten/docs/guides/icon-packages
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {Datepicker, Icon, Layout} from '@ui-kitten/components';
 
 import styles from './styles';
 
 const CalendarIcon = style => <Icon {...style} name="calendar" />;
 
-export const DatepickerIcon = ({DataMed}) => {
-  const [date, setDate] = React.useState(null);
+export const DatepickerIcon = ({onSelect , date}) => {
 
   return (
     <Layout>
@@ -19,7 +18,7 @@ export const DatepickerIcon = ({DataMed}) => {
         placeholder="MM/AAAA"
         controlStyle={styles.container}
         date={date}
-        onSelect={setDate}
+        onSelect={onSelect}
         icon={CalendarIcon}
       />
     </Layout>

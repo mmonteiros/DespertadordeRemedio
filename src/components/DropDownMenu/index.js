@@ -4,9 +4,7 @@ import {Layout, Select} from '@ui-kitten/components';
 
 import styles from './styles';
 
-export const DropDownMenu = ({name, options, type}) => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
+export const DropDownMenu = ({name, options, type, selectedOption, setSelectedOption }) => {
   return (
     <Layout>
       <Select
