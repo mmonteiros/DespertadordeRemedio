@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView} from 'react-navigation';
+import {SafeAreaView, ScrollView} from 'react-navigation';
 import {
   Icon,
   Button,
@@ -10,7 +10,7 @@ import {
 } from '@ui-kitten/components';
 
 import {TopNavigationWithMenuShowcase} from '../../components/Header/Header';
-import {MedicinesList} from '../../components/MedicinesList';
+import MedicinesList from '../../components/MedicinesList';
 import {Routes, BaseNavigator} from '../../navigation';
 
 import styles from './styles';
@@ -45,7 +45,11 @@ class HomeScreen extends React.Component {
           />
         </Layout>
         <Divider />
-        <Layout style={styles.container}></Layout>
+        <Layout style={styles.container}>
+          <ScrollView>
+            <MedicinesList />
+          </ScrollView>
+        </Layout>
       </SafeAreaView>
     );
   }

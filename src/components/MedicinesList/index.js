@@ -6,13 +6,12 @@ import Medicine from './Medicine';
 
 import styles from './styles';
 
-export default class MedicineList extends Component {
+export const MedicineList = () => {
   state = {
     medicines: [
       {
         id: 1,
-        image:
-          'https://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=28010875',
+        image: 'https://reactnative.dev/img/tiny_logo.png',
         title: 'Acne Studios',
         description: 'Andrea nappa dusty pink',
         price: 'R$50,00',
@@ -28,13 +27,12 @@ export default class MedicineList extends Component {
     ],
   };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        {this.state.medicines.map(medicine => (
-          <Medicine key={medicine.id} product={medicine} />
-        ))}
-      </View>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      {this.state.medicines.map(medicine => (
+        <Medicine key={medicine.id} product={medicine} />
+      ))}
+    </View>
+  );
+};
+export default MedicineList;
