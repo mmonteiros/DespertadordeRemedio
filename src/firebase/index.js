@@ -5,11 +5,13 @@ import firebase from 'react-native-firebase';
 class firebaseConfig extends React.Component {
 
   state = {
-    nameMed: ''
+    nameMed: '',
+    initialHour: ''
   }
 
   async setData(nameMed, DataMed){
     this.state.nameMed = nameMed;
+    
     firebase
     .firestore()
     .collection("Users")
@@ -23,7 +25,8 @@ class firebaseConfig extends React.Component {
   }
 
   async updateData(DataMed){
-
+    DataMed.InitialHour = this.state.initialHour;
+    
     firebase
     .firestore()
     .collection("Users")
@@ -35,6 +38,10 @@ class firebaseConfig extends React.Component {
         console.log(ref) 
     });
 
+  }
+
+  updateInitialHour(hour){
+    this.state.initialHour = hour;
   }
 
 }

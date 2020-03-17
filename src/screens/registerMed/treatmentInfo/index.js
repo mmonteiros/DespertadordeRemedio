@@ -86,7 +86,8 @@ function treatmentInfo(props) {
     InitialDate: '',
     InitialHour: '',
     Frequency: '',
-    DurationOfTreatment: '',
+    DurationOfTreatmentType: '',
+    DurationOfTreatmentNum: '',
     DosageQuantity: '',
     DosageUnit: '',
     Instructions: '',
@@ -144,12 +145,12 @@ function treatmentInfo(props) {
                     name={'Dias'}
                     options={optionsDuration}
                     width={120}
-                    selectedOption={DataMed.DurationOfTreatment}
-                    setSelectedOption={handleChangeDataMed(
-                      'DurationOfTreatment',
-                    )}
+                    selectedOption={DataMed.DurationOfTreatmentType}
+                    setSelectedOption={handleChangeDataMed('DurationOfTreatmentType')}
                   />
                   <Input
+                    value={DataMed.DurationOfTreatmentNum}
+                    onChangeText={handleChangeDataMed('DurationOfTreatmentNum')}
                     style={[styles.cardContent, {width: 70}]}
                     placeholder="- - - - - -"
                     keyboardType="numeric"
