@@ -14,7 +14,7 @@ import {
   CardHeader,
 } from '@ui-kitten/components';
 
-import firebase from 'react-native-firebase';
+import {NavigationActions, StackActions} from 'react-navigation';
 import firebaseConfig from '../../../firebase';
 
 import {DropDownMenu} from '../../../components/DropDownMenu';
@@ -26,7 +26,7 @@ const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" />;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
 
-function medicineInfo(props) {
+function medicineInfo({ navigation }) {
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );
@@ -52,7 +52,8 @@ function medicineInfo(props) {
 
   const navigateMedicineInfo = () => {
     if(DataMed.Name.length > 0) firebaseConfig.setData(DataMed.Name, DataMed);
-    navigation.navigate('treatmentInfo');
+    
+    navigation.navigate('TreatmentInfo');
   };
 
   const navigateBack = () => {
@@ -62,8 +63,6 @@ function medicineInfo(props) {
   const navigateNext = () => {
     navigation.navigate('');
   };
-
-  const {navigation} = props;
 
   const options = [
     {text: 'Comprimido(s)'},

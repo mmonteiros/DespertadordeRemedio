@@ -21,6 +21,7 @@ import HomeStack from './stacks/HomeStack';
 import CalendarStack from './stacks/CalendarStack';
 import ProfileStack from './stacks/ProfileStack';
 import RegisterMedStack from './stacks/registerMedStack';
+import TreatmentMedStack from './stacks/treatmentInfo';
 import SideMenu from '../components/Drawer/Drawer';
 import TabBar from '../components/Footer/tabBar';
 import {medicineInfo} from '../screens/registerMed/medicineInfo';
@@ -61,6 +62,7 @@ const dashboardStack = createAppContainer(
   createDrawerNavigator(
     {
       Home: TabsNavigator,
+      TreatmentInfo: TreatmentMedStack,
       Calendar: CalendarStack,
       Register: RegisterMedStack,
       Report: ReportStack,
