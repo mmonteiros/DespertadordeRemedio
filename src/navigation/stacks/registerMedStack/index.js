@@ -1,12 +1,10 @@
 import React from 'react';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createSwitchNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { medicineInfo } from "../../../screens/registerMed/medicineInfo";
-import { treatmentInfo } from "../../../screens/registerMed/treatmentInfo";
 
-const RegisterMedStack = createStackNavigator({
-    medicineInfo: medicineInfo,
-    treatmentInfo: treatmentInfo
+const RegisterMedStack = createSwitchNavigator({
+    medicineInfo: medicineInfo
   },{
      initialRouteName: 'medicineInfo',
      headerMode: false,

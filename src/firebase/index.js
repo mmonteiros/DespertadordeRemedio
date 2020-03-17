@@ -5,11 +5,13 @@ import firebase from 'react-native-firebase';
 class firebaseConfig extends React.Component {
 
   state = {
-    nameMed: ''
+    nameMed: '',
+    initialHour: '',
   }
 
   async setData(nameMed, DataMed){
     this.state.nameMed = nameMed;
+
     firebase
     .firestore()
     .collection("Users")
@@ -23,7 +25,8 @@ class firebaseConfig extends React.Component {
   }
 
   async updateData(DataMed){
-
+    DataMed.InitialHour = this.state.initialHour;
+    
     firebase
     .firestore()
     .collection("Users")
@@ -35,6 +38,43 @@ class firebaseConfig extends React.Component {
         console.log(ref) 
     });
 
+  }
+
+  updateInitialHour(hour){
+    this.state.initialHour = hour;
+  }
+
+  getMedicineUserDataFirestore() {
+    let DataMed = [];
+    firebase.firestore()
+    .collection("Users")
+    .doc(`${firebase.auth().currentUser.uid}`)
+    .collection("Medicines")
+    .orderBy('Name')
+    .get()
+    .then( querySnapshot =>
+        querySnapshot.docs.map(doc => {
+          let data = doc.data();
+          return {
+            Name: data.Name,
+            ContainerAmount: data.ContainerAmount,
+            ContainerUnit: data.ContainerUnit,
+            ExpirationDate: data.ExpirationDate,
+            InitialDate: data.InitialDate,
+            InitialHour: data.InitialHour,
+            Frequency: data.Frequency,
+            DurationOfTreatmentType: data.DurationOfTreatmentType,
+            DurationOfTreatmentNum: data.DurationOfTreatmentNum,
+            DosageQuantity: data.DosageQuantity,
+            DosageUnit: data.DosageUnit,
+            Instructions: data.Instructions,
+            Obs: data.Obs,
+          }
+        })
+      )
+      .then(medicines => DataMed = medicines);
+
+      return DataMed;
   }
 
 }

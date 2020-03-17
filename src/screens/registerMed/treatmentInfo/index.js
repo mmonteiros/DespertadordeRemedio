@@ -1,6 +1,7 @@
 import React, {Children, useState} from 'react';
 import {View, ScrollView} from 'react-native';
-import {SafeAreaView} from 'react-navigation';
+import {SafeAreaView, NavigationActions, StackActions} from 'react-navigation';
+
 import {
   Divider,
   Icon,
@@ -21,12 +22,13 @@ import {ModalWithBackdrop} from '../../../components/Modal';
 import styles from '../medicineInfo/styles';
 import firebaseConfig from '../../../firebase';
 
+
 // Icons
 const CheckmarkIcon = style => <Icon {...style} name="checkmark" />;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
 
-function treatmentInfo(props) {
+function treatmentInfo({ navigation }) {
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );
@@ -39,6 +41,7 @@ function treatmentInfo(props) {
 
   const navigateHome = () => {
     if (DataMed.Obs.length > 0) firebaseConfig.updateData(DataMed);
+
     navigation.navigate('Home');
   };
 
@@ -49,8 +52,6 @@ function treatmentInfo(props) {
   const navigateNext = () => {
     navigation.navigate('');
   };
-
-  const {navigation} = props;
 
   const options = [
     {text: 'Comprimido(s)'},
@@ -86,7 +87,8 @@ function treatmentInfo(props) {
     InitialDate: '',
     InitialHour: '',
     Frequency: '',
-    DurationOfTreatment: '',
+    DurationOfTreatmentType: '',
+    DurationOfTreatmentNum: '',
     DosageQuantity: '',
     DosageUnit: '',
     Instructions: '',
@@ -144,12 +146,12 @@ function treatmentInfo(props) {
                     name={'Dias'}
                     options={optionsDuration}
                     width={120}
-                    selectedOption={DataMed.DurationOfTreatment}
-                    setSelectedOption={handleChangeDataMed(
-                      'DurationOfTreatment',
-                    )}
+                    selectedOption={DataMed.DurationOfTreatmentType}
+                    setSelectedOption={handleChangeDataMed('DurationOfTreatmentType')}
                   />
                   <Input
+                    value={DataMed.DurationOfTreatmentNum}
+                    onChangeText={handleChangeDataMed('DurationOfTreatmentNum')}
                     style={[styles.cardContent, {width: 70}]}
                     placeholder="- - - - - -"
                     keyboardType="numeric"
