@@ -114,7 +114,7 @@ function treatmentInfo(props) {
         <ScrollView>
           <Card style={styles.cardMain} header={Header}>
             <View style={[styles.paneBorder, {flexDirection: 'column'}]}>
-              <Text style={[styles.tittlePaneBorder, styles.text]}>
+              <Text style={[styles.titlePaneBorder, styles.text]}>
                 {'Duração'}
               </Text>
               <View style={styles.paneContainer}>
@@ -159,7 +159,7 @@ function treatmentInfo(props) {
               </View>
             </View>
             <View style={styles.paneBorder}>
-              <Text style={[styles.tittlePaneBorder, styles.text]}>
+              <Text style={[styles.titlePaneBorder, styles.text]}>
                 {'Dosagem'}
               </Text>
               <Input
@@ -178,7 +178,7 @@ function treatmentInfo(props) {
               />
             </View>
             <View style={styles.paneBorder}>
-              <Text style={[styles.tittlePaneBorder, styles.text]}>
+              <Text style={[styles.titlePaneBorder, styles.text]}>
                 {'Instruções'}
               </Text>
               <DropDownMenu

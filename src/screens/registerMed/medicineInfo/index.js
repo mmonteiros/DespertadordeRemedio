@@ -51,7 +51,7 @@ function medicineInfo(props) {
   );
 
   const navigateMedicineInfo = () => {
-    if(DataMed.Name.length > 0) firebaseConfig.setData(DataMed.Name, DataMed);
+    if (DataMed.Name.length > 0) firebaseConfig.setData(DataMed.Name, DataMed);
     navigation.navigate('treatmentInfo');
   };
 
@@ -110,7 +110,7 @@ function medicineInfo(props) {
             onChangeText={handleChangeDataMed('Name')}
           />
           <View style={styles.paneBorder}>
-            <Text style={[styles.tittlePaneBorder, styles.text]}>
+            <Text style={[styles.titlePaneBorder, styles.text]}>
               {'Recipiente contém'}
             </Text>
             <Input
@@ -120,11 +120,19 @@ function medicineInfo(props) {
               value={DataMed.ContainerAmount}
               onChangeText={handleChangeDataMed('ContainerAmount')}
             />
-            <DropDownMenu name={'Unidade'} options={options} selectedOption={DataMed.ContainerUnit} setSelectedOption={handleChangeDataMed('ContainerUnit')}/>
+            <DropDownMenu
+              name={'Unidade'}
+              options={options}
+              selectedOption={DataMed.ContainerUnit}
+              setSelectedOption={handleChangeDataMed('ContainerUnit')}
+            />
           </View>
           <View style={styles.paneContainer}>
             <Text style={styles.text}>{'Validade do \nMedicamento'}</Text>
-            <DatepickerIcon  onSelect={handleChangeDataMed('ExpirationDate')} date={DataMed.ExpirationDate}   />
+            <DatepickerIcon
+              onSelect={handleChangeDataMed('ExpirationDate')}
+              date={DataMed.ExpirationDate}
+            />
           </View>
         </Card>
       </Layout>

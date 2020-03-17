@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: fonts.big,
     fontWeight: fonts.semiBolt,
   },
-  tittlePaneBorder: {
+  titlePaneBorder: {
     backgroundColor: colors.white,
     paddingRight: 5,
     paddingLeft: 5,
