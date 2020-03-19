@@ -1,40 +1,34 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
+import {Text, Layout, Divider, Icon} from '@ui-kitten/components';
 
-import Medicine from './Medicine';
+import firebaseConfig from '../../firebase'
 
 import styles from './styles';
 
-export const MedicineList = () => {
-  state = {
-    medicines: [
-      {
-        id: 1,
-        image: 'https://reactnative.dev/img/tiny_logo.png',
-        title: 'Otomicina',
-        frequency: '6h em 6h',
-        dosage: '2 ' + 'gotas',
-        Instructions: 'Diretamente no ouvido',
-      },
-      {
-        id: 2,
-        image:
-          'https://images.neimanmarcus.com/ca/1/product_assets/B/3/T/5/S/NMB3T5S_au.jpg',
-        title: 'Pantoprazol',
-        frequency: 'Diariamente',
-        dosage: '1 ' + 'Comprimido',
-        Instructions: 'Em jejum - Ao acordar',
-      },
-    ],
-  };
+export default function MedicineList(){
 
   return (
-    <View style={styles.container}>
-      {this.state.medicines.map(medicine => (
-        <Medicine key={medicine.id} product={medicine} />
+    <View>
+      {firebaseConfig.getMedicineUserDataFirestore().map((medicine, index) => (
+        <Layout style={styles.container}>
+        <Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} style={styles.image} />
+        <View style={styles.infoContainer}>
+          <Text style={styles.title}>{medicine.Name}</Text>
+          <Text style={[styles.text, {textAlign: 'center'}]}>{medicine.Frequency.text}</Text>
+          <Divider style={styles.divider} />
+          <View style={styles.contentContainer}>
+            <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+            <Text style={styles.text}>{medicine.DosageQuantity+ " " + medicine.DosageUnit.text}</Text>
+          </View>
+          <View style={styles.contentContainer}>
+            <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+            <Text style={styles.text}>{medicine.Instructions.text}</Text>
+          </View>
+        </View>
+      </Layout>
       ))}
     </View>
   );
 };
-export default MedicineList;

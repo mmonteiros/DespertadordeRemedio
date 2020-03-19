@@ -1,7 +1,6 @@
 import React from 'react';
 import firebase from 'react-native-firebase';
 
-
 class firebaseConfig extends React.Component {
 
   state = {
@@ -45,7 +44,9 @@ class firebaseConfig extends React.Component {
   }
 
   getMedicineUserDataFirestore() {
-    let DataMed = [];
+
+    const [DataMed, setDataMed] = React.useState([]);
+
     firebase.firestore()
     .collection("Users")
     .doc(`${firebase.auth().currentUser.uid}`)
@@ -54,25 +55,25 @@ class firebaseConfig extends React.Component {
     .get()
     .then( querySnapshot =>
         querySnapshot.docs.map(doc => {
-          let data = doc.data();
-          return {
-            Name: data.Name,
-            ContainerAmount: data.ContainerAmount,
-            ContainerUnit: data.ContainerUnit,
-            ExpirationDate: data.ExpirationDate,
-            InitialDate: data.InitialDate,
-            InitialHour: data.InitialHour,
-            Frequency: data.Frequency,
-            DurationOfTreatmentType: data.DurationOfTreatmentType,
-            DurationOfTreatmentNum: data.DurationOfTreatmentNum,
-            DosageQuantity: data.DosageQuantity,
-            DosageUnit: data.DosageUnit,
-            Instructions: data.Instructions,
-            Obs: data.Obs,
-          }
+            let data = doc.data();
+            return {
+              Name: data.Name,
+              ContainerAmount: data.ContainerAmount,
+              ContainerUnit: data.ContainerUnit,
+              ExpirationDate: data.ExpirationDate,
+              InitialDate: data.InitialDate,
+              InitialHour: data.InitialHour,
+              Frequency: data.Frequency,
+              DurationOfTreatmentType: data.DurationOfTreatmentType,
+              DurationOfTreatmentNum: data.DurationOfTreatmentNum,
+              DosageQuantity: data.DosageQuantity,
+              DosageUnit: data.DosageUnit,
+              Instructions: data.Instructions,
+              Obs: data.Obs,
+            } 
         })
       )
-      .then(medicines => DataMed = medicines);
+      .then(medicines => setDataMed(medicines));
 
       return DataMed;
   }

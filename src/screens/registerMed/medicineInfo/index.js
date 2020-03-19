@@ -83,6 +83,8 @@ function medicineInfo({navigation}) {
     setDataMed({...DataMed, [name]: event});
   };
 
+  const isNotEmpty = DataMed.Name.length > 0;
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <Layout style={styles.safeArea}>
@@ -105,6 +107,8 @@ function medicineInfo({navigation}) {
             name="email"
             autoComplete="on"
             autoFocus
+            status={isNotEmpty ? 'success' : 'danger'}
+            //caption={isNotEmpty ? '' : 'Can not be empty'}         
             value={DataMed.Name}
             onChangeText={handleChangeDataMed('Name')}
           />
