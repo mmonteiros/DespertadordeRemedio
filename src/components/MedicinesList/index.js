@@ -12,7 +12,7 @@ export default function MedicineList(){
   return (
     <View>
       {firebaseConfig.getMedicineUserDataFirestore().map((medicine, index) => (
-        <Layout style={styles.container}>
+      <Layout style={styles.container}>
         <Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} style={styles.image} />
         <View style={styles.infoContainer}>
           <Text style={styles.title}>{medicine.Name}</Text>

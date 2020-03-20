@@ -22,6 +22,7 @@ import {ModalWithBackdrop} from '../../../components/Modal';
 import styles from '../medicineInfo/styles';
 import firebaseConfig from '../../../firebase';
 
+import Validate from './../validateMedicine'
 
 // Icons
 const CheckmarkIcon = style => <Icon {...style} name="checkmark" />;
@@ -40,13 +41,21 @@ function treatmentInfo({ navigation }) {
   );
 
   const navigateHome = () => {
-    if (DataMed.Obs.length > 0) firebaseConfig.updateData(DataMed);
 
-    navigation.navigate('Home');
+    var isValidateDurationOfTreatmentNum = Validate.validateNumber(DataMed.DurationOfTreatmentNum);
+    setIsEmptyDurationOfTreatmentNum(isValidateDurationOfTreatmentNum);
+
+    var isValidateDosageQuantity = Validate.validateNumber(DataMed.DosageQuantity);
+    setIsEmptyDosageQuantity(isValidateDosageQuantity);
+
+    if (isValidateDurationOfTreatmentNum && isValidateDosageQuantity) { 
+      firebaseConfig.updateData(DataMed);
+      navigation.navigate('Home');
+    }
   };
 
   const navigateBack = () => {
-    navigation.navigate('medicineInfo');
+    navigation.goBack(null);
   };
 
   const navigateNext = () => {
@@ -93,11 +102,15 @@ function treatmentInfo({ navigation }) {
     DosageUnit: '',
     Instructions: '',
     Obs: '',
+    Complete: false,
   });
 
   const handleChangeDataMed = name => event => {
     setDataMed({...DataMed, [name]: event});
   };
+
+  const [isEmptyDurationOfTreatmentNum, setIsEmptyDurationOfTreatmentNum] = useState(true);
+  const [isEmptyDosageQuantity, setIsEmptyDosageQuantity] = useState(true);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -152,6 +165,8 @@ function treatmentInfo({ navigation }) {
                   <Input
                     value={DataMed.DurationOfTreatmentNum}
                     onChangeText={handleChangeDataMed('DurationOfTreatmentNum')}
+                    status={isEmptyDurationOfTreatmentNum ? 'success' : 'danger'}
+                    caption={isEmptyDurationOfTreatmentNum ? '' : 'Insira um número valido'}  
                     style={[styles.cardContent, {width: 70}]}
                     placeholder="- - - - - -"
                     keyboardType="numeric"
@@ -168,6 +183,8 @@ function treatmentInfo({ navigation }) {
                 style={styles.cardContent}
                 placeholder="Quantidade"
                 keyboardType="numeric"
+                status={isEmptyDosageQuantity ? 'success' : 'danger'}
+                caption={isEmptyDosageQuantity ? '' : 'Insira um número valido'} 
                 value={DataMed.DosageQuantity}
                 onChangeText={handleChangeDataMed('DosageQuantity')}
               />

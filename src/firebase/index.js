@@ -56,6 +56,7 @@ class firebaseConfig extends React.Component {
     .then( querySnapshot =>
         querySnapshot.docs.map(doc => {
             let data = doc.data();
+            
             return {
               Name: data.Name,
               ContainerAmount: data.ContainerAmount,

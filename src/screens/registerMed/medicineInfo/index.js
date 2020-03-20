@@ -16,6 +16,7 @@ import {
 
 import {NavigationActions, StackActions} from 'react-navigation';
 import firebaseConfig from '../../../firebase';
+import Validate from './../validateMedicine'
 
 import {DropDownMenu} from '../../../components/DropDownMenu';
 import {DatepickerIcon} from '../../../components/DatePicker';
@@ -51,9 +52,19 @@ function medicineInfo({navigation}) {
   );
 
   const navigateMedicineInfo = () => {
-    if (DataMed.Name.length > 0) firebaseConfig.setData(DataMed.Name, DataMed);
+    
+    var isValidateName = Validate.validateName(DataMed.Name);
+    setIsEmptyName(isValidateName);
 
-    navigation.navigate('TreatmentInfo');
+    var isValidateContainerAmount = Validate.validateNumber(DataMed.ContainerAmount);
+    setIsEmptyContainerAmount(isValidateContainerAmount);
+
+    if (isValidateName && isValidateContainerAmount) {
+      firebaseConfig.setData(DataMed.Name, DataMed);
+
+      navigation.navigate('TreatmentInfo');
+    }
+
   };
 
   const navigateBack = () => {
@@ -77,13 +88,18 @@ function medicineInfo({navigation}) {
     ContainerAmount: '',
     ContainerUnit: null,
     ExpirationDate: null,
+    Frequency: {text: ''},
+    DosageUnit: {text: ''},
+    Instructions: {text: ''},
+    Complete: true
   });
 
   const handleChangeDataMed = name => event => {
     setDataMed({...DataMed, [name]: event});
   };
 
-  const isNotEmpty = DataMed.Name.length > 0;
+  const [isEmptyName, setIsEmptyName] = useState(true);
+  const [isEmptyContainerAmount, setIsEmptyContainerAmount] = useState(true);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -107,8 +123,8 @@ function medicineInfo({navigation}) {
             name="email"
             autoComplete="on"
             autoFocus
-            status={isNotEmpty ? 'success' : 'danger'}
-            //caption={isNotEmpty ? '' : 'Can not be empty'}         
+            status={isEmptyName ? 'success' : 'danger'}
+            caption={isEmptyName ? '' : 'Por favor, insira o nome'}         
             value={DataMed.Name}
             onChangeText={handleChangeDataMed('Name')}
           />
@@ -120,6 +136,8 @@ function medicineInfo({navigation}) {
               style={styles.cardContent}
               placeholder="Quantidade"
               keyboardType="numeric"
+              status={isEmptyContainerAmount ? 'success' : 'danger'}
+              caption={isEmptyContainerAmount ? '' : 'Insira um número valido'}   
               value={DataMed.ContainerAmount}
               onChangeText={handleChangeDataMed('ContainerAmount')}
             />
