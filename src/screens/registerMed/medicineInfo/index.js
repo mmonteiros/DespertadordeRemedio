@@ -27,7 +27,7 @@ const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" />;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
 
-function medicineInfo({navigation}) {
+export default function medicineInfo({navigation}) {
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );
@@ -62,6 +62,13 @@ function medicineInfo({navigation}) {
     if (isValidateName && isValidateContainerAmount) {
       firebaseConfig.setData(DataMed.Name, DataMed);
 
+      setDataMed({...DataMed, 
+        Name: '',
+        ContainerAmount: '',
+        ContainerUnit: {text: ''},
+        ExpirationDate: null,
+       });
+
       navigation.navigate('TreatmentInfo');
     }
 
@@ -86,12 +93,9 @@ function medicineInfo({navigation}) {
   const [DataMed, setDataMed] = useState({
     Name: '',
     ContainerAmount: '',
-    ContainerUnit: null,
+    ContainerUnit: {text: ''},
     ExpirationDate: null,
-    Frequency: {text: ''},
-    DosageUnit: {text: ''},
-    Instructions: {text: ''},
-    Complete: true
+    Complete: false
   });
 
   const handleChangeDataMed = name => event => {
@@ -144,7 +148,7 @@ function medicineInfo({navigation}) {
             <DropDownMenu
               name={'Unidade'}
               options={options}
-              selectedOption={DataMed.ContainerUnit}
+              selectedOption={DataMed.ContainerUnit.text}
               setSelectedOption={handleChangeDataMed('ContainerUnit')}
             />
           </View>
@@ -160,5 +164,3 @@ function medicineInfo({navigation}) {
     </SafeAreaView>
   );
 }
-
-export {medicineInfo};

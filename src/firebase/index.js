@@ -58,6 +58,7 @@ class firebaseConfig extends React.Component {
             let data = doc.data();
             
             return {
+              id: doc.id,
               Name: data.Name,
               ContainerAmount: data.ContainerAmount,
               ContainerUnit: data.ContainerUnit,
@@ -71,6 +72,7 @@ class firebaseConfig extends React.Component {
               DosageUnit: data.DosageUnit,
               Instructions: data.Instructions,
               Obs: data.Obs,
+              Complete: data.Complete,
             } 
         })
       )

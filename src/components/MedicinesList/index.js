@@ -9,9 +9,11 @@ import styles from './styles';
 
 export default function MedicineList(){
 
-  return (
-    <View>
-      {firebaseConfig.getMedicineUserDataFirestore().map((medicine, index) => (
+  const showList = (medicine, id) => {
+
+    if(medicine.Complete){
+    
+      return(
       <Layout style={styles.container}>
         <Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} style={styles.image} />
         <View style={styles.infoContainer}>
@@ -27,8 +29,14 @@ export default function MedicineList(){
             <Text style={styles.text}>{medicine.Instructions.text}</Text>
           </View>
         </View>
-      </Layout>
-      ))}
+      </Layout>)
+    }
+    
+  };
+
+  return (
+    <View>
+      {firebaseConfig.getMedicineUserDataFirestore().map((medicine, id) => (showList(medicine, id)))}
     </View>
   );
 };

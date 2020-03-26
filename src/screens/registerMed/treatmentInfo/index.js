@@ -102,7 +102,7 @@ function treatmentInfo({ navigation }) {
     DosageUnit: '',
     Instructions: '',
     Obs: '',
-    Complete: false,
+    Complete: true,
   });
 
   const handleChangeDataMed = name => event => {
