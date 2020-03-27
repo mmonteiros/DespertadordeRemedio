@@ -26,6 +26,7 @@ import styles from './styles';
 const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" />;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
+const CameraIcon = style => <Icon {...style} name="camera" />;
 
 export default function medicineInfo({navigation}) {
   const BackAction = () => (

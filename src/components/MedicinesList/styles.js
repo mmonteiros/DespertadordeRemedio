@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     fontSize: fonts.bigger24,
     fontWeight: 'bold',
     textAlign: 'center',
+    paddingTop: 6,
   },
   contentContainer: {
     flexDirection: 'row',
