@@ -6,11 +6,18 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     backgroundColor: colors.white,
-    borderRadius: 18,
+    borderTopRightRadius: 18,
+    borderBottomRightRadius: 18,
     marginTop: 20,
     marginBottom: 30,
     height: 125,
     width: 410,
+  },
+
+  colorMedicine: {
+    backgroundColor: '#546de5',
+    height: '100%',
+    width: 17,
   },
 
   image: {
@@ -39,6 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
+    paddingTop: 5,
     fontSize: fonts.bigger24,
     fontWeight: 'bold',
     textAlign: 'center',

@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
 
   // Header Tittle
   headerCard: {
-    justifyContent: 'center',
-    fontSize: fonts.bigger,
+    textAlign: 'center',
+    fontSize: 30,
     fontWeight: 'bold',
   },
 

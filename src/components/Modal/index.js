@@ -3,7 +3,7 @@ import {Button, Layout, Modal, Text} from '@ui-kitten/components';
 
 import styles from './styles';
 
-export const ModalWithBackdrop = ({tittle}) => {
+export const ModalWithBackdrop = ({title}) => {
   const [visible, setVisible] = React.useState(false);
 
   const toggleModal = () => {
