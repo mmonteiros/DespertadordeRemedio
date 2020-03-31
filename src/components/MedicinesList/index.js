@@ -1,19 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import {View, Image, TouchableOpacity} from 'react-native';
-import {Text, Layout, Divider, Icon, Modal} from '@ui-kitten/components';
+import {View, Image, TouchableOpacity, Modal, Alert} from 'react-native';
+import {Text, Layout, Divider, Icon} from '@ui-kitten/components';
 
 import firebaseConfig from '../../firebase';
 
 import styles from './styles';
 
-const onPress = () => <Modal />;
-
 export default function MedicineList() {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
+  const renderModalElement = () => (
+    <Layout level="3" style={{flex: 1}}>
+      <Text>Hi! This is modal.</Text>
+      <Text>Hi! This is modal.</Text>
+      <Text>Hi! This is modal.</Text>
+    </Layout>
+  );
+
   const showList = (medicine, id) => {
     if (medicine.Complete) {
       return (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity
+          onPress={() => {
+            setModalVisible(true);
+          }}>
           <Layout style={styles.container}>
             <View style={styles.colorMedicine} />
             <Image
@@ -47,6 +62,16 @@ export default function MedicineList() {
                 <Text style={styles.text}>{medicine.Instructions.text}</Text>
               </View>
             </View>
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible}
+              onBackdropPress={toggleModal}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+              }}>
+              {renderModalElement()}
+            </Modal>
           </Layout>
         </TouchableOpacity>
       );
