@@ -20,6 +20,7 @@ import Validate from './../validateMedicine';
 
 import {DropDownMenu} from '../../../components/DropDownMenu';
 import {DatepickerIcon} from '../../../components/DatePicker';
+import * as MagicMove from 'react-native-magic-move';
 import styles from './styles';
 
 // Icons
@@ -121,6 +122,8 @@ export default function medicineInfo({navigation}) {
       </Layout>
       <Divider />
       <Layout style={styles.container}>
+        <MagicMove.Scene>
+          <MagicMove.View id="logo">
         <Card style={styles.cardMain} header={Header} footer={Footer}>
           <Input
             style={styles.cardContainer}
@@ -162,6 +165,8 @@ export default function medicineInfo({navigation}) {
             />
           </View>
         </Card>
+        </MagicMove.View>
+        </MagicMove.Scene>
       </Layout>
     </SafeAreaView>
   );

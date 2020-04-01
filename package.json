@@ -24,6 +24,7 @@
     "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-interactable": "^2.0.1",
+    "react-native-magic-move": "^0.6.6",
     "react-native-multibar": "^0.0.12",
     "react-native-navigation": "^4.8.4",
     "react-native-paper": "^3.4.0",

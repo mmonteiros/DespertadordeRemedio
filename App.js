@@ -17,6 +17,7 @@ import { mapping, light as lightTheme } from '@eva-design/eva';
 import { default as appTheme } from './custom-theme.json'; // <-- Import app theme
 import { BaseNavigator } from './src/navigation';
 import firebase from 'react-native-firebase';
+import * as MagicMove from 'react-native-magic-move';
 
 const theme = { ...lightTheme, ...appTheme };
 
@@ -38,9 +39,11 @@ firebase.auth()
 const App = () => (
   <React.Fragment>
     <IconRegistry icons={EvaIconsPack}/>
-    <ApplicationProvider mapping={mapping} theme={theme}>
-      <BaseNavigator/>
-    </ApplicationProvider>
+    <MagicMove.Provider>
+      <ApplicationProvider mapping={mapping} theme={theme}>
+        <BaseNavigator/>
+      </ApplicationProvider>
+    </MagicMove.Provider>
   </React.Fragment>
 );
 

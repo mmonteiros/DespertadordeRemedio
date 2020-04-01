@@ -12,6 +12,7 @@ import {
 import {TopNavigationWithMenuShowcase} from '../../components/Header/Header';
 import MedicinesList from '../../components/MedicinesList';
 import {Routes, BaseNavigator} from '../../navigation';
+import * as MagicMove from 'react-native-magic-move';
 
 import styles from './styles';
 
@@ -45,11 +46,18 @@ class HomeScreen extends React.Component {
           />
         </Layout>
         <Divider />
-        <Layout style={styles.container}>
-          <ScrollView>
-            <MedicinesList />
-          </ScrollView>
-        </Layout>
+        <MagicMove.Scene>
+          
+          <Layout style={styles.container}>
+          <MagicMove.View id="logo">
+            
+            <ScrollView>
+              <MedicinesList />
+            </ScrollView>
+            
+          </MagicMove.View>
+          </Layout>
+        </MagicMove.Scene>
       </SafeAreaView>
     );
   }
