@@ -54,6 +54,18 @@ class Validate extends React.Component {
 
     }
 
+    validateDate(date) {
+        
+        if(date){
+            var validDate = new Date();
+            if(validDate.valueOf() < date.valueOf()){
+                return true;
+            }
+        }
+    
+        return false;
+    }
+
 }
 
 export default new Validate;

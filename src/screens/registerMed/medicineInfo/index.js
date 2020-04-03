@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Dimensions} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
@@ -12,6 +12,7 @@ import {
   Input,
   TopNavigationAction,
   CardHeader,
+  Tooltip,
 } from '@ui-kitten/components';
 
 import {NavigationActions, StackActions} from 'react-navigation';
@@ -28,11 +29,10 @@ const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" />;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
 const CameraIcon = style => <Icon {...style} name="camera" />;
+const InfoIcon = style => <Icon {...style} name='info'/>;
 
 export default function medicineInfo({navigation}) {
-  const BackAction = () => (
-    <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
-  );
+  const BackAction = () => (<TopNavigationAction icon={BackIcon} onPress={navigateBack}/>);
 
   const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
 
@@ -46,23 +46,30 @@ export default function medicineInfo({navigation}) {
   // Button next
   const Footer = () => (
     <View style={styles.footerContainer}>
+      <Tooltip
+            visible={tooltipVisible}
+            text='Preencha todos os dados corretamente'
+            icon={InfoIcon}
+            onBackdropPress={toggleTooltip}
+            placement={"left"}>
       <Button
         onPress={navigateMedicineInfo}
         style={styles.buttonRadius}
-        icon={ArrowForwardIcon}></Button>
+        icon={ArrowForwardIcon}>
+      </Button>
+      </Tooltip>
     </View>
   );
 
   const navigateMedicineInfo = () => {
     var isValidateName = Validate.validateName(DataMed.Name);
-    setIsEmptyName(isValidateName);
+    var isValidateContainerAmount = Validate.validateNumber(DataMed.ContainerAmount);
+    var isValidateContainerUnit = Validate.validateOption("ContainerUnit", DataMed.ContainerUnit.text);
+    var isValidateDate = Validate.validateDate(DataMed.ExpirationDate);
 
-    var isValidateContainerAmount = Validate.validateNumber(
-      DataMed.ContainerAmount,
-    );
-    setIsEmptyContainerAmount(isValidateContainerAmount);
+    toggleTooltip(!isValidateName || !isValidateContainerAmount || !isValidateContainerUnit || !isValidateDate);
 
-    if (isValidateName && isValidateContainerAmount) {
+    if (isValidateName && isValidateContainerAmount && isValidateContainerUnit) {
       firebaseConfig.setData(DataMed.Name, DataMed);
 
       setDataMed({
@@ -72,6 +79,8 @@ export default function medicineInfo({navigation}) {
         ContainerUnit: {text: ''},
         ExpirationDate: null,
       });
+
+      setTooltipVisible(false);
 
       navigation.navigate('TreatmentInfo');
     }
@@ -105,8 +114,13 @@ export default function medicineInfo({navigation}) {
     setDataMed({...DataMed, [name]: event});
   };
 
-  const [isEmptyName, setIsEmptyName] = useState(true);
-  const [isEmptyContainerAmount, setIsEmptyContainerAmount] = useState(true);
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+
+  const toggleTooltip = (status) => {
+    setTooltipVisible(status);
+  };
+
+
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -132,11 +146,9 @@ export default function medicineInfo({navigation}) {
             name="email"
             autoComplete="on"
             autoFocus
-            status={isEmptyName ? 'success' : 'danger'}
-            caption={isEmptyName ? '' : 'Por favor, insira o nome'}
             value={DataMed.Name}
             onChangeText={handleChangeDataMed('Name')}
-          />
+          />  
           <View style={styles.paneBorder}>
             <Text style={[styles.titlePaneBorder, styles.text]}>
               {'Recipiente contém'}
@@ -145,8 +157,6 @@ export default function medicineInfo({navigation}) {
               style={styles.cardContent}
               placeholder="Quantidade"
               keyboardType="numeric"
-              status={isEmptyContainerAmount ? 'success' : 'danger'}
-              caption={isEmptyContainerAmount ? '' : 'Insira um número valido'}
               value={DataMed.ContainerAmount}
               onChangeText={handleChangeDataMed('ContainerAmount')}
             />

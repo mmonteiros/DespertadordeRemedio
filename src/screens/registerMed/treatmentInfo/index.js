@@ -13,6 +13,7 @@ import {
   Input,
   TopNavigationAction,
   CardHeader,
+  Tooltip,
 } from '@ui-kitten/components';
 
 import {DropDownMenu} from '../../../components/DropDownMenu';
@@ -28,6 +29,7 @@ import Validate from './../validateMedicine'
 const CheckmarkIcon = style => <Icon {...style} name="checkmark" />;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
+const InfoIcon = style => <Icon {...style} name='info'/>;
 
 function treatmentInfo({ navigation }) {
   const BackAction = () => (
@@ -47,6 +49,8 @@ function treatmentInfo({ navigation }) {
 
     var isValidateDosageQuantity = Validate.validateNumber(DataMed.DosageQuantity);
     setIsEmptyDosageQuantity(isValidateDosageQuantity);
+
+    var isValidateFrequency = Validate.validateOption("Frequency", DataMed.Frequency);
 
     if (isValidateDurationOfTreatmentNum && isValidateDosageQuantity) { 
       firebaseConfig.updateData(DataMed);
@@ -111,6 +115,12 @@ function treatmentInfo({ navigation }) {
 
   const [isEmptyDurationOfTreatmentNum, setIsEmptyDurationOfTreatmentNum] = useState(true);
   const [isEmptyDosageQuantity, setIsEmptyDosageQuantity] = useState(true);
+
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+
+  const toggleTooltip = (status) => {
+    setTooltipVisible(status);
+  };
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -218,10 +228,17 @@ function treatmentInfo({ navigation }) {
             />
           </Card>
           <View style={styles.buttonMargin}>
+          <Tooltip
+            visible={tooltipVisible}
+            text='Preencha todos os dados corretamente'
+            icon={InfoIcon}
+            onBackdropPress={toggleTooltip}
+            placement={"left"}>
             <Button
               onPress={navigateHome}
               icon={CheckmarkIcon}
               style={styles.buttonRadius}></Button>
+          </Tooltip>
           </View>
         </ScrollView>
       </Layout>
