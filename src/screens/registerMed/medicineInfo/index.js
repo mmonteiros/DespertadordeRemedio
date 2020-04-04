@@ -62,14 +62,16 @@ export default function medicineInfo({navigation}) {
   );
 
   const navigateMedicineInfo = () => {
-    var isValidateName = Validate.validateName(DataMed.Name);
-    var isValidateContainerAmount = Validate.validateNumber(DataMed.ContainerAmount);
-    var isValidateContainerUnit = Validate.validateOption("ContainerUnit", DataMed.ContainerUnit.text);
-    var isValidateDate = Validate.validateDate(DataMed.ExpirationDate);
+    var isValidate = (
+                      Validate.validateName(DataMed.Name) &&
+                      Validate.validateNumber(DataMed.ContainerAmount) &&
+                      Validate.validateOption("ContainerUnit", DataMed.ContainerUnit.text) &&
+                      Validate.validateDate(DataMed.ExpirationDate) 
+                      );
 
-    toggleTooltip(!isValidateName || !isValidateContainerAmount || !isValidateContainerUnit || !isValidateDate);
+    toggleTooltip(!isValidate);
 
-    if (isValidateName && isValidateContainerAmount && isValidateContainerUnit) {
+    if (isValidate) {
       firebaseConfig.setData(DataMed.Name, DataMed);
 
       setDataMed({

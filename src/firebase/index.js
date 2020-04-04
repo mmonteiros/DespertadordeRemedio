@@ -5,7 +5,7 @@ class firebaseConfig extends React.Component {
 
   state = {
     nameMed: '',
-    initialHour: '',
+    initialHour: null,
   }
 
   async setData(nameMed, DataMed){
@@ -79,6 +79,11 @@ class firebaseConfig extends React.Component {
       .then(medicines => setDataMed(medicines));
 
       return DataMed;
+  }
+
+  getInitialHourValidated(){
+    if(this.state.initialHour != "23:15") return true;
+    return false;
   }
 
 }

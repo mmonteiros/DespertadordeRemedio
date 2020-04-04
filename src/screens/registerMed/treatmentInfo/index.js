@@ -44,16 +44,37 @@ function treatmentInfo({ navigation }) {
 
   const navigateHome = () => {
 
-    var isValidateDurationOfTreatmentNum = Validate.validateNumber(DataMed.DurationOfTreatmentNum);
-    setIsEmptyDurationOfTreatmentNum(isValidateDurationOfTreatmentNum);
+    var isValidate = (
+                      Validate.validateNumber(DataMed.DurationOfTreatmentNum) && 
+                      Validate.validateNumber(DataMed.DosageQuantity) &&
+                      Validate.validateOption("Frequency", DataMed.Frequency.text) &&
+                      Validate.validateDate(DataMed.InitialDate) && 
+                      Validate.validateOption("DurationOfTreatmentType", DataMed.DurationOfTreatmentType.text) &&
+                      Validate.validateOption("DosageUnit", DataMed.DosageUnit.text) &&
+                      Validate.validateOption("Instructions", DataMed.Instructions.text) &&
+                      Validate.validateInitialHour()
+                      );
 
-    var isValidateDosageQuantity = Validate.validateNumber(DataMed.DosageQuantity);
-    setIsEmptyDosageQuantity(isValidateDosageQuantity);
+    toggleTooltip(!isValidate);
 
-    var isValidateFrequency = Validate.validateOption("Frequency", DataMed.Frequency);
-
-    if (isValidateDurationOfTreatmentNum && isValidateDosageQuantity) { 
+    if (isValidate) { 
       firebaseConfig.updateData(DataMed);
+
+      setDataMed({
+        ...DataMed,
+        InitialDate: '',
+        InitialHour: '',
+        Frequency: {text: ''},
+        DurationOfTreatmentType: {text: ''},
+        DurationOfTreatmentNum: '',
+        DosageQuantity: '',
+        DosageUnit: {text: ''},
+        Instructions: {text: ''},
+        Obs: '',
+      });
+
+      setTooltipVisible(false);
+
       navigation.navigate('Home');
     }
   };
@@ -99,12 +120,12 @@ function treatmentInfo({ navigation }) {
   const [DataMed, setDataMed] = useState({
     InitialDate: '',
     InitialHour: '',
-    Frequency: '',
-    DurationOfTreatmentType: '',
+    Frequency: {text: ''},
+    DurationOfTreatmentType: {text: ''},
     DurationOfTreatmentNum: '',
     DosageQuantity: '',
-    DosageUnit: '',
-    Instructions: '',
+    DosageUnit: {text: ''},
+    Instructions: {text: ''},
     Obs: '',
     Complete: true,
   });
@@ -112,9 +133,6 @@ function treatmentInfo({ navigation }) {
   const handleChangeDataMed = name => event => {
     setDataMed({...DataMed, [name]: event});
   };
-
-  const [isEmptyDurationOfTreatmentNum, setIsEmptyDurationOfTreatmentNum] = useState(true);
-  const [isEmptyDosageQuantity, setIsEmptyDosageQuantity] = useState(true);
 
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
@@ -158,7 +176,7 @@ function treatmentInfo({ navigation }) {
                 <DropDownMenu
                   name={'- - - - - - - - - -'}
                   options={optionsFrequency}
-                  selectedOption={DataMed.Frequency}
+                  selectedOption={DataMed.Frequency.text}
                   setSelectedOption={handleChangeDataMed('Frequency')}
                 />
               </View>
@@ -169,14 +187,12 @@ function treatmentInfo({ navigation }) {
                     name={'Dias'}
                     options={optionsDuration}
                     width={120}
-                    selectedOption={DataMed.DurationOfTreatmentType}
+                    selectedOption={DataMed.DurationOfTreatmentType.text}
                     setSelectedOption={handleChangeDataMed('DurationOfTreatmentType')}
                   />
                   <Input
                     value={DataMed.DurationOfTreatmentNum}
                     onChangeText={handleChangeDataMed('DurationOfTreatmentNum')}
-                    status={isEmptyDurationOfTreatmentNum ? 'success' : 'danger'}
-                    caption={isEmptyDurationOfTreatmentNum ? '' : 'Insira um número valido'}  
                     style={[styles.cardContent, {width: 70}]}
                     placeholder="- - - - - -"
                     keyboardType="numeric"
@@ -193,8 +209,6 @@ function treatmentInfo({ navigation }) {
                 style={styles.cardContent}
                 placeholder="Quantidade"
                 keyboardType="numeric"
-                status={isEmptyDosageQuantity ? 'success' : 'danger'}
-                caption={isEmptyDosageQuantity ? '' : 'Insira um número valido'} 
                 value={DataMed.DosageQuantity}
                 onChangeText={handleChangeDataMed('DosageQuantity')}
               />
@@ -202,7 +216,7 @@ function treatmentInfo({ navigation }) {
                 name={'Unidade'}
                 options={options}
                 controlStyle={{whidth: 300}}
-                selectedOption={DataMed.DosageUnit}
+                selectedOption={DataMed.DosageUnit.text}
                 setSelectedOption={handleChangeDataMed('DosageUnit')}
               />
             </View>
@@ -215,7 +229,7 @@ function treatmentInfo({ navigation }) {
                 options={optionsInstruction}
                 style={styles.instruction}
                 width={330}
-                selectedOption={DataMed.Instructions}
+                selectedOption={DataMed.Instructions.text}
                 setSelectedOption={handleChangeDataMed('Instructions')}
               />
             </View>
