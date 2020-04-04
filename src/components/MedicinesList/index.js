@@ -22,10 +22,11 @@ export default function MedicineList() {
     </Layout>
   );
 
-  const showList = (medicine, id) => {
+  const showList = (medicine) => {
     if (medicine.Complete) {
       return (
         <TouchableOpacity
+          key={medicine.id}
           onPress={() => {
             setModalVisible(true);
           }}>
@@ -82,7 +83,7 @@ export default function MedicineList() {
     <View>
       {firebaseConfig
         .getMedicineUserDataFirestore()
-        .map((medicine, id) => showList(medicine, id))}
+        .map((medicine) => showList(medicine))}
     </View>
   );
 }
