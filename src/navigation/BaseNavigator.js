@@ -25,6 +25,7 @@ import TreatmentMedStack from './stacks/treatmentInfo';
 import SideMenu from '../components/Drawer/Drawer';
 import TabBar from '../components/Footer/tabBar';
 import {medicineInfo} from '../screens/registerMed/medicineInfo';
+import ImagePickerPage from '../screens/registerMed/medicineInfo/imagePicker';
 
 const TabsNavigator = createBottomTabNavigator(
   {
@@ -67,6 +68,7 @@ const dashboardStack = createAppContainer(
       Register: RegisterMedStack,
       Report: ReportStack,
       Profile: ProfileStack,
+      ImagePicker: ImagePickerPage,
     },
     {
       initialRouteName: 'Home',

@@ -38,7 +38,7 @@ export default function medicineInfo({navigation}) {
 
   const Header = () => (
     <CardHeader
-      headerStyle={styles.headerCard}
+      titleStyle={styles.headerCard}
       title="Informações do Medicamento"
     />
   );
@@ -60,6 +60,10 @@ export default function medicineInfo({navigation}) {
       </Tooltip>
     </View>
   );
+
+  const navigateImagePicker = () => {
+    navigation.navigate('ImagePicker');
+  }
 
   const navigateMedicineInfo = () => {
     var isValidate = (
@@ -123,16 +127,15 @@ export default function medicineInfo({navigation}) {
   };
 
 
-
   return (
     <SafeAreaView style={{flex: 1}}>
       <Layout style={styles.safeArea}>
         <TopNavigation
-          title="Despertador de Remédio"
-          alignment="center"
+          title="Registar Medicamento"
+          titleStyle={{fontWeight: "bold"}}
+          alignment="start"
           backgroundColor="white"
           leftControl={BackAction()}
-          rightControls={renderSearchAction()}
         />
         <Divider />
       </Layout>

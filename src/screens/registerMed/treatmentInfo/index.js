@@ -145,7 +145,7 @@ function treatmentInfo({ navigation }) {
       <Layout style={styles.safeArea}>
         <TopNavigation
           title="Registar Medicamento"
-          alignment="center"
+          alignment="left"
           backgroundColor="white"
           leftControl={BackAction()}
           rightControls={renderSearchAction()}
