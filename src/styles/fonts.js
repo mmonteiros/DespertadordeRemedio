@@ -3,7 +3,7 @@ export default {
   bigger24: 24,
   bigger: 21,
   big: 18,
-  regular: 15,
+  regular: 16,
   small: 12,
   smaller: 11,
 

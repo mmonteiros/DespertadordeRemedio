@@ -16,9 +16,9 @@ import * as MagicMove from 'react-native-magic-move';
 
 import styles from './styles';
 
-const MenuIcon = style => <Icon {...style} name="menu-outline" />;
+const MenuIcon = (style) => <Icon {...style} name="menu-outline" />;
 
-const SearchIcon = style => <Icon {...style} name="search-outline" />;
+const SearchIcon = (style) => <Icon {...style} name="search-outline" />;
 
 class HomeScreen extends React.Component {
   render() {
@@ -46,18 +46,11 @@ class HomeScreen extends React.Component {
           />
         </Layout>
         <Divider />
-        <MagicMove.Scene>
-          
-          <Layout style={styles.container}>
-          <MagicMove.View id="logo">
-            
-            <ScrollView>
-              <MedicinesList />
-            </ScrollView>
-            
-          </MagicMove.View>
-          </Layout>
-        </MagicMove.Scene>
+        <Layout style={styles.container}>
+          <ScrollView>
+            <MedicinesList />
+          </ScrollView>
+        </Layout>
       </SafeAreaView>
     );
   }

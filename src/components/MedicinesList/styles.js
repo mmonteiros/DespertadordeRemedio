@@ -2,6 +2,9 @@ import {StyleSheet} from 'react-native';
 import {colors, fonts} from '../../styles';
 
 const styles = StyleSheet.create({
+  backdrop: {
+    backgroundColor: '#4E4E4E',
+  },
   container: {
     flex: 1,
     flexDirection: 'row',
@@ -60,6 +63,98 @@ const styles = StyleSheet.create({
     fontSize: fonts.regular,
     fontWeight: fonts.semiBolt,
     marginLeft: 5,
+  },
+
+  // Modal
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  modalView: {
+    flexDirection: 'row',
+    marginTop: 20,
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    elevation: 5,
+    width: '100%',
+  },
+
+  imageModal: {
+    width: 163,
+    height: 163,
+    marginTop: 10,
+    marginLeft: 5,
+  },
+  colorMedicineModal: {
+    backgroundColor: '#546de5',
+    height: 372,
+    width: 17,
+  },
+
+  contentContainerModal: {
+    flex: 1,
+  },
+  iconContainer: {
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  titleModal: {
+    fontSize: fonts.bigger24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignSelf: 'center',
+    paddingTop: 20,
+  },
+  infoContainerModal: {
+    paddingTop: 25,
+    paddingLeft: 10,
+  },
+
+  // Button
+  buttonCantainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    paddingTop: 30,
+    paddingBottom: 20,
+  },
+  buttonRadius: {
+    backgroundColor: colors.transparent,
+    borderColor: colors.gray,
+    borderRadius: 50,
+    height: 67,
+    width: 67,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+  },
+  buttonRadiusYellow: {
+    backgroundColor: colors.yellow,
+    borderColor: colors.yellow,
+    borderRadius: 50,
+    height: 67,
+    width: 67,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
   },
 });
 
