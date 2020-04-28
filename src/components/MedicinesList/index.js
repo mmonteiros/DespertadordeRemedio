@@ -6,10 +6,14 @@ import {Text, Layout, Divider, Icon, Button} from '@ui-kitten/components';
 import firebaseConfig from '../../firebase';
 
 import styles from './styles';
+import {
+  ScrollView,
+  TouchableWithoutFeedback,
+} from 'react-native-gesture-handler';
 
 // Icons
-const bellIcon = style => (
-  <Icon {...style} name="bell" fill="#404040" width={37} height={36} />
+const clockIcon = style => (
+  <Icon {...style} name="clock-outline" fill="#404040" width={37} height={36} />
 );
 const CheckmarkIcon = style => (
   <Icon {...style} name="checkmark" width={37} height={36} />
@@ -23,95 +27,71 @@ export default function MedicineList() {
   };
 
   const renderModalElement = () => (
-    <View style={styles.centeredView}>
-      <View style={styles.modalView}>
-        <View style={styles.colorMedicineModal} />
-        <View>
-          <View style={{flexDirection: 'row'}}>
-            <Image
-              source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-              style={styles.imageModal}
-            />
-            <View style={{flex: 1}}>
-              <View style={styles.iconContainer}>
-                <TouchableOpacity>
-                  <Icon
-                    name={'settings'}
-                    width={45}
-                    height={45}
-                    fill="#404040"
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity style={[{marginLeft: 15}, {marginRight: 5}]}>
-                  <Icon
-                    name={'trash-2'}
-                    width={45}
-                    height={45}
-                    fill="#404040"
-                  />
-                </TouchableOpacity>
-              </View>
-              <Text style={styles.titleModal}>Title</Text>
-              <Text style={[styles.text, {textAlign: 'center'}]}>
-                Medicne Frequency
-              </Text>
+    <View style={styles.modalView}>
+      <View style={styles.colorMedicineModal} />
+      <View>
+        <View style={{flexDirection: 'row'}}>
+          <Image
+            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+            style={styles.imageModal}
+          />
+          <View style={{flex: 1}}>
+            <View style={styles.iconContainer}>
+              <TouchableOpacity>
+                <Icon name={'settings'} width={45} height={45} fill="#404040" />
+              </TouchableOpacity>
+              <TouchableOpacity style={{marginLeft: 15}}>
+                <Icon name={'trash-2'} width={45} height={45} fill="#404040" />
+              </TouchableOpacity>
             </View>
+            <Text style={styles.titleModal}>Title</Text>
+            <Text style={[styles.text, {textAlign: 'center'}]}>
+              Medicne Frequency
+            </Text>
           </View>
+        </View>
 
-          <View style={styles.infoContainerModal}>
-            <View style={styles.contentContainer}>
-              <Icon
-                name={'alert-circle'}
-                width={20}
-                height={20}
-                fill="#404040"
-              />
-              <Text style={styles.text}>
-                {'medicine.DosageQuantity' + ' ' + 'medicine.DosageUnit.text'}
-              </Text>
-            </View>
-            <View style={styles.contentContainer}>
-              <Icon
-                name={'alert-circle'}
-                width={20}
-                height={20}
-                fill="#404040"
-              />
-              <Text style={styles.text}>{'medicine.Instructions.text'}</Text>
-            </View>
-            <View style={styles.contentContainer}>
-              <Icon
-                name={'alert-circle'}
-                width={20}
-                height={20}
-                fill="#404040"
-              />
-              <Text style={styles.text}>
-                {'Tomar de ' + 'medicine.frequency'}
-              </Text>
-            </View>
-            <View style={styles.contentContainer}>
-              <Icon
-                name={'alert-circle'}
-                width={20}
-                height={20}
-                fill="#404040"
-              />
-              <Text style={styles.text}>{'Observações'}</Text>
-            </View>
+        <View style={styles.infoContainerModal}>
+          <View style={styles.contentContainer}>
+            <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+            <Text style={styles.text}>
+              {'medicine.DosageQuantity' + ' ' + 'medicine.DosageUnit.text'}
+            </Text>
           </View>
+          <View style={styles.contentContainer}>
+            <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+            <Text style={styles.text}>{'medicine.Instructions.text'}</Text>
+          </View>
+          <View style={styles.contentContainer}>
+            <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+            <Text style={styles.text}>
+              {'Tomar de ' + 'medicine.frequency'}
+            </Text>
+          </View>
+          <View style={styles.contentContainer}>
+            <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+            <Text style={styles.text}>{'Observações'}</Text>
+          </View>
+        </View>
 
-          <View style={styles.buttonCantainer}>
+        <View style={styles.buttonCantainer}>
+          <View>
             <Button
               onPress={null}
               style={styles.buttonRadius}
-              icon={bellIcon}
+              icon={clockIcon}
             />
+            <Text style={[styles.textModalBtt, {marginLeft: -4}]}>
+              Reagendar
+            </Text>
+          </View>
+          <View>
             <Button
               onPress={toggleModal}
               style={styles.buttonRadiusYellow}
               icon={CheckmarkIcon}
             />
+            <Text style={[styles.textModalBtt, {marginLeft: 10}]}>Tomar</Text>
           </View>
         </View>
       </View>
@@ -162,8 +142,15 @@ export default function MedicineList() {
             <Modal
               transparent={true}
               visible={modalVisible}
-              onBackdropPress={toggleModal}>
-              {renderModalElement()}
+              onRequestClose={toggleModal}>
+              <TouchableOpacity
+                style={styles.centeredView}
+                activeOpacity={1}
+                onPressOut={toggleModal}>
+                <TouchableWithoutFeedback>
+                  {renderModalElement()}
+                </TouchableWithoutFeedback>
+              </TouchableOpacity>
             </Modal>
           </Layout>
         </TouchableOpacity>

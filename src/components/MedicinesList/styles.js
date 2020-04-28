@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    backgroundColor: colors.transparentLow,
+    //marginTop: 20,
   },
   modalView: {
     flexDirection: 'row',
@@ -103,6 +104,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginTop: 10,
+    marginRight: 10,
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
@@ -116,6 +118,11 @@ const styles = StyleSheet.create({
   infoContainerModal: {
     paddingTop: 25,
     paddingLeft: 10,
+  },
+  textModalBtt: {
+    fontSize: fonts.regular,
+    fontWeight: fonts.semiBolt,
+    marginTop: 2,
   },
 
   // Button
