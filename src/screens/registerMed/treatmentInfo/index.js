@@ -19,7 +19,6 @@ import {
 import {DropDownMenu} from '../../../components/DropDownMenu';
 import {DatepickerIcon} from '../../../components/DatePicker';
 import {Time} from '../../../components/TimePicker';
-import {ModalWithBackdrop} from '../../../components/Modal';
 import styles from '../medicineInfo/styles';
 import firebaseConfig from '../../../firebase';
 
@@ -32,6 +31,7 @@ const SearchIcon = style => <Icon {...style} name="search-outline" />;
 const InfoIcon = style => <Icon {...style} name='info'/>;
 
 function treatmentInfo({ navigation }) {
+
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );

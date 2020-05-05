@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     borderColor: colors.white,
     borderRadius: 30,
     marginBottom: 20,
+    width: 280,
   },
   cardContent: {
     backgroundColor: colors.grayBackground,
@@ -114,6 +115,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -15,
     left: 50,
+  },
+
+  btnSection: {
+    width: 100,
+    height: 50,
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 0,
+    marginTop: 10,
+  },
+  cardBorder: {
+    borderWidth: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });
 

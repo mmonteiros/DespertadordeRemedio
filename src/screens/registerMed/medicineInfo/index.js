@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Dimensions} from 'react-native';
+import {View, Dimensions,TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
   Divider,
@@ -28,10 +28,11 @@ import styles from './styles';
 const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" />;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
-const CameraIcon = style => <Icon {...style} name="camera" />;
+const CameraIcon = style => <Icon {...style} name="camera-outline" />;
 const InfoIcon = style => <Icon {...style} name='info'/>;
 
 export default function medicineInfo({navigation}) {
+
   const BackAction = () => (<TopNavigationAction icon={BackIcon} onPress={navigateBack}/>);
 
   const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
@@ -144,6 +145,7 @@ export default function medicineInfo({navigation}) {
         <MagicMove.Scene>
           <MagicMove.View id="logo">
         <Card style={styles.cardMain} header={Header} footer={Footer}>
+        <View style={styles.cardBorder}>
           <Input
             style={styles.cardContainer}
             placeholder="Nome do Medicamento"
@@ -154,6 +156,15 @@ export default function medicineInfo({navigation}) {
             value={DataMed.Name}
             onChangeText={handleChangeDataMed('Name')}
           />  
+
+          <Button
+            appearance='outline'
+            style={styles.btnSection}
+            icon={CameraIcon}
+            onPress={navigateImagePicker}
+          >
+          </Button>
+          </View>
           <View style={styles.paneBorder}>
             <Text style={[styles.titlePaneBorder, styles.text]}>
               {'Recipiente contém'}

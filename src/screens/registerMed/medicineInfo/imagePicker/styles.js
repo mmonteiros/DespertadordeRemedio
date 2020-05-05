@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
       btnSection: {
         width: 225,
         height: 50,
-        backgroundColor: '#DCDCDC',
+        backgroundColor: 'transparent',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 3,
