@@ -18,6 +18,7 @@ import {
 import {NavigationActions, StackActions} from 'react-navigation';
 import firebaseConfig from '../../../firebase';
 import Validate from './../validateMedicine';
+import ImagePickerPage from './imagePicker';
 
 import {DropDownMenu} from '../../../components/DropDownMenu';
 import {DatepickerIcon} from '../../../components/DatePicker';

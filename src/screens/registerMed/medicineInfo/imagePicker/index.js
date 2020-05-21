@@ -15,12 +15,12 @@ import {
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  Card,
+  CardHeader,
+  TopNavigation,
+  Layout,
+  Divider,
+} from '@ui-kitten/components';
 
 import styles from './styles';
 
@@ -32,7 +32,7 @@ const options = {
     path: 'images',
   },
 };
-export default class ImagePickerPage extends Component {
+class ImagePickerPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -40,19 +40,31 @@ export default class ImagePickerPage extends Component {
         data: '',
         uri: ''
       },
-      fileData: '',
+      fileData: null,
       fileUri: ''
     }
   }
 
+  Header = () => (
+    <CardHeader
+      titleStyle={styles.headerCard}
+      title="              Verifique sua imagem abaixo"
+    />
+  );
+
+  navigateImagePicker = () => {
+    this.props.navigation.navigate('Register');
+  }
+
   chooseImage = () => {
     let options = {
-      title: 'Select Image',
+      title: 'Selecionar Imagem',
       storageOptions: {
         skipBackup: true,
         path: 'images',
       },
     };
+    if(this.state.fileData == null){
     ImagePicker.showImagePicker(options, (response) => {
       console.log('Response = ', response);
 
@@ -77,6 +89,50 @@ export default class ImagePickerPage extends Component {
         });
       }
     });
+  }
+  
+    return (
+    <Fragment>
+       <SafeAreaView style={{flex: 1}}>
+      <Layout style={styles.safeArea}>
+        <TopNavigation
+          title="                   Escolha da imagem do medicamento"
+          titleStyle={{fontWeight: "bold"}}
+          alignment="start"
+          backgroundColor="white"
+        />
+      </Layout>
+      <Divider />
+      <Layout style={styles.body}>
+      <Card style={styles.cardMain} header={this.Header}>
+           
+            
+              <View>
+                
+                <Text style={{textAlign:'center',fontSize:20,paddingBottom:10}} ></Text>
+                <View style={styles.ImageSections}>
+                  <View>
+                    {this.renderFileUri()}
+                  </View>
+                </View>
+
+                <View style={styles.btnParentSection}>
+                  <TouchableOpacity onPress={this.chooseImage} style={styles.btnSection}  >
+                    <Text style={styles.btnText}>Alterar imagem</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={this.navigateImagePicker} style={styles.btnSection}  >
+                    <Text style={styles.btnText}>Voltar ao cadastro do medicamento</Text>
+                  </TouchableOpacity>
+                </View>
+
+              </View>
+             
+           
+            </Card>
+          </Layout>
+          </SafeAreaView>
+          </Fragment>
+    )
   }
 
   launchCamera = () => {
@@ -159,46 +215,16 @@ export default class ImagePickerPage extends Component {
       />
     } else {
       return <Image
-        source={require('./galeryImages.jpg')}
+        source={require('./dummy.png')}
         style={styles.images}
       />
     }
   }
   render() {
     return (
-      <Fragment>
-        <StatusBar barStyle="dark-content" />
-        <SafeAreaView>
-          <View style={styles.body}>
-            <Text style={{textAlign:'center',fontSize:20,paddingBottom:10}} >Pick Images from Camera & Gallery</Text>
-            <View style={styles.ImageSections}>
-              <View>
-                {this.renderFileData()}
-                <Text  style={{textAlign:'center'}}>Base 64 String</Text>
-              </View>
-              <View>
-                {this.renderFileUri()}
-                <Text style={{textAlign:'center'}}>File Uri</Text>
-              </View>
-            </View>
-
-            <View style={styles.btnParentSection}>
-              <TouchableOpacity onPress={this.chooseImage} style={styles.btnSection}  >
-                <Text style={styles.btnText}>Choose File</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={this.launchCamera} style={styles.btnSection}  >
-                <Text style={styles.btnText}>Directly Launch Camera</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={this.launchImageLibrary} style={styles.btnSection}  >
-                <Text style={styles.btnText}>Directly Launch Image Library</Text>
-              </TouchableOpacity>
-            </View>
-
-          </View>
-        </SafeAreaView>
-      </Fragment>
+      this.chooseImage()
     );
   }
 };
+
+export default ImagePickerPage;

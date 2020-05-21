@@ -19,18 +19,26 @@ import {
     ReloadInstructions,
   } from 'react-native/Libraries/NewAppScreen';
 
-const styles = StyleSheet.create({
+  import {colors, fonts} from '../../../../styles';
+
+  const styles = StyleSheet.create({
     scrollView: {
-        backgroundColor: Colors.lighter,
+        backgroundColor: colors.primary,
+      },
+      safeArea: {
+        minHeight: 8,
+      },
+      cardMain: {
+        borderRadius: 14,
+        marginTop: 0,
+        marginBottom: 0,
       },
     
       body: {
-        backgroundColor: Colors.white,
+        backgroundColor: colors.primary,
+        fontSize: fonts.big,
+        flex: 1,
         justifyContent: 'center',
-        borderColor: 'black',
-        borderWidth: 1,
-        height: Dimensions.get('screen').height - 20,
-        width: Dimensions.get('screen').width
       },
       ImageSections: {
         display: 'flex',
@@ -53,7 +61,7 @@ const styles = StyleSheet.create({
       btnSection: {
         width: 225,
         height: 50,
-        backgroundColor: 'transparent',
+        backgroundColor: colors.grayBackground,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 3,
