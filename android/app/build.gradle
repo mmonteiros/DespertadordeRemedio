@@ -190,6 +190,10 @@ dependencies {
     implementation "com.google.firebase:firebase-firestore:19.0.0"
     implementation "com.google.firebase:firebase-storage:17.0.0"
 
+    // Push Notification dependencies
+    implementation project(':react-native-push-notification')
+
+
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")

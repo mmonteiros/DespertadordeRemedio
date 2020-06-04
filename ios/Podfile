@@ -52,3 +52,9 @@ target 'MyApp-tvOS' do
   end
 
 end
+
+# Push Notification
+target 'myAwesomeApp' do
+  # Pods for myAwesomeApp
+  pod 'React-RCTPushNotification', :path => '../node_modules/react-native/Libraries/PushNotificationIOS'
+end
