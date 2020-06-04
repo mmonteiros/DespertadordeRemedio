@@ -72,7 +72,7 @@ export default function medicineInfo({navigation}) {
                       Validate.validateName(DataMed.Name) &&
                       Validate.validateNumber(DataMed.ContainerAmount) &&
                       Validate.validateOption("ContainerUnit", DataMed.ContainerUnit.text) &&
-                      Validate.validateDate(DataMed.ExpirationDate) 
+                      Validate.validateDate(DataMed.ExpirationDate)
                       );
 
     toggleTooltip(!isValidate);

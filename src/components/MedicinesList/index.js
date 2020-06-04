@@ -26,7 +26,7 @@ export default function MedicineList() {
     setModalVisible(!modalVisible);
   };
 
-  const renderModalElement = () => (
+  const renderModalElement = medicine => (
     <View style={styles.modalView}>
       <View style={styles.colorMedicineModal} />
       <View>
@@ -44,9 +44,9 @@ export default function MedicineList() {
                 <Icon name={'trash-2'} width={45} height={45} fill="#404040" />
               </TouchableOpacity>
             </View>
-            <Text style={styles.titleModal}>Title</Text>
+            <Text style={styles.titleModal}>{medicine.Name}</Text>
             <Text style={[styles.text, {textAlign: 'center'}]}>
-              Medicne Frequency
+              {medicine.Frequency.text}
             </Text>
           </View>
         </View>
@@ -55,22 +55,22 @@ export default function MedicineList() {
           <View style={styles.contentContainer}>
             <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
             <Text style={styles.text}>
-              {'medicine.DosageQuantity' + ' ' + 'medicine.DosageUnit.text'}
+             {medicine.DosageQuantity + ' ' + medicine.DosageUnit.text}
             </Text>
           </View>
           <View style={styles.contentContainer}>
             <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
-            <Text style={styles.text}>{'medicine.Instructions.text'}</Text>
+            <Text style={styles.text}>{medicine.Instructions.text}                                                     .</Text>
           </View>
           <View style={styles.contentContainer}>
             <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
             <Text style={styles.text}>
-              {'Tomar de ' + 'medicine.frequency'}
+              {'Tomar de ' + medicine.Frequency.text}
             </Text>
           </View>
           <View style={styles.contentContainer}>
             <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
-            <Text style={styles.text}>{'Observações'}</Text>
+            <Text style={styles.text}>{medicine.Obs}</Text>
           </View>
         </View>
 
@@ -148,7 +148,7 @@ export default function MedicineList() {
                 activeOpacity={1}
                 onPressOut={toggleModal}>
                 <TouchableWithoutFeedback>
-                  {renderModalElement()}
+                  {renderModalElement(medicine)}
                 </TouchableWithoutFeedback>
               </TouchableOpacity>
             </Modal>
@@ -157,6 +157,7 @@ export default function MedicineList() {
       );
     }
   };
+
 
   return (
     <View>
