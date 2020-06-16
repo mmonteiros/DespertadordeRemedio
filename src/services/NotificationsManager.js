@@ -1,8 +1,10 @@
+import { Platform, Alert, DeviceEventEmitter } from "react-native";
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
-import { Platform } from "react-native";
+import { AlarmNotification } from "../components/AlarmNotification";
 
 class NotificationsManager {
+  
     configure = () => {
         PushNotification.configure({
             // (optional) Called when Token is generated (iOS and Android)
@@ -15,6 +17,7 @@ class NotificationsManager {
               console.log("NOTIFICATION:", notification);
           
               // process the notification
+             
           
               // (required) Called when a remote is received or opened, or local notification is opened
               notification.finish(PushNotificationIOS.FetchResult.NoData);
@@ -69,6 +72,23 @@ class NotificationsManager {
         }
     }
 
+    _buildActions = () => {
+        (function() {
+            // Register all the valid actions for notifications here and add the action handler for each action
+            PushNotification.registerNotificationActions(['Accept','Reject','Yes','No']);
+            DeviceEventEmitter.addListener('notificationActionReceived', function(action){
+              console.log ('Notification action received: ' + action);
+              const info = JSON.parse(action.dataJSON);
+              if (info.action == 'Accept') {
+                Alert.alert("Testando")
+              } else if (info.action == 'Reject') {
+                // Do work pertaining to Reject action here
+              }
+              // Add all the required actions handlers
+            });
+          })();
+    }
+
     showNotification = (id, title, message, data = {}, options = {}) => {
         PushNotification.localNotification({
             /* Android Only Properties */
@@ -77,13 +97,45 @@ class NotificationsManager {
             /* IOS Only Properties */
             ...this._buildIOSNotification(id, title, message, data, options),
 
-            /* Android and IOSOnly Properties */
+            /* Android and IOS Only Properties */
             title: title || "", 
             message: message || "",
             playSound: options.playSound || false,
             soundName: options.soundName || "default", 
-            userInteraction: flase // If the notification was opened by the user from the notification area or not
+            userInteraction: false // If the notification was opened by the user from the notification area or not
         })
+    }
+
+    alarmNotification = (id, title, message, frequency, data = {}, options = {}) => {
+        var frequencyMilli = frequency * 1000; // hour to millisecond conversion (hour * minutes * seconds * 1000)
+        
+        PushNotification.localNotificationSchedule({
+            /* Android Only Properties */
+            ...this._buildAndroidNotification(id, title, message, data, options),
+
+            /* IOS Only Properties */
+            ...this._buildIOSNotification(id, title, message, data, options),
+
+            /* Android and IOS Only Properties */
+            title: title || "", 
+            message: message || "", 
+
+            vibrate: options.vibrate || true,
+            vibration: options.vibration || 5000,
+            priority: "hight",
+            importance: "high",
+            playSound: options.playSound || true,
+            soundName: options.soundName || "alarm_ringtone.mp3",
+
+            actions: '["Accept", "Reject"]',
+    
+            // Alarm Clock Time
+            date: new Date(Date.now() + frequencyMilli),
+            //repeatTime: frequencyMilli,
+            //repeatType: "time",
+            
+            
+          })
     }
 
     cancelAllLocalNotification = () => {
@@ -93,6 +145,7 @@ class NotificationsManager {
             PushNotification.cancelAllLocalNotifications()
         }
     }
+
 }
 
 export const notificationsManager = new NotificationsManager()
