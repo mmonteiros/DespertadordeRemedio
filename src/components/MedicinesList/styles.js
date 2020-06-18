@@ -5,22 +5,28 @@ const styles = StyleSheet.create({
   backdrop: {
     backgroundColor: '#4E4E4E',
   },
-  container: {
-    flex: 1,
+
+  touchableOpacity: {
     flexDirection: 'row',
-    backgroundColor: colors.white,
     borderTopRightRadius: 18,
     borderBottomRightRadius: 18,
     marginTop: 20,
     marginBottom: 30,
+  },
+
+  container: {
+    flexDirection: 'row',
+    backgroundColor: colors.white,
+    borderTopRightRadius: 18,
+    borderBottomRightRadius: 18,
     height: 125,
-    width: 410,
+    width: "100%",
   },
 
   colorMedicine: {
     backgroundColor: '#546de5',
     height: '100%',
-    width: 17,
+    width: 15,
   },
 
   image: {
