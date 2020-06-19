@@ -1,7 +1,7 @@
 import React, {Children, useState} from 'react';
 import {View, ScrollView} from 'react-native';
 import {SafeAreaView, NavigationActions, StackActions} from 'react-navigation';
-
+import { notificationsManager } from '../../../services/NotificationsManager';
 import {
   Divider,
   Icon,
@@ -32,6 +32,11 @@ const InfoIcon = style => <Icon {...style} name='info'/>;
 
 function treatmentInfo({ navigation }) {
 
+  // Local Notification
+  const localNotify = notificationsManager
+  localNotify.configure()
+  localNotify._buildActions()
+
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );
@@ -58,6 +63,16 @@ function treatmentInfo({ navigation }) {
     toggleTooltip(!isValidate);
 
     if (isValidate) { 
+
+      localNotify.alarmNotification(
+        1,
+        "Lembrete de Medicamento",
+        "DataMed.Name",
+        parseInt(DataMed.Frequency.text, 10),
+        {},
+        {}
+      )
+
       firebaseConfig.updateData(DataMed);
 
       setDataMed({

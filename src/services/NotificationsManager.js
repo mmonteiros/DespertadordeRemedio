@@ -80,7 +80,7 @@ class NotificationsManager {
               console.log ('Notification action received: ' + action);
               const info = JSON.parse(action.dataJSON);
               if (info.action == 'Accept') {
-                Alert.alert("Testando")
+                console.log('Passou no test dentro')
               } else if (info.action == 'Reject') {
                 // Do work pertaining to Reject action here
               }
@@ -107,7 +107,7 @@ class NotificationsManager {
     }
 
     alarmNotification = (id, title, message, frequency, data = {}, options = {}) => {
-        var frequencyMilli = frequency * 1000; // hour to millisecond conversion (hour * minutes * seconds * 1000)
+        var frequencyMilli = frequency * 60 * 60 * 1000; // hour to millisecond conversion (hour * minutes * seconds * 1000)
         
         PushNotification.localNotificationSchedule({
             /* Android Only Properties */
@@ -120,6 +120,7 @@ class NotificationsManager {
             title: title || "", 
             message: message || "", 
 
+            autoCancel: false,
             vibrate: options.vibrate || true,
             vibration: options.vibration || 5000,
             priority: "hight",
@@ -131,9 +132,8 @@ class NotificationsManager {
     
             // Alarm Clock Time
             date: new Date(Date.now() + frequencyMilli),
-            //repeatTime: frequencyMilli,
-            //repeatType: "time",
-            
+            repeatTime: frequencyMilli,
+            repeatType: "time",         
             
           })
     }
