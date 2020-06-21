@@ -30,10 +30,10 @@ class ProfileScreen extends React.Component {
 
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <TopNavigation title='Despertador de Remédio' alignment='center' backgroundColor= "white" leftControl={BackAction()} rightControls={renderSearchAction()}/>
+        <TopNavigation title='Despertador de Remédio' alignment='center' backgroundColor= "white" leftControl={BackAction()} /*rightControls={renderSearchAction()}*//>
         <Divider/>
         <Layout style={styles.body}>
-          <Text category='h1'>Profile</Text>
+          <Text category='h1'>Perfil</Text>
         </Layout>
         
       </SafeAreaView>

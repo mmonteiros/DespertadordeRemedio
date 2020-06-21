@@ -48,7 +48,6 @@ function treatmentInfo({ navigation }) {
                       Validate.validateNumber(DataMed.DurationOfTreatmentNum) && 
                       Validate.validateNumber(DataMed.DosageQuantity) &&
                       Validate.validateOption("Frequency", DataMed.Frequency.text) &&
-                      Validate.validateDate(DataMed.InitialDate) && 
                       Validate.validateOption("DurationOfTreatmentType", DataMed.DurationOfTreatmentType.text) &&
                       Validate.validateOption("DosageUnit", DataMed.DosageUnit.text) &&
                       Validate.validateOption("Instructions", DataMed.Instructions.text) &&

@@ -30,10 +30,10 @@ class ReportScreen extends React.Component {
 
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <TopNavigation title='Despertador de Remédio' alignment='center' backgroundColor= "white" leftControl={BackAction()} rightControls={renderSearchAction()}/>
+        <TopNavigation title='Despertador de Remédio' alignment='center' backgroundColor= "white" leftControl={BackAction()} /*rightControls={renderSearchAction()}*//>
         <Divider/>
         <Layout style={styles.body}>
-          <Text category='h1'>Report</Text>
+          <Text category='h1'>Relatório</Text>
         </Layout>
         
       </SafeAreaView>

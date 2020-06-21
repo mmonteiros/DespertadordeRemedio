@@ -18,9 +18,19 @@ const clockIcon = style => (
 const CheckmarkIcon = style => (
   <Icon {...style} name="checkmark" width={37} height={36} />
 );
+const trashIcon = style => (
+  <Icon {...style} name="trash-2" width={45} height={45} fill="#404040"/>
+);
 
 export default function MedicineList() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [medicineList, setmedicinelist] = useState([]);
+  const [nameId, setnameId] = useState('');
+
+  const navigateHome = () => {
+    firebaseConfig.deleteMedicine(nameId);
+    toggleModal();
+  }
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -37,16 +47,27 @@ export default function MedicineList() {
           />
           <View style={{flex: 1}}>
             <View style={styles.iconContainer}>
+              {/* 
               <TouchableOpacity>
                 <Icon name={'settings'} width={45} height={45} fill="#404040" />
               </TouchableOpacity>
-              <TouchableOpacity style={{marginLeft: 15}}>
+              */} 
+              <Button
+                onPress={() => {
+                  navigateHome();
+                }}
+                appearance="ghost"
+                icon={trashIcon}
+              />
+              {/* <TouchableOpacity onPress={() => {
+                navigateHome();
+              }} style={{marginLeft: 15}}>
                 <Icon name={'trash-2'} width={45} height={45} fill="#404040" />
-              </TouchableOpacity>
+              </TouchableOpacity>*/}
             </View>
             <Text style={styles.titleModal}>{medicine.Name}</Text>
             <Text style={[styles.text, {textAlign: 'center'}]}>
-              {medicine.Frequency.text}
+              {medicine.Frequency}
             </Text>
           </View>
         </View>
@@ -55,17 +76,17 @@ export default function MedicineList() {
           <View style={styles.contentContainer}>
             <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
             <Text style={styles.text}>
-             {medicine.DosageQuantity + ' ' + medicine.DosageUnit.text}
+             {medicine.DosageQuantity + ' ' + medicine.DosageUnit}
             </Text>
           </View>
           <View style={styles.contentContainer}>
             <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
-            <Text style={styles.text}>{medicine.Instructions.text}                                                     .</Text>
+            <Text style={styles.text}>{medicine.Instructions}                                                     .</Text>
           </View>
           <View style={styles.contentContainer}>
             <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
             <Text style={styles.text}>
-              {'Tomar de ' + medicine.Frequency.text}
+              {'Tomar de ' + medicine.Frequency}
             </Text>
           </View>
           <View style={styles.contentContainer}>
@@ -105,6 +126,8 @@ export default function MedicineList() {
           key={medicine.id}
           onPress={() => {
             setModalVisible(true);
+            setmedicinelist(medicine);
+            setnameId(medicine.id);
           }}>
           <Layout style={styles.container}>
             <View style={styles.colorMedicine} />
@@ -115,7 +138,7 @@ export default function MedicineList() {
             <View style={styles.infoContainer}>
               <Text style={styles.title}>{medicine.Name}</Text>
               <Text style={[styles.text, {textAlign: 'center'}]}>
-                {medicine.Frequency.text}
+                {medicine.Frequency}
               </Text>
               <Divider style={styles.divider} />
               <View style={styles.contentContainer}>
@@ -126,7 +149,7 @@ export default function MedicineList() {
                   fill="#404040"
                 />
                 <Text style={styles.text}>
-                  {medicine.DosageQuantity + ' ' + medicine.DosageUnit.text}
+                  {medicine.DosageQuantity + ' ' + medicine.DosageUnit}
                 </Text>
               </View>
               <View style={styles.contentContainer}>
@@ -136,21 +159,21 @@ export default function MedicineList() {
                   height={20}
                   fill="#404040"
                 />
-                <Text style={styles.text}>{medicine.Instructions.text}</Text>
+                <Text style={styles.text}>{medicine.Instructions}</Text>
               </View>
             </View>
             <Modal
               transparent={true}
               visible={modalVisible}
               onRequestClose={toggleModal}>
-              <TouchableOpacity
-                style={styles.centeredView}
-                activeOpacity={1}
-                onPressOut={toggleModal}>
-                <TouchableWithoutFeedback>
-                  {renderModalElement(medicine)}
-                </TouchableWithoutFeedback>
-              </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.centeredView}
+                    activeOpacity={1}
+                    onPressOut={toggleModal}>
+                    <TouchableWithoutFeedback onPress={toggleModal} >
+                      {renderModalElement(medicineList)}
+                    </TouchableWithoutFeedback>
+                </TouchableOpacity>
             </Modal>
           </Layout>
         </TouchableOpacity>

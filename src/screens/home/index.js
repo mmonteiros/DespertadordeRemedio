@@ -41,14 +41,14 @@ class HomeScreen extends React.Component {
             title="Despertador de Remédio"
             alignment="center"
             backgroundColor="white"
-            leftControl={renderMenuAction()}
-            rightControls={renderSearchAction()}
+            /*leftControl={renderMenuAction()}
+            rightControls={renderSearchAction()}*/
           />
         </Layout>
         <Divider />
         <Layout style={styles.container}>
           <ScrollView>
-            <MedicinesList />
+            <MedicinesList/>
           </ScrollView>
         </Layout>
       </SafeAreaView>

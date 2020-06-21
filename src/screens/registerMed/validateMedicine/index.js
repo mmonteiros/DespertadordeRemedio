@@ -13,7 +13,7 @@ class Validate extends React.Component {
   }
 
   validateNumber(number) {
-    if (Number(number) > 0 && Number(number) < 50) {
+    if (Number(number) > 0) {
       return true;
     } else {
       return false;
