@@ -124,12 +124,13 @@ export default function MedicineList() {
       return (
         <TouchableOpacity
           key={medicine.id}
+          style={styles.touchableOpacity}
           onPress={() => {
             setModalVisible(true);
             setmedicinelist(medicine);
             setnameId(medicine.id);
           }}>
-          <Layout style={styles.container}>
+          <View style={styles.container}>
             <View style={styles.colorMedicine} />
             <Image
               source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
@@ -175,7 +176,7 @@ export default function MedicineList() {
                     </TouchableWithoutFeedback>
                 </TouchableOpacity>
             </Modal>
-          </Layout>
+          </View>
         </TouchableOpacity>
       );
     }
