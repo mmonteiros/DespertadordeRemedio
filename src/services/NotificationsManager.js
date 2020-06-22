@@ -1,7 +1,7 @@
 import { Platform, Alert, DeviceEventEmitter } from "react-native";
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
-import { AlarmNotification } from "../components/AlarmNotification";
+import { AlarmNotification } from "../components/AlarmManager";
 
 class NotificationsManager {
   
@@ -45,9 +45,8 @@ class NotificationsManager {
           });
     }
 
-    _buildAndroidNotification = (id, title, message, data = {}, options = {}) => {
+    _buildAndroidNotification = (title, message, data = {}, options = {}) => {
         return {
-          id: id,
           autoCancel: true,
           largeIcon: options.largeIcon || "ic_launcher", 
           smallIcon: options.smallIcon || "ic_notification",
@@ -61,12 +60,11 @@ class NotificationsManager {
         }
     }
 
-    _buildIOSNotification = (id, title, message, data = {}, options = {}) => {
+    _buildIOSNotification = (title, message, data = {}, options = {}) => {
         return {
             alertAction: options.alertAction || "view", // (optional) default: view
             category: options.category || "", // (optional) default: empty string
             userInfo: {
-                id: id,
                 item: data
             },
         }
@@ -89,13 +87,13 @@ class NotificationsManager {
           })();
     }
 
-    showNotification = (id, title, message, data = {}, options = {}) => {
+    showNotification = (title, message, data = {}, options = {}) => {
         PushNotification.localNotification({
             /* Android Only Properties */
-            ...this._buildAndroidNotification(id, title, message, data, options),
+            ...this._buildAndroidNotification(title, message, data, options),
 
             /* IOS Only Properties */
-            ...this._buildIOSNotification(id, title, message, data, options),
+            ...this._buildIOSNotification(title, message, data, options),
 
             /* Android and IOS Only Properties */
             title: title || "", 
@@ -106,15 +104,15 @@ class NotificationsManager {
         })
     }
 
-    alarmNotification = (id, title, message, frequency, data = {}, options = {}) => {
-        var frequencyMilli = frequency * 60 * 60 * 1000; // hour to millisecond conversion (hour * minutes * seconds * 1000)
+    alarmNotification = (title, message, frequency, data = {}, options = {}) => {
+        var frequencyMilli = frequency * 60 * 1000; // hour to millisecond conversion (hour * minutes * seconds * 1000)
         
         PushNotification.localNotificationSchedule({
             /* Android Only Properties */
-            ...this._buildAndroidNotification(id, title, message, data, options),
+            ...this._buildAndroidNotification(title, message, data, options),
 
             /* IOS Only Properties */
-            ...this._buildIOSNotification(id, title, message, data, options),
+            ...this._buildIOSNotification(title, message, data, options),
 
             /* Android and IOS Only Properties */
             title: title || "", 

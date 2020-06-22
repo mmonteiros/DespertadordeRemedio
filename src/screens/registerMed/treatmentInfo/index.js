@@ -32,11 +32,6 @@ const InfoIcon = style => <Icon {...style} name='info'/>;
 
 function treatmentInfo({ navigation }) {
 
-  // Local Notification
-  const localNotify = notificationsManager
-  localNotify.configure()
-  localNotify._buildActions()
-
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );
@@ -63,8 +58,13 @@ function treatmentInfo({ navigation }) {
 
     if (isValidate) { 
 
+      // Local Notification
+
+      const localNotify = notificationsManager
+      localNotify.configure()
+      localNotify._buildActions()
+
       localNotify.alarmNotification(
-        1,
         "Lembrete de Medicamento",
         "DataMed.Name",
         parseInt(DataMed.Frequency.text, 10),
