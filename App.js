@@ -18,6 +18,10 @@ import { default as appTheme } from './custom-theme.json'; // <-- Import app the
 import { BaseNavigator } from './src/navigation';
 import firebase from 'react-native-firebase';
 import * as MagicMove from 'react-native-magic-move';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './src/reducers';
+
 
 const theme = { ...lightTheme, ...appTheme };
 
@@ -37,7 +41,8 @@ firebase.auth()
   });
 
 const App = () => (
-  <React.Fragment>
+  <Provider store={createStore(reducers)}>
+    <React.Fragment>
     <IconRegistry icons={EvaIconsPack}/>
     <MagicMove.Provider>
       <ApplicationProvider mapping={mapping} theme={theme}>
@@ -45,6 +50,7 @@ const App = () => (
       </ApplicationProvider>
     </MagicMove.Provider>
   </React.Fragment>
+  </Provider>
 );
 
 export default App;
