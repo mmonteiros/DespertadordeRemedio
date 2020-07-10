@@ -7,12 +7,10 @@ import MedicineItem from './MedicineItem'
 class MedList extends Component {
 
     renderItem(dataMedicine) {
-        //console.log(state)
         return <MedicineItem  medicine={dataMedicine} />
     }
 
     render() {
-        //console.log(this.props)
         return (
             <FlatList 
                 data={this.props.dataMedicine}
@@ -24,7 +22,6 @@ class MedList extends Component {
 }
 
 const mapStateToProps = state => {
-    //console.log(state)
     return { dataMedicine: state.medicines}
 }
 

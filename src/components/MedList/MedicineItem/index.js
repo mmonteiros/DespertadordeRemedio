@@ -1,19 +1,39 @@
-import React, {useState, Component} from 'react';
-import {View, Image, TouchableOpacity, Modal, Alert, FlatList} from 'react-native';
-import {Text, Layout, Divider, Icon, Button} from '@ui-kitten/components';
+import React, { Component , useState } from 'react';
+import {View, Image, TouchableOpacity, Modal} from 'react-native';
+import {Text, Divider, Icon} from '@ui-kitten/components';
+import { connect } from 'react-redux';
 
-import firebaseConfig from '../../../firebase';
-
+import * as actions from '../../../actions';
+import ModalMedicine from './ModalMedicine'
 import styles from './styles';
 
 class MedicineItem extends Component {
 
+    renderModal() {
+      const {medicine, indexMedicine} = this.props;
+      
+      if (indexMedicine != null) {
+        
+        return (
+          <ModalMedicine medicine={medicine} />    
+        )
+      }
+    }
+
     render() {
-
-      //console.log(this.props.medicine.item.name)
-
+      const {id, name, frequency, dosageQuantity, dosageUnit, instructions} = this.props.medicine.item;
+      const {selectMedicine} = this.props;
+      
       return (
-        <TouchableOpacity style={styles.touchableOpacity}>
+        <TouchableOpacity 
+          style={styles.touchableOpacity}
+          onPress={() => {
+            this.props.openModal(),
+            selectMedicine(id)
+          }}
+        >
+         {this.renderModal()}
+         
           <View style={styles.container}>
             <View style={styles.colorMedicine} />
             <Image
@@ -21,9 +41,9 @@ class MedicineItem extends Component {
               style={styles.image}
             />
             <View style={styles.infoContainer}>
-              <Text style={styles.title}>{this.props.medicine.item.name}</Text>
+              <Text style={styles.title}>{name}</Text>
               <Text style={[styles.text, {textAlign: 'center'}]}>
-                {this.props.medicine.item.frequency}
+                {frequency}
               </Text>
               <Divider style={styles.divider} />
               <View style={styles.contentContainer}>
@@ -34,7 +54,7 @@ class MedicineItem extends Component {
                   fill="#404040"
                 />
                 <Text style={styles.text}>
-                  {this.props.medicine.item.dosageQuantity + ' ' + this.props.medicine.item.dosageUnit}
+                  {dosageQuantity + ' ' + dosageUnit}
                 </Text>
               </View>
               <View style={styles.contentContainer}>
@@ -44,14 +64,25 @@ class MedicineItem extends Component {
                   height={20}
                   fill="#404040"
                 />
-                <Text style={styles.text}>{this.props.medicine.item.instructions}</Text>
+                <Text style={styles.text}>{instructions}</Text>
               </View>
             </View>
           </View>
+    
         </TouchableOpacity>
     )
 
     }
 }
 
-export default MedicineItem;
+const mapStateToProps = (state, ownProps) => {
+  let indexMedicine = null;
+
+    if (state.selectedMedicineId === ownProps.medicine.item.id) {
+      indexMedicine = ownProps.medicine.index;
+    }
+
+  return { indexMedicine, selectedMedicineId: state.selectedMedicineId };
+}
+
+export default connect(mapStateToProps, actions)(MedicineItem);

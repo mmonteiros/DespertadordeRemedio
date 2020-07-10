@@ -13,7 +13,7 @@ export default () => [
         dosageQuantity: 1,
         dosageUnit: "Comprimidos",
         instructions: "Tomar em jejum",
-        obs: "Esse medicamento é contra-indicado em caso de suspeita de dengue."
+        obs: "Esse medicamento é contra-indic."
     },
     {
         id : "2",
@@ -29,6 +29,22 @@ export default () => [
         dosageQuantity: 5,
         dosageUnit: "Comprimidos",
         instructions: "Após o almoço",
-        obs: "Esse medicamento é contra-indicado em caso de suspeita de dengue."
-    }
+        obs: "Se tomar vc morre."
+    },
+    {
+        id : "3",
+        name: "xczxzc",
+        containerAmount: 20,
+        containerUnit: "Unidades",
+        expirationDate: "10 de dezembro",
+        initialDate: "19 de julho",
+        initialHour: "15:15",
+        frequency: "6h em 6h",
+        durationOfTreatmentType: "Semanas",
+        durationOfTreatmentNum: 1,
+        dosageQuantity: 5,
+        dosageUnit: "Comprimidos",
+        instructions: "Após o almoço",
+        obs: "dsfsdfdfsdfsdfskdsfkdfkfdkfdksdkmk"
+    },
 ]

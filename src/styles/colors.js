@@ -7,5 +7,5 @@ export default {
   yellow: '#F5CD79',
 
   transparent: 'rgba(0, 0, 0, 0)',
-  transparentLow: 'rgba(52, 52, 52, 0.7)',
+  transparentLow: 'rgba(52, 52, 52, 0.6)',
 };
