@@ -47,6 +47,10 @@ class firebaseConfig extends React.Component {
     return firebase.firestore().collection("Users").doc(`${firebase.auth().currentUser.uid}`).collection("Medicines");
   }
 
+  deleteMed(id) {
+    return firebase.firestore().collection("Users").doc(`${firebase.auth().currentUser.uid}`).collection("Medicines").doc(id).delete();
+  }
+
   getMedicineUserDataFirestore() {
 
     const [DataMed, setDataMed] = React.useState([]);

@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import { FlatList } from 'react-native';
 import { connect } from 'react-redux'
 
-import { medsFetch } from '../../actions';
+import { medsFetch , medsDelete} from '../../actions';
 
 import MedicineItem from './MedicineItem'
 
 class MedList extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.medsFetch();
     }
 
@@ -16,26 +16,38 @@ class MedList extends Component {
         this.props.unsubscribe();
     }*/
 
-    renderItem(dataMedicine) {
-        return <MedicineItem  medicine={dataMedicine} />
+    renderItem(meds) {
+        
+        return <MedicineItem  
+                medicine={meds} 
+                name={meds.item.Name} 
+                frequency={meds.item.Frequency.text} 
+                dosageUnit={meds.item.DosageUnit.text} 
+                dosageQuantity={meds.item.DosageQuantity}
+                instructions={meds.item.Instructions.text}
+                obs={meds.item.Obs}
+                onPressDelete={() => this.props.medsDelete({ meds })} />
     }
 
     render() {
-       
+        
         return (
             <FlatList 
-                data={this.props.dataMedicine}
+                data={this.props.meds}
                 renderItem={this.renderItem}
-                keyExtractor={(dataMedicine) => dataMedicine.id} // Add a id unique
+                keyExtractor={(meds) => meds.id} // Add a id unique
             />
         )
     } 
 }
 
 const mapStateToProps = state => {
-    return { dataMedicine: state.meds };
+    
+
+    const { loading, meds, unsubscribe } = state.meds;
+    return { loading, meds, unsubscribe };
 
     //return { dataMedicine: state.medicines}
 }
 
-export default connect(mapStateToProps, {medsFetch} )(MedList);
+export default connect(mapStateToProps, {medsFetch, medsDelete} )(MedList);

@@ -15,6 +15,7 @@ import {Routes, BaseNavigator} from '../../navigation';
 import * as MagicMove from 'react-native-magic-move';
 
 import styles from './styles';
+import MedList from '../../components/MedList';
 
 const MenuIcon = (style) => <Icon {...style} name="menu-outline" />;
 
@@ -48,7 +49,7 @@ class HomeScreen extends React.Component {
         <Divider />
         <Layout style={styles.container}>
           <ScrollView>
-            <MedicinesList/>
+            <MedList/>
           </ScrollView>
         </Layout>
       </SafeAreaView>

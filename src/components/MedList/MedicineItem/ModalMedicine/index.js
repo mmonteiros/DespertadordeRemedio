@@ -23,7 +23,7 @@ const trashIcon = style => (
 class ModalMedicine extends Component {
     render() {
 
-        const { name, frequency, dosageQuantity, dosageUnit, instructions, obs } = this.props.medicine.item;
+        //const { name, frequency, dosageQuantity, dosageUnit, instructions, obs } = this.props.medicine.item;
         const { modalIsOpen } = this.props.modal;
 
         return (
@@ -67,9 +67,9 @@ class ModalMedicine extends Component {
                                         <Icon name={'trash-2'} width={45} height={45} fill="#404040" />
                                         </TouchableOpacity>*/}
                                     </View>
-                                    <Text style={styles.titleModal}>{name}</Text>
+                                    <Text style={styles.titleModal}>{this.props.name}</Text>
                                     <Text style={[styles.text, {textAlign: 'center'}]}>
-                                        {frequency}
+                                        {this.props.frequency}
                                     </Text>
                                     </View>
                                 </View>
@@ -78,22 +78,22 @@ class ModalMedicine extends Component {
                                     <View style={styles.contentContainer}>
                                     <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
                                     <Text style={styles.text}>
-                                    {dosageQuantity + ' ' + dosageUnit}
+                                    {this.props.dosageQuantity + ' ' + this.props.dosageUnit}
                                     </Text>
                                     </View>
                                     <View style={styles.contentContainer}>
                                     <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
-                                    <Text style={styles.text}>{instructions}                                                     .</Text>
+                                    <Text style={styles.text}>{this.props.instructions}                                                     .</Text>
                                     </View>
                                     <View style={styles.contentContainer}>
                                     <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
                                     <Text style={styles.text}>
-                                        {'Tomar de ' + frequency}
+                                        {'Tomar de ' + this.props.frequency}
                                     </Text>
                                     </View>
                                     <View style={styles.contentContainer}>
                                     <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
-                                    <Text style={styles.text}>{obs}</Text>
+                                    <Text style={styles.text}>{this.props.obs}</Text>
                                     </View>
                                 </View>
                     
