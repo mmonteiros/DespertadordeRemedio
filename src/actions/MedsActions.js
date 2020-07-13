@@ -51,3 +51,35 @@ export const medsFetch = () => {
       });
   };
 };
+
+export const medsDelete = ({ item }) => {
+  return (dispatch) => {
+    Alert.alert(
+       'app.deleteMessage',
+       item.name,
+       [
+         { text: 'app.yes', onPress: () => onPressMedsDelete(dispatch, item.id) },
+         { text: 'app.cancel', style: 'cancel' }
+       ],
+       { cancelable: true }
+     );
+  };
+};
+
+
+// Private
+
+const onPressMedsDelete = (dispatch, id) => {
+  firebaseConfig.deleteMed(id)
+    .then(() => {
+      dispatch({ type: MEDS_DELETE });
+    })
+    .catch(() => {
+      Alert.alert(
+        'app.attention',
+        'app.deleteFailureMessage',
+        [{ text: 'app.ok' }],
+        { cancelable: true }
+      );
+    });
+};

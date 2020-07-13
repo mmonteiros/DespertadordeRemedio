@@ -10,6 +10,7 @@ import Alarm from '../../../services/Alarm';
 
 class MedicineItem extends Component {
 
+<<<<<<< HEAD
   // constructor(props) {
   //   super(props);
   //   this.alarm = Alarm
@@ -23,13 +24,39 @@ class MedicineItem extends Component {
       return (
         <ModalMedicine medicine={medicine} />    
       )
+=======
+    renderModal() {
+      const {medicine, indexMedicine} = this.props;
+     
+      if (indexMedicine != null) {
+        
+        return (
+          <ModalMedicine 
+          medicine={medicine} 
+          name = {medicine.item.Name}
+          frequency = {medicine.item.Frequency.text}
+          dosageQuantity = {medicine.item.DosageQuantity}
+          dosageUnit = {medicine.item.DosageUnit.text} 
+          instructions = {medicine.item.Instructions.text}
+          obs = {medicine.item.Obs}
+          onPressDelete={() => this.props.medsDelete({ item })}/>    
+        )
+      }
+>>>>>>> b35bc84519677757a7243a0d4866ed1663c783d7
     }
   }
 
+<<<<<<< HEAD
   render() {
     const {id, name, frequency, dosageQuantity, dosageUnit, instructions} = this.props.medicine.item;
     const {selectMedicine, medicine} = this.props;
     
+=======
+    render() {
+      const {id} = this.props.medicine.item;
+      const {selectMedicine} = this.props;
+      
+>>>>>>> b35bc84519677757a7243a0d4866ed1663c783d7
       return (
         <TouchableOpacity 
           style={styles.touchableOpacity}
@@ -48,9 +75,9 @@ class MedicineItem extends Component {
               style={styles.image}
             />
             <View style={styles.infoContainer}>
-              <Text style={styles.title}>{name}</Text>
+              <Text style={styles.title}>{this.props.name}</Text>
               <Text style={[styles.text, {textAlign: 'center'}]}>
-                {frequency}
+                {this.props.frequency}
               </Text>
               <Divider style={styles.divider} />
               <View style={styles.contentContainer}>
@@ -61,7 +88,7 @@ class MedicineItem extends Component {
                   fill="#404040"
                 />
                 <Text style={styles.text}>
-                  {dosageQuantity + ' ' + dosageUnit}
+                  {this.props.dosageQuantity + ' ' + this.props.dosageUnit}
                 </Text>
               </View>
               <View style={styles.contentContainer}>
@@ -71,7 +98,7 @@ class MedicineItem extends Component {
                   height={20}
                   fill="#404040"
                 />
-                <Text style={styles.text}>{instructions}</Text>
+                <Text style={styles.text}>{this.props.instructions}</Text>
               </View>
             </View>
           </View>
