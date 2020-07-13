@@ -43,6 +43,10 @@ class firebaseConfig extends React.Component {
     this.state.initialHour = hour;
   }
 
+  medsCollection() {
+    return firebase.firestore().collection("Users").doc(`${firebase.auth().currentUser.uid}`).collection("Medicines");
+  }
+
   getMedicineUserDataFirestore() {
 
     const [DataMed, setDataMed] = React.useState([]);

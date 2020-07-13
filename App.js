@@ -19,7 +19,8 @@ import { BaseNavigator } from './src/navigation';
 import firebase from 'react-native-firebase';
 import * as MagicMove from 'react-native-magic-move';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import reducers from './src/reducers';
 
 
@@ -41,7 +42,7 @@ firebase.auth()
   });
 
 const App = () => (
-  <Provider store={createStore(reducers)}>
+  <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
     <React.Fragment>
     <IconRegistry icons={EvaIconsPack}/>
     <MagicMove.Provider>
