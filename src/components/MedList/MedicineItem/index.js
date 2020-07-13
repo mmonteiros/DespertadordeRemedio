@@ -6,24 +6,30 @@ import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import ModalMedicine from './ModalMedicine'
 import styles from './styles';
+import Alarm from '../../../services/Alarm';
 
 class MedicineItem extends Component {
 
-    renderModal() {
-      const {medicine, indexMedicine} = this.props;
-      
-      if (indexMedicine != null) {
-        
-        return (
-          <ModalMedicine medicine={medicine} />    
-        )
-      }
-    }
+  // constructor(props) {
+  //   super(props);
+  //   this.alarm = Alarm
+  // }
 
-    render() {
-      const {id, name, frequency, dosageQuantity, dosageUnit, instructions} = this.props.medicine.item;
-      const {selectMedicine} = this.props;
+  renderModal() {
+    const {medicine, indexMedicine} = this.props;
+    
+    if (indexMedicine != null) {
       
+      return (
+        <ModalMedicine medicine={medicine} />    
+      )
+    }
+  }
+
+  render() {
+    const {id, name, frequency, dosageQuantity, dosageUnit, instructions} = this.props.medicine.item;
+    const {selectMedicine, medicine} = this.props;
+    
       return (
         <TouchableOpacity 
           style={styles.touchableOpacity}
@@ -32,8 +38,9 @@ class MedicineItem extends Component {
             selectMedicine(id)
           }}
         >
-         {this.renderModal()}
-         
+          <Alarm medicine={medicine}/>
+          {this.renderModal()}
+          
           <View style={styles.container}>
             <View style={styles.colorMedicine} />
             <Image
@@ -68,11 +75,11 @@ class MedicineItem extends Component {
               </View>
             </View>
           </View>
-    
+          
         </TouchableOpacity>
     )
 
-    }
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {
