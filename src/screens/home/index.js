@@ -48,9 +48,7 @@ class HomeScreen extends React.Component {
         </Layout>
         <Divider />
         <Layout style={styles.container}>
-          <ScrollView>
-            <MedList/>
-          </ScrollView>
+          <MedList/>
         </Layout>
       </SafeAreaView>
     );
