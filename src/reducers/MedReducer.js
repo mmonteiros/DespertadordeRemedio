@@ -14,7 +14,8 @@ const INITIAL_STATE = {
     DosageQuantity: '',
     DosageUnit: '',
     Instructions: '',
-    Obs: ''
+    Obs: '',
+    Complete: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
