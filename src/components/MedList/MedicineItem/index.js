@@ -6,25 +6,10 @@ import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import ModalMedicine from './ModalMedicine'
 import styles from './styles';
-import Alarm from '../../../services/Alarm';
+import Alarm from '../../../components/Alarm/';
 
 class MedicineItem extends Component {
 
-<<<<<<< HEAD
-  // constructor(props) {
-  //   super(props);
-  //   this.alarm = Alarm
-  // }
-
-  renderModal() {
-    const {medicine, indexMedicine} = this.props;
-    
-    if (indexMedicine != null) {
-      
-      return (
-        <ModalMedicine medicine={medicine} />    
-      )
-=======
     renderModal() {
       const {medicine, indexMedicine} = this.props;
      
@@ -42,30 +27,24 @@ class MedicineItem extends Component {
           onPressDelete={() => this.props.medsDelete({ item })}/>    
         )
       }
->>>>>>> b35bc84519677757a7243a0d4866ed1663c783d7
     }
-  }
 
-<<<<<<< HEAD
-  render() {
-    const {id, name, frequency, dosageQuantity, dosageUnit, instructions} = this.props.medicine.item;
-    const {selectMedicine, medicine} = this.props;
-    
-=======
     render() {
-      const {id} = this.props.medicine.item;
-      const {selectMedicine} = this.props;
+      const {medicine, selectMedicine} = this.props;
       
->>>>>>> b35bc84519677757a7243a0d4866ed1663c783d7
       return (
         <TouchableOpacity 
           style={styles.touchableOpacity}
           onPress={() => {
             this.props.openModal(),
-            selectMedicine(id)
+            selectMedicine(medicine.item.id)
           }}
         >
-          <Alarm medicine={medicine}/>
+          <Alarm 
+            medicine={medicine}
+            name = {medicine.item.Name}
+            frequency = {medicine.item.Frequency.text}
+            />
           {this.renderModal()}
           
           <View style={styles.container}>
