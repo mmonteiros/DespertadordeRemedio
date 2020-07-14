@@ -17,16 +17,19 @@ class MedList extends Component {
     }*/
 
     renderItem(meds) {
-        
-        return <MedicineItem  
-                medicine={meds} 
-                name={meds.item.Name} 
-                frequency={meds.item.Frequency.text} 
-                dosageUnit={meds.item.DosageUnit.text} 
-                dosageQuantity={meds.item.DosageQuantity}
-                instructions={meds.item.Instructions.text}
-                obs={meds.item.Obs}
-                onPressDelete={() => this.props.medsDelete({ meds })} />
+        if(meds.item.Complete) {
+
+            return <MedicineItem  
+                    medicine={meds} 
+                    name={meds.item.Name} 
+                    frequency={meds.item.Frequency.text} 
+                    dosageUnit={meds.item.DosageUnit.text} 
+                    dosageQuantity={meds.item.DosageQuantity}
+                    instructions={meds.item.Instructions.text}
+                    obs={meds.item.Obs}
+                    onPressDelete={() => this.props.medsDelete({ meds })} />
+
+        }
     }
 
     render() {

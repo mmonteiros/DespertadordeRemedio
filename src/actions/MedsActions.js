@@ -26,7 +26,8 @@ export const medsFetch = () => {
                 DosageQuantity,
                 DosageUnit,
                 Instructions,
-                Obs
+                Obs,
+                Complete
                 } = doc.data();
           meds.push({ id: doc.id, 
                 Name, 
@@ -41,7 +42,9 @@ export const medsFetch = () => {
                 DosageQuantity,
                 DosageUnit,
                 Instructions,
-                Obs });
+                Obs,
+                Complete
+                });
         });
 
         dispatch({
