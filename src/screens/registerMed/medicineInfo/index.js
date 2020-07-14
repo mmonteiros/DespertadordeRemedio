@@ -20,8 +20,8 @@ import firebaseConfig from '../../../firebase';
 import Validate from './../validateMedicine';
 import ImagePickerPage from './imagePicker';
 
-import {DropDownMenu} from '../../../components/DropDownMenu';
-import {DatepickerIcon} from '../../../components/DatePicker';
+import {DropDownMenu} from '../../../components/Common/DropDownMenu';
+import {DatepickerIcon} from '../../../components/Common/DatePicker';
 import * as MagicMove from 'react-native-magic-move';
 import styles from './styles';
 

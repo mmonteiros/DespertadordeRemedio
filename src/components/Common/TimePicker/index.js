@@ -8,7 +8,7 @@ import moment from 'moment';
 import styles from './styles';
 import {Value} from 'react-native-reanimated';
 
-import firebaseConfig from '../../firebase';
+import firebaseConfig from '../../../firebase';
 
 export const Time = (value, onSelect) => {
   const [date, setDate] = useState(new Date(1598051730000));

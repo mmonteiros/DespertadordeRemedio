@@ -1,9 +1,8 @@
-import { Platform, Alert, DeviceEventEmitter } from "react-native";
-import PushNotification from "react-native-push-notification";
+import { Platform, DeviceEventEmitter } from "react-native";
+import PushNotification, { PushNotificationScheduleObject } from "react-native-push-notification";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
-import { AlarmNotification } from "../components/AlarmManager";
 
-class NotificationsManager {
+class PushNotifications  {
   
     configure = () => {
         PushNotification.configure({
@@ -104,18 +103,20 @@ class NotificationsManager {
         })
     }
 
-    alarmNotification = (title, message, frequency, data = {}, options = {}) => {
-        var frequencyMilli = frequency * 60 * 1000; // hour to millisecond conversion (hour * minutes * seconds * 1000)
-        
-        PushNotification.localNotificationSchedule({
+    alarmNotification = (message, options = {}) => {      
+      // hour to millisecond conversion (hour * minutes * seconds * miliseonds)
+      //var frequencyMilli = frequency * 60 * 60 * 1000;
+      //console.log(date)
+      
+      PushNotification.localNotification({
             /* Android Only Properties */
-            ...this._buildAndroidNotification(title, message, data, options),
+            ...this._buildAndroidNotification("Lembrete de Medicamento!", message, {}, options),
 
             /* IOS Only Properties */
-            ...this._buildIOSNotification(title, message, data, options),
+            ...this._buildIOSNotification("Lembrete de Medicamento!", message, {}, options),
 
             /* Android and IOS Only Properties */
-            title: title || "", 
+            title: "Lembrete de Medicamento!", 
             message: message || "", 
 
             autoCancel: false,
@@ -129,9 +130,9 @@ class NotificationsManager {
             actions: '["Accept", "Reject"]',
     
             // Alarm Clock Time
-            date: new Date(Date.now() + frequencyMilli),
-            repeatTime: frequencyMilli,
-            repeatType: "time",         
+            // date: date,
+            // repeatTime: frequencyMilli,
+            // repeatType: "time",         
             
           })
     }
@@ -144,6 +145,8 @@ class NotificationsManager {
         }
     }
 
+    // Add cancel notification logic by ID
+
 }
 
-export const notificationsManager = new NotificationsManager()
+export const pushNotifications = new PushNotifications();

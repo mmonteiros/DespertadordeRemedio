@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../styles';
+import {colors, fonts} from '../../../styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,7 +8,10 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     height: 55,
     width: 150,
-    //minHeight: 376,
+  },
+  text: {
+    color: '#8F9BB3',
+    fontSize: fonts.regular,
   },
 });
 

@@ -1,7 +1,6 @@
 import React, {Children, useState} from 'react';
 import {View, ScrollView} from 'react-native';
 import {SafeAreaView, NavigationActions, StackActions} from 'react-navigation';
-import { notificationsManager } from '../../../services/NotificationsManager';
 import {
   Divider,
   Icon,
@@ -16,9 +15,9 @@ import {
   Tooltip,
 } from '@ui-kitten/components';
 
-import {DropDownMenu} from '../../../components/DropDownMenu';
-import {DatepickerIcon} from '../../../components/DatePicker';
-import {Time} from '../../../components/TimePicker';
+import {DropDownMenu} from '../../../components/Common/DropDownMenu';
+import {DatepickerIcon} from '../../../components/Common/DatePicker';
+import {Time} from '../../../components/Common/TimePicker';
 import styles from '../medicineInfo/styles';
 import firebaseConfig from '../../../firebase';
 
@@ -60,17 +59,17 @@ function treatmentInfo({ navigation }) {
 
       // Local Notification
 
-      const localNotify = notificationsManager
-      localNotify.configure()
-      localNotify._buildActions()
+      // const localNotify = notificationsManager
+      // localNotify.configure()
+      // localNotify._buildActions()
 
-      localNotify.alarmNotification(
-        "Lembrete de Medicamento",
-        "DataMed.Name",
-        parseInt(DataMed.Frequency.text, 10),
-        {},
-        {}
-      )
+      // localNotify.alarmNotification(
+      //   "Lembrete de Medicamento",
+      //   "DataMed.Name",
+      //   parseInt(DataMed.Frequency.text, 10),
+      //   {},
+      //   {}
+      // )
 
       firebaseConfig.updateData(DataMed);
 
