@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, ScrollView} from 'react-navigation';
+import { SafeAreaView } from 'react-navigation';
 import {
   Icon,
   Button,
