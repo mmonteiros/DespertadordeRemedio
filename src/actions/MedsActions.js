@@ -14,7 +14,8 @@ export const medsFetch = () => {
 
         querySnapshot.forEach((doc) => {
           const { 
-                Name, 
+                Name,
+                imageUrl, 
                 ContainerAmount,
                 ContainerUnit,
                 ExpirationDate,
@@ -31,6 +32,7 @@ export const medsFetch = () => {
                 } = doc.data();
           meds.push({ id: doc.id, 
                 Name, 
+                imageUrl,
                 ContainerAmount,
                 ContainerUnit,
                 ExpirationDate,
@@ -58,11 +60,11 @@ export const medsFetch = () => {
 export const medsDelete = ({ item }) => {
   return (dispatch) => {
     Alert.alert(
-       'app.deleteMessage',
-       item.name,
+       'Você excluirá o medicamento?',
+       item,
        [
-         { text: 'app.yes', onPress: () => onPressMedsDelete(dispatch, item.id) },
-         { text: 'app.cancel', style: 'cancel' }
+         { text: 'Sim ,tenho certeza', onPress: () => onPressMedsDelete(dispatch, item) },
+         { text: 'Cancelar', style: 'cancel' }
        ],
        { cancelable: true }
      );

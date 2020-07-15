@@ -19,15 +19,27 @@ const trashIcon = style => (
 <Icon {...style} name="trash-2" width={45} height={45} fill="#404040"/>
 );
 
-
+//uri: 'https://reactnative.dev/img/tiny_logo.png'
 class ModalMedicine extends Component {
+
+    showImage() {
+        if(this.props.imageUrl){
+          return {uri: this.props.imageUrl};
+        }
+        
+        else{
+          return require('./../../../../screens/registerMed/medicineInfo/imagePicker/dummy.png');
+        }
+      }
+
     render() {
 
         //const { name, frequency, dosageQuantity, dosageUnit, instructions, obs } = this.props.medicine.item;
         const { modalIsOpen } = this.props.modal;
+        const item = this.props.name;
 
         return (
-             
+            
             <Modal
               transparent={true}
               visible={modalIsOpen}
@@ -44,7 +56,7 @@ class ModalMedicine extends Component {
                             <View>
                                 <View style={{flexDirection: 'row'}}>
                                     <Image
-                                    source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+                                    source={this.showImage()}
                                     style={styles.imageModal}
                                     />
                                     <View style={{flex: 1}}>
@@ -56,7 +68,7 @@ class ModalMedicine extends Component {
                                         */} 
                                         <Button
                                         onPress={() => {
-                                            navigateHome();
+                                            this.props.medsDelete({ item });
                                         }}
                                         appearance="ghost"
                                         icon={trashIcon}

@@ -26,6 +26,7 @@ class MedList extends Component {
                     dosageUnit={meds.item.DosageUnit.text} 
                     dosageQuantity={meds.item.DosageQuantity}
                     instructions={meds.item.Instructions.text}
+                    imageUrl={meds.item.imageUrl}
                     obs={meds.item.Obs}
                     onPressDelete={() => this.props.medsDelete({ meds })} />
 

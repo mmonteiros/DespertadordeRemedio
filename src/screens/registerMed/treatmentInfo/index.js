@@ -161,7 +161,6 @@ function treatmentInfo({ navigation }) {
           alignment="left"
           backgroundColor="white"
           leftControl={BackAction()}
-          rightControls={renderSearchAction()}
         />
         <Divider />
       </Layout>

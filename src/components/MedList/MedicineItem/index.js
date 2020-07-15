@@ -19,6 +19,7 @@ class MedicineItem extends Component {
           <ModalMedicine 
           medicine={medicine} 
           name = {medicine.item.Name}
+          imageUrl = {medicine.item.imageUrl}
           frequency = {medicine.item.Frequency.text}
           dosageQuantity = {medicine.item.DosageQuantity}
           dosageUnit = {medicine.item.DosageUnit.text} 
@@ -26,6 +27,16 @@ class MedicineItem extends Component {
           obs = {medicine.item.Obs}
           onPressDelete={() => this.props.medsDelete({ item })}/>    
         )
+      }
+    }
+
+    showImage() {
+      if(this.props.imageUrl){
+        return {uri: this.props.imageUrl};
+      }
+      
+      else{
+        return require('./../../../screens/registerMed/medicineInfo/imagePicker/dummy.png');
       }
     }
 
@@ -40,17 +51,21 @@ class MedicineItem extends Component {
             selectMedicine(medicine.item.id)
           }}
         >
+<<<<<<< HEAD
           <Alarm 
             medicine={medicine}
             name = {medicine.item.Name}
             frequency = {medicine.item.Frequency.text}
             />
+=======
+          {/*<Alarm medicine={medicine}/>*/}
+>>>>>>> d018bcee4c4be93c15ec671259038e85dfedec5d
           {this.renderModal()}
           
           <View style={styles.container}>
             <View style={styles.colorMedicine} />
             <Image
-              source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+              source={this.showImage()}
               style={styles.image}
             />
             <View style={styles.infoContainer}>

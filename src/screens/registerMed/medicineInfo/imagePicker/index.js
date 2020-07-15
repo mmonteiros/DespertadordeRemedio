@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import ImagePicker from 'react-native-image-picker';
+import FirebaseConfig from './../../../../firebase'
 
 import {
   SafeAreaView,
@@ -53,6 +54,10 @@ class ImagePickerPage extends Component {
   );
 
   navigateImagePicker = () => {
+
+    FirebaseConfig.setImageUrl(this.state.fileUri);
+    FirebaseConfig.uploadImage(this.state.fileData);
+
     this.props.navigation.navigate('Register');
   }
 
@@ -84,7 +89,7 @@ class ImagePickerPage extends Component {
         console.log('response', JSON.stringify(response));
         this.setState({
           filePath: response,
-          fileData: response.data,
+          fileData: response.path,
           fileUri: response.uri
         });
       }
@@ -157,7 +162,7 @@ class ImagePickerPage extends Component {
         console.log('response', JSON.stringify(response));
         this.setState({
           filePath: response,
-          fileData: response.data,
+          fileData: response.path,
           fileUri: response.uri
         });
       }
@@ -187,7 +192,7 @@ class ImagePickerPage extends Component {
         console.log('response', JSON.stringify(response));
         this.setState({
           filePath: response,
-          fileData: response.data,
+          fileData: response.path,
           fileUri: response.uri
         });
       }
