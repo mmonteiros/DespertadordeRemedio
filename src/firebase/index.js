@@ -1,15 +1,27 @@
 import React from 'react';
+import md5 from 'md5';
+import DeviceInfo from 'react-native-device-info';
 import firebase, { firestore } from 'react-native-firebase';
 
 class firebaseConfig extends React.Component {
 
   state = {
     nameMed: '',
+    imageUrl: '',
     initialHour: null,
+  }
+
+  setImageUrl(url){
+    this.state.imageUrl = url;
   }
 
   async setData(nameMed, DataMed){
     this.state.nameMed = nameMed;
+
+    DataMed = {
+      ...DataMed,
+      imageUrl: this.state.imageUrl,
+    }
 
     firebase
     .firestore()
@@ -117,6 +129,18 @@ class firebaseConfig extends React.Component {
     
   }
 
+  uploadImage(path) {
+    const id = imageId();
+    const metadata = { cacheControl: 'public,max-age=604800', contentType: 'image of med' };
+    return firebase.storage().ref(`/meds/${firebase.auth().currentUser.uid}/images/${id}.jpg`).putFile(path, metadata);
+  }
+
+}
+
+function imageId() {
+  const uniqueID = DeviceInfo.getUniqueId();
+  const date = Date.parse(Date());
+  return md5(`${uniqueID}-${date}`);
 }
 
 export default new firebaseConfig;

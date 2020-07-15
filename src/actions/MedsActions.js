@@ -14,7 +14,8 @@ export const medsFetch = () => {
 
         querySnapshot.forEach((doc) => {
           const { 
-                Name, 
+                Name,
+                imageUrl, 
                 ContainerAmount,
                 ContainerUnit,
                 ExpirationDate,
@@ -31,6 +32,7 @@ export const medsFetch = () => {
                 } = doc.data();
           meds.push({ id: doc.id, 
                 Name, 
+                imageUrl,
                 ContainerAmount,
                 ContainerUnit,
                 ExpirationDate,

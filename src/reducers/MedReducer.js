@@ -3,6 +3,7 @@ import { MED_CLEAN, MED_DELETE, MED_SAVE, MED_UPDATE } from '../actions/types';
 const INITIAL_STATE = {
     id : null,
     Name: '',
+    imageUrl: '',
     ContainerAmount: '',
     ContainerUnit: '',
     ExpirationDate: '',
