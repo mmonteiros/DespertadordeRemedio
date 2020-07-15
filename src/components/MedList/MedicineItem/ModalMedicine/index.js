@@ -25,6 +25,7 @@ class ModalMedicine extends Component {
 
         //const { name, frequency, dosageQuantity, dosageUnit, instructions, obs } = this.props.medicine.item;
         const { modalIsOpen } = this.props.modal;
+        const item = this.props.name;
 
         return (
              
@@ -56,7 +57,7 @@ class ModalMedicine extends Component {
                                         */} 
                                         <Button
                                         onPress={() => {
-                                            navigateHome();
+                                            this.props.medsDelete({ item });
                                         }}
                                         appearance="ghost"
                                         icon={trashIcon}

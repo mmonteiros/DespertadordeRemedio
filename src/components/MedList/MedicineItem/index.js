@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import ModalMedicine from './ModalMedicine'
 import styles from './styles';
-import Alarm from '../../../services/Alarm';
+//import Alarm from '../../../services/Alarm';
 
 class MedicineItem extends Component {
 
@@ -41,7 +41,7 @@ class MedicineItem extends Component {
             selectMedicine(id)
           }}
         >
-          <Alarm medicine={medicine}/>
+          {/*<Alarm medicine={medicine}/>*/}
           {this.renderModal()}
           
           <View style={styles.container}>
