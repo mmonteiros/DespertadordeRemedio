@@ -51,7 +51,7 @@ export default function Alarm (props) {
         // const alarmHour = new Date()
         // alarmHour.setMinutes(10, 0)
 
-        console.log("Alarm Hour - " + alarmHour)
+        console.log("Next Alarm Hour - " + alarmHour)
 
         localyNotification.alarmNotification(
             props.name,

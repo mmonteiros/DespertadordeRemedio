@@ -105,10 +105,8 @@ class PushNotifications  {
 
     alarmNotification = (name, instrutions, frequency, date, options = {}) => {      
       // hour to millisecond conversion (hour * minutes * miliseonds)
-      var frequencyMilli = 2 * 60 * 1000;
-      
-      //this.cancelAllLocalNotification();
-      
+      var frequencyMilli = frequency * 60 * 60 * 1000;
+           
       PushNotification.localNotificationSchedule({
             /* Android Only Properties */
             ...this._buildAndroidNotification("Lembrete de Medicamento!", name, {}, options),
@@ -134,7 +132,7 @@ class PushNotifications  {
             actions: '["Accept", "Reject"]',
     
             // // Alarm Clock Time
-             date: date,
+            date: date,
             repeatTime: frequencyMilli,
             repeatType: "time",         
             
@@ -143,7 +141,6 @@ class PushNotifications  {
 
     getDeliveredNotifications = () => {
         PushNotificationIOS.getDeliveredNotifications(callback);
-        //console.log(callback)
     }
 
     cancelLocalNotifications = (id) => {
