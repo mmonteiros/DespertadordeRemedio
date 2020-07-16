@@ -9,10 +9,22 @@ class firebaseConfig extends React.Component {
     nameMed: '',
     imageUrl: '',
     initialHour: null,
+    fileData: null,
   }
 
   setImageUrl(url){
     this.state.imageUrl = url;
+  }
+
+  setfileData(data) {
+    this.state.fileData = data;
+  }
+
+  cleanState() {
+    this.state.nameMed = '';
+    this.state.imageUrl = '';
+    this.state.initialHour = null;
+    this.state.fileData = null;
   }
 
   async setData(nameMed, DataMed){
@@ -38,6 +50,10 @@ class firebaseConfig extends React.Component {
   async updateData(DataMed){
     DataMed.InitialHour = this.state.initialHour;
     
+    if(this.state.fileData) {
+      this.uploadImage(this.state.fileData);
+    }
+
     firebase
     .firestore()
     .collection("Users")
@@ -48,6 +64,8 @@ class firebaseConfig extends React.Component {
     .then((ref) => {
         console.log(ref) 
     });
+
+    this.cleanState();
 
   }
 

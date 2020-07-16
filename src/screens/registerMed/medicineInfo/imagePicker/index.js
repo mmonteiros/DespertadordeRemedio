@@ -53,10 +53,19 @@ class ImagePickerPage extends Component {
     />
   );
 
+  cleanState() {
+    this.state.filepath.data = '';
+    this.state.filepath.uri = '';
+    this.state.fileData = null;
+    this.state.fileUri = '';
+  }
+
   navigateImagePicker = () => {
 
     FirebaseConfig.setImageUrl(this.state.fileUri);
-    FirebaseConfig.uploadImage(this.state.fileData);
+    FirebaseConfig.setfileData(this.state.fileData);
+    
+    this.cleanState();
 
     this.props.navigation.navigate('Register');
   }

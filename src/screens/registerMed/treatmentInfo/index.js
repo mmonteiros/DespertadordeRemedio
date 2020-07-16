@@ -159,7 +159,7 @@ function treatmentInfo({ navigation }) {
       <Layout style={styles.safeArea}>
         <TopNavigation
           title="Registar Medicamento"
-          alignment="left"
+          alignment="start"
           backgroundColor="white"
           leftControl={BackAction()}
         />
