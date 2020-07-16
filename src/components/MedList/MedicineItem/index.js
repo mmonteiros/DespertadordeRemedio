@@ -51,15 +51,14 @@ class MedicineItem extends Component {
             selectMedicine(medicine.item.id)
           }}
         >
-<<<<<<< HEAD
+
           <Alarm 
             medicine={medicine}
             name = {medicine.item.Name}
             frequency = {medicine.item.Frequency.text}
+            initialHour={medicine.item.InitialHour}
+            instructions={medicine.item.Instructions.text}
             />
-=======
-          {/*<Alarm medicine={medicine}/>*/}
->>>>>>> d018bcee4c4be93c15ec671259038e85dfedec5d
           {this.renderModal()}
           
           <View style={styles.container}>

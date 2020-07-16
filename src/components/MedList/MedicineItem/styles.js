@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   colorMedicine: {
     backgroundColor: '#546de5',
     height: '100%',
-    width: 15,
+    width: 10,
   },
 
   image: {
@@ -55,11 +55,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    paddingTop: 5,
+    paddingTop: 15,
     fontSize: fonts.bigger24,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 6,
   },
   contentContainer: {
     flexDirection: 'row',

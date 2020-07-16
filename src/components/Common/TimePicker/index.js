@@ -4,6 +4,8 @@ import {View, Platform} from 'react-native';
 import {Button, Text} from '@ui-kitten/components';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
+ // Upgrade moment to date-fns
+//import format from 'date-fns'
 
 import styles from './styles';
 import {Value} from 'react-native-reanimated';
@@ -11,7 +13,7 @@ import {Value} from 'react-native-reanimated';
 import firebaseConfig from '../../../firebase';
 
 export const Time = (value, onSelect) => {
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
   const [showText, setShowText] = useState(true);
   const [show, setShow] = useState(false);
@@ -34,7 +36,7 @@ export const Time = (value, onSelect) => {
   };
 
   useEffect(() => {
-    firebaseConfig.updateInitialHour(moment.utc(date).format('HH:mm'));
+    firebaseConfig.updateInitialHour(moment(date).format('HH:mm'));
   });
 
   return (
@@ -45,7 +47,7 @@ export const Time = (value, onSelect) => {
           style={styles.container}
           textStyle={styles.text}>
           {showText && 'Insira a Hora'}
-          {!showText && moment.utc(date).format('HH:mm')}
+          {!showText && moment(date).format('HH:mm')}
         </Button>
       </View>
       {show && (

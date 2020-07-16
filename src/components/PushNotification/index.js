@@ -103,25 +103,29 @@ class PushNotifications  {
         })
     }
 
-    alarmNotification = (message, options = {}) => {      
-      // hour to millisecond conversion (hour * minutes * seconds * miliseonds)
-      //var frequencyMilli = frequency * 60 * 60 * 1000;
-      //console.log(date)
+    alarmNotification = (name, instrutions, frequency, date, options = {}) => {      
+      // hour to millisecond conversion (hour * minutes * miliseonds)
+      var frequencyMilli = 2 * 60 * 1000;
       
-      PushNotification.localNotification({
+      //this.cancelAllLocalNotification();
+      
+      PushNotification.localNotificationSchedule({
             /* Android Only Properties */
-            ...this._buildAndroidNotification("Lembrete de Medicamento!", message, {}, options),
+            ...this._buildAndroidNotification("Lembrete de Medicamento!", name, {}, options),
 
             /* IOS Only Properties */
-            ...this._buildIOSNotification("Lembrete de Medicamento!", message, {}, options),
+            ...this._buildIOSNotification("Lembrete de Medicamento!", name, {}, options),
 
             /* Android and IOS Only Properties */
             title: "Lembrete de Medicamento!", 
-            message: message || "", 
+            message: name || "",
+            //bigText: "Instruções: " + instrutions || "",
+            subText: "",
 
+            //id: name,
             autoCancel: false,
             vibrate: options.vibrate || true,
-            vibration: options.vibration || 5000,
+            vibration: options.vibration || 3500,
             priority: "hight",
             importance: "high",
             playSound: options.playSound || true,
@@ -129,12 +133,21 @@ class PushNotifications  {
 
             actions: '["Accept", "Reject"]',
     
-            // Alarm Clock Time
-            // date: date,
-            // repeatTime: frequencyMilli,
-            // repeatType: "time",         
+            // // Alarm Clock Time
+             date: date,
+            repeatTime: frequencyMilli,
+            repeatType: "time",         
             
           })
+    }
+
+    getDeliveredNotifications = () => {
+        PushNotificationIOS.getDeliveredNotifications(callback);
+        //console.log(callback)
+    }
+
+    cancelLocalNotifications = (id) => {
+      PushNotification.cancelLocalNotifications({id: id});
     }
 
     cancelAllLocalNotification = () => {
@@ -149,4 +162,4 @@ class PushNotifications  {
 
 }
 
-export const pushNotifications = new PushNotifications();
+export default PushNotifications;

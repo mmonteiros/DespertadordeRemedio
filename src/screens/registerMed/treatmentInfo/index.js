@@ -57,7 +57,7 @@ function treatmentInfo({ navigation }) {
 
     if (isValidate) { 
 
-      // Local Notification
+      // Local Notification 
 
       // const localNotify = notificationsManager
       // localNotify.configure()
@@ -120,6 +120,7 @@ function treatmentInfo({ navigation }) {
     {text: '6h em 6h'},
     {text: '8h em 8h'},
     {text: '12h em 12h'},
+    {text: '24h em 24h'},
   ];
 
   const optionsInstruction = [

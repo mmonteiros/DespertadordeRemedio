@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { FlatList } from 'react-native';
 import { connect } from 'react-redux'
 
+import PushNotification from 'react-native-push-notification';
 import { medsFetch , medsDelete} from '../../actions';
 
 import MedicineItem from './MedicineItem'
@@ -10,6 +11,8 @@ class MedList extends Component {
 
     componentDidMount() {
         this.props.medsFetch();
+        console.log("canceling all local notifications for updates");
+        PushNotification.cancelAllLocalNotifications();
     }
 
     /*componentWillUnmount() {
@@ -28,6 +31,7 @@ class MedList extends Component {
                     instructions={meds.item.Instructions.text}
                     imageUrl={meds.item.imageUrl}
                     obs={meds.item.Obs}
+                    InitialHour={meds.item.InitialHour}
                     onPressDelete={() => this.props.medsDelete({ meds })} />
 
         }

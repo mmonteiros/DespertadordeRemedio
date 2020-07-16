@@ -32,7 +32,7 @@ class Validate extends React.Component {
 
       return containerUnit.includes(option);
     } else if (type === 'Frequency') {
-      var frequency = ['4h em 4h', '6h em 6h', '8h em 8h', '12h em 12h'];
+      var frequency = ['4h em 4h', '6h em 6h', '8h em 8h', '12h em 12h', '24h em 24h'];
 
       return frequency.includes(option);
     } else if (type === 'DurationOfTreatmentType') {
