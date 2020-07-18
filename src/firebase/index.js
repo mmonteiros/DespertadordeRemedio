@@ -120,7 +120,7 @@ class firebaseConfig extends React.Component {
   }
 
   getInitialHourValidated(){
-    if(this.state.initialHour != "23:15") return true;
+    if(this.state.initialHour != null) return true;
     return false;
   }
 

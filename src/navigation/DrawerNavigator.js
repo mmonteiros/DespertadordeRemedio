@@ -10,7 +10,6 @@ import {
   ReportScreen,
 } from '../screens';
 import {DrawerComponent} from '../components/Drawer/Drawer';
-import {TabsNavigator, Routes} from './';
 
 const DrawerNavigator = createDrawerNavigator(
   {

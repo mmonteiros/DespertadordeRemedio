@@ -80,14 +80,6 @@ export default function medicineInfo({navigation}) {
     if (isValidate) {
       firebaseConfig.setData(DataMed.Name, DataMed);
 
-      setDataMed({
-        ...DataMed,
-        Name: '',
-        ContainerAmount: '',
-        ContainerUnit: {text: ''},
-        ExpirationDate: null,
-      });
-
       setTooltipVisible(false);
 
       navigation.navigate('TreatmentInfo');
@@ -95,7 +87,7 @@ export default function medicineInfo({navigation}) {
   };
 
   const navigateBack = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Loading');
   };
 
   const navigateNext = () => {

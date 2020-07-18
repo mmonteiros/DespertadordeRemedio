@@ -30,6 +30,7 @@ const SearchIcon = style => <Icon {...style} name="search-outline" />;
 const InfoIcon = style => <Icon {...style} name='info'/>;
 
 function treatmentInfo({ navigation }) {
+  
 
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
@@ -45,11 +46,9 @@ function treatmentInfo({ navigation }) {
 
     var isValidate = (
                       Validate.validateNumber(DataMed.DurationOfTreatmentNum) && 
-                      Validate.validateNumber(DataMed.DosageQuantity) &&
+                      (DataMed.InitialDate != '') &&
                       Validate.validateOption("Frequency", DataMed.Frequency.text) &&
                       Validate.validateOption("DurationOfTreatmentType", DataMed.DurationOfTreatmentType.text) &&
-                      Validate.validateOption("DosageUnit", DataMed.DosageUnit.text) &&
-                      Validate.validateOption("Instructions", DataMed.Instructions.text) &&
                       Validate.validateInitialHour()
                       );
 
@@ -73,22 +72,9 @@ function treatmentInfo({ navigation }) {
 
       firebaseConfig.updateData(DataMed);
 
-      setDataMed({
-        ...DataMed,
-        InitialDate: '',
-        InitialHour: '',
-        Frequency: {text: ''},
-        DurationOfTreatmentType: {text: ''},
-        DurationOfTreatmentNum: '',
-        DosageQuantity: '',
-        DosageUnit: {text: ''},
-        Instructions: {text: ''},
-        Obs: '',
-      });
-
       setTooltipVisible(false);
 
-      navigation.navigate('Home');
+      navigation.navigate('Loading');
     }
   };
 
@@ -153,6 +139,8 @@ function treatmentInfo({ navigation }) {
   const toggleTooltip = (status) => {
     setTooltipVisible(status);
   };
+
+  console.log(DataMed);
 
   return (
     <SafeAreaView style={{flex: 1}}>

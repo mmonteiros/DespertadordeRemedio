@@ -1,20 +1,8 @@
 import React from 'react';
-import {
-  Button,
-  View,
-  Text,
-  SafeAreaView,
-  TouchableWithoutFeedback,
-  StyleSheet,
-} from 'react-native';
+
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {MultiBar, MultiBarToggle} from 'react-native-multibar';
-import Ionicons from 'react-native-vector-icons/FontAwesome';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {createDrawerNavigator} from 'react-navigation-drawer';
-
-import {Routes} from './Routes';
 
 import ReportStack from './stacks/ReportStack';
 import HomeStack from './stacks/HomeStack';
@@ -24,8 +12,8 @@ import RegisterMedStack from './stacks/registerMedStack';
 import TreatmentMedStack from './stacks/treatmentInfo';
 import SideMenu from '../components/Drawer/Drawer';
 import TabBar from '../components/Footer/tabBar';
-import {medicineInfo} from '../screens/registerMed/medicineInfo';
 import ImagePickerPage from '../screens/registerMed/medicineInfo/imagePicker';
+import LoadingPage from '../screens/loading';
 
 const TabsNavigator = createBottomTabNavigator(
   {
@@ -69,6 +57,7 @@ const dashboardStack = createAppContainer(
       Report: ReportStack,
       Profile: ProfileStack,
       ImagePicker: ImagePickerPage,
+      Loading: LoadingPage,
     },
     {
       initialRouteName: 'Home',

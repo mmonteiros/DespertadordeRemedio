@@ -45,11 +45,9 @@ const App = () => (
   <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
     <React.Fragment>
     <IconRegistry icons={EvaIconsPack}/>
-    <MagicMove.Provider>
       <ApplicationProvider mapping={mapping} theme={theme}>
         <BaseNavigator/>
       </ApplicationProvider>
-    </MagicMove.Provider>
   </React.Fragment>
   </Provider>
 );

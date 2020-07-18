@@ -6,8 +6,6 @@ import {
   TopNavigation,
   TopNavigationAction,
 } from '@ui-kitten/components';
-import { AppDrawerNavigator } from '../../navigation';
-import { Routes, BaseNavigator } from '../../navigation/Routes';
 
 const MenuIcon = (style) => (
   <Icon {...style} name='menu-outline'/>

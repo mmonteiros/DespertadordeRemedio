@@ -9,11 +9,6 @@ import {
   TopNavigationAction,
 } from '@ui-kitten/components';
 
-import {TopNavigationWithMenuShowcase} from '../../components/Header/Header';
-import MedicinesList from '../../components/MedicinesList';
-import {Routes, BaseNavigator} from '../../navigation';
-import * as MagicMove from 'react-native-magic-move';
-
 import styles from './styles';
 import MedList from '../../components/MedList';
 
