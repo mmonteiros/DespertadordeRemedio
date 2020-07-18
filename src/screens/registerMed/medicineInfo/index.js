@@ -68,11 +68,11 @@ export default function medicineInfo({navigation}) {
   }
 
   const navigateMedicineInfo = () => {
-    var isValidate = (
-                      Validate.validateName(DataMed.Name) &&
-                      Validate.validateNumber(DataMed.ContainerAmount) &&
+    var isValidate = (DataMed.Name != null &&
+                      (Validate.validateNumber(DataMed.ContainerAmount) || DataMed.ContainerAmount == '')
+                      /*Validate.validateName(DataMed.Name) &&
                       Validate.validateOption("ContainerUnit", DataMed.ContainerUnit.text) &&
-                      Validate.validateDate(DataMed.ExpirationDate)
+                      Validate.validateDate(DataMed.ExpirationDate)*/
                       );
 
     toggleTooltip(!isValidate);

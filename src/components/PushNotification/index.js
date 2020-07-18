@@ -129,7 +129,7 @@ class PushNotifications  {
             playSound: options.playSound || true,
             soundName: options.soundName || "alarm_ringtone.mp3",
 
-            actions: '["Accept", "Reject"]',
+            //actions: '["Accept", "Reject"]',
     
             // // Alarm Clock Time
             date: date,
