@@ -88,23 +88,28 @@ class ModalMedicine extends Component {
                     
                                 <View style={styles.infoContainerModal}>
                                     <View style={styles.contentContainer}>
-                                    <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+                                    {(this.props.dosageQuantity || this.props.dosageUnit)? 
+                                    <Icon name={'alert-circle'} width={20} height={20} fill="#404040" /> : null}
                                     <Text style={styles.text}>
                                     {this.props.dosageQuantity + ' ' + this.props.dosageUnit}
                                     </Text>
                                     </View>
                                     <View style={styles.contentContainer}>
-                                    <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+                                    {(this.props.instructions)?
+                                    <Icon name={'alert-circle'} width={20} height={20} fill="#404040" /> : null}
                                     <Text style={styles.text}>{this.props.instructions}                                                     .</Text>
                                     </View>
                                     <View style={styles.contentContainer}>
-                                    <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+                                    {(this.props.frequency)? 
+                                    <Icon name={'alert-circle'} width={20} height={20} fill="#404040" /> : null}
+                                    {(this.props.frequency)?
                                     <Text style={styles.text}>
                                         {'Tomar de ' + this.props.frequency}
-                                    </Text>
+                                    </Text> : null}
                                     </View>
                                     <View style={styles.contentContainer}>
-                                    <Icon name={'alert-circle'} width={20} height={20} fill="#404040" />
+                                    {(this.props.obs)? 
+                                    <Icon name={'alert-circle'} width={20} height={20} fill="#404040" /> : null}
                                     <Text style={styles.text}>{this.props.obs}</Text>
                                     </View>
                                 </View>

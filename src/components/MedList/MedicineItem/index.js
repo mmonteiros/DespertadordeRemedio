@@ -74,23 +74,23 @@ class MedicineItem extends Component {
               </Text>
               <Divider style={styles.divider} />
               <View style={styles.contentContainer}>
-                <Icon
+                {(this.props.dosageQuantity || this.props.dosageUnit)? <Icon
                   name={'alert-circle'}
                   width={20}
                   height={20}
                   fill="#404040"
-                />
+                /> : null}
                 <Text style={styles.text}>
                   {this.props.dosageQuantity + ' ' + this.props.dosageUnit}
                 </Text>
               </View>
               <View style={styles.contentContainer}>
-                <Icon
+               {(this.props.instructions)? <Icon
                   name={'alert-circle'}
                   width={20}
                   height={20}
                   fill="#404040"
-                />
+                /> : null}
                 <Text style={styles.text}>{this.props.instructions}</Text>
               </View>
             </View>
