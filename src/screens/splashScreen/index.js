@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, View, Text, Image } from 'react-native';
 import { BaseNavigator } from '../../navigation/BaseNavigator';
+import { colors } from '../../styles';
 
 export default class SplashScreen extends Component {
 
@@ -48,22 +49,20 @@ export default class SplashScreen extends Component {
                 alignItems: 'center',
                 flexDirection: 'row',
                 justifyContent: this.state.align,
-                marginHorizontal: 40,
+                //marginHorizontal: 40,
+                backgroundColor: colors.primary,
             }}>
             <Image
-                source={{
-                uri:
-                    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/react_logo.png',
-                }}
-                style={{ width: 100, height: 100 }}
+                source={require('../../assets/img/icon_transparent.png')}
+                style={{ width: 200, height: 200 }}
             />
             {!this.state.alignsecond ? null : (
-                <View style={{ margin: 10 }}>
+                <View style={{/* margin: 10 */}}>
                 <Text
-                    style={{ color: '#114998', fontSize: 30, fontWeight: 'bold' }}>
-                    About React
+                    style={{ color: '#303952', fontSize: 30, fontWeight: "700", marginTop: 40 }}>
+                    {`Despertador\n de Remédio`}
                 </Text>
-                <ActivityIndicator size="large" color="#0000CD" />
+                <ActivityIndicator size="large" color="#596275" />
 
                 </View>
             )}
