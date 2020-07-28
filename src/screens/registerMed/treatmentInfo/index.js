@@ -20,6 +20,7 @@ import {DatepickerIcon} from '../../../components/Common/DatePicker';
 import {Time} from '../../../components/Common/TimePicker';
 import styles from '../medicineInfo/styles';
 import firebaseConfig from '../../../firebase';
+import RNRestart from 'react-native-restart'; // Import package from node modules
 
 import Validate from './../validateMedicine'
 
@@ -74,7 +75,7 @@ function treatmentInfo({ navigation }) {
 
       setTooltipVisible(false);
 
-      navigation.navigate('Loading');
+      RNRestart.Restart();
     }
   };
 

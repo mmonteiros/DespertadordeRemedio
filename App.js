@@ -22,40 +22,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './src/reducers';
-import SplashScreen from './src/screens/splashScreen';
-
-
+import { BaseNavigator } from './src/navigation';
 
 const theme = { ...lightTheme, ...appTheme };
-
-
-const FailedToLogin = () => (
-  <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
-      <React.Fragment>
-        <IconRegistry icons={EvaIconsPack}/>
-          <MagicMove.Provider>
-            <ApplicationProvider mapping={mapping} theme={theme}>
-              <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-    
-              </Layout>
-            </ApplicationProvider>
-          </MagicMove.Provider>
-      </React.Fragment>
-    </Provider>
-);
-
-const LoginSucess = () => (
-    <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
-      <React.Fragment>
-        <IconRegistry icons={EvaIconsPack}/>
-          <MagicMove.Provider>
-            <ApplicationProvider mapping={mapping} theme={theme}>
-              <SplashScreen/>
-            </ApplicationProvider>
-          </MagicMove.Provider>
-      </React.Fragment>
-    </Provider>
-);
 
 firebase.auth()
   .signInAnonymously()
@@ -65,28 +34,20 @@ firebase.auth()
     }
   });
 
-function App() {
+export default class App extends React.Component {
 
-    const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(null);
-  
-    useEffect(() => {
-      firebase.auth().onAuthStateChanged(userState => {
-        setUser(userState);
-  
-        if (loading) {
-          setLoading(false);
-        }
-      });
-    }, []);
-  
-  
-  
-  if (!user) {
-    return FailedToLogin();
-  }
-  
-  return LoginSucess();
+    render(){
+      return (
+      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+          <React.Fragment>
+          <IconRegistry icons={EvaIconsPack}/>
+          <MagicMove.Provider>
+            <ApplicationProvider mapping={mapping} theme={theme}>
+              <BaseNavigator/>
+            </ApplicationProvider>
+          </MagicMove.Provider>
+        </React.Fragment>
+        </Provider>
+      );
+    }
 }
-
-export default App;

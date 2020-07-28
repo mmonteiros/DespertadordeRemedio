@@ -135,7 +135,7 @@ class ImagePickerPage extends Component {
                     <Text style={styles.btnText}>Alterar imagem</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={this.navigateImagePicker} style={styles.btnSection}  >
-                    <Text style={styles.btnText}>Voltar ao cadastro do medicamento</Text>
+                    <Text style={styles.btnText}>Voltar ao cadastramento do remédio</Text>
                   </TouchableOpacity>
                 </View>
 

@@ -71,8 +71,5 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": []
-  },
-  "optionalDependencies": {
-    "fsevents": "^2.1.3"
   }
 }
