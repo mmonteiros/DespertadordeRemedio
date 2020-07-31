@@ -11,7 +11,17 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 18,
     borderBottomRightRadius: 18,
     marginTop: 20,
-    marginBottom: 30,
+    marginBottom: 5,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
+    
+    elevation: 1,
   },
 
   container: {
@@ -26,7 +36,7 @@ const styles = StyleSheet.create({
   colorMedicine: {
     backgroundColor: '#546de5',
     height: '100%',
-    width: 10,
+    width: 15,
   },
 
   image: {
@@ -84,14 +94,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     height: 67,
     width: 67,
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
   },
   buttonRadiusYellow: {
     backgroundColor: colors.yellow,
@@ -99,14 +101,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     height: 67,
     width: 67,
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
   },
 });
 

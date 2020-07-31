@@ -128,10 +128,11 @@ class PushNotifications  {
             importance: "high",
             playSound: options.playSound || true,
             soundName: options.soundName || "alarm_ringtone.mp3",
+            smallIcon: "@drawable/icon_notification",
 
             //actions: '["Accept", "Reject"]',
     
-            // // Alarm Clock Time
+            // Alarm Clock Time
             date: date,
             repeatTime: frequencyMilli,
             repeatType: "time",         

@@ -1,14 +1,16 @@
-import React, { Component, useState, useEffect } from 'react';
-import { ScrollView, View, Text, FlatList } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, FlatList } from 'react-native';
 import pushNotifications from '../PushNotification';
-import { format, addMinutes, addHours, isBefore } from 'date-fns'
-
-import styles from './styles';
-
+import { format, addHours, isBefore } from 'date-fns'
+import AlarmItem from './AlarmItem';
 
 export default function Alarm (props) {
     const now = new Date();
     const hoursAlarms = [];
+    // Update data in flatlist
+    const DATA = [];
+
+    let nextAlarmHour;
 
     const frequency = parseInt(props.frequency);
     const localyNotification = new pushNotifications();
@@ -32,57 +34,89 @@ export default function Alarm (props) {
 
     const nextHour = (initialHour) => {
         
-        // Case the frequency is equal to 24, don't need a repetition structure
+        hoursAlarms[0] = initialHour;
+
+        /* Case the frequency is equal to 24, don't need a repetition structure */
         if (frequency === 24) {
             
-            hoursAlarms[0] = initialHour
             hoursAlarms[1] = addHours(initialHour, frequency)
             
             if (isBefore(now, initialHour)) {
+                DATA[0] = hoursAlarms[0];
                 return hoursAlarms[0];
             } else {
+                DATA[0] = hoursAlarms[1];
                 return hoursAlarms[1];
             }
         }
 
-        // Calculates the time of the alarms
-        for (let index = 0; index < 24/frequency; index++) {
-
-            hoursAlarms[index] = initialHour;
-            initialHour = addHours(initialHour, frequency)
-
+        /* 
+            ** Calculates the time of the alarms **
+            24 hours (one day) / frequency = number of alarms in the day. 
+        */ 
+        for (let index = 1; index <= 24/frequency; index++) {
+            hoursAlarms[index] = addHours(hoursAlarms[index - 1], frequency);
+            DATA[index -1] = hoursAlarms[index -1];
         }
+
+        // console.log(hoursAlarms)
+        // console.log('INITIAL HOUR: ' + initialHour)
+        // console.log('NOW: ' + now)
         
-        // Check next alarm
-        for (let index = 0; index < 24/frequency; index++) {
+        /* Check next alarm */
+        for (let index = 0; index <= 24/frequency; index++) {
             if (isBefore(now, hoursAlarms[index])) {
                 return hoursAlarms[index];
             }
         }
-
-        console.log('\n')
     }
 
+    /* Set alarm with push notification */
     const setAlarm = () => {
         const initialHour = setDate();
-        const alarmHour = nextHour(initialHour);
+        nextAlarmHour = nextHour(initialHour);
 
-        console.log("Next Alarm Hour - " + alarmHour)
+        console.log("Next Alarm Hour - " + nextAlarmHour)
 
         localyNotification.alarmNotification(
             props.name,
             props.instructions,
             frequency,
-            alarmHour,
+            nextAlarmHour,
             {}
         )
 
     }
 
-    return null;
-    // (
-    //        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-    //            <Text>{"Next Alarm Hour - "}</Text>
-    //        </ScrollView>
-    // )
+    const renderItem = ({ item }) => {
+        return (
+            <AlarmItem
+                dataHours={item}
+                nextAlarmHour={nextAlarmHour}
+            />
+        )
+    }
+
+    // Separator style for rendering the items
+    const renderSeparator = () => {
+        return (
+            <View 
+                style={{
+                    margin: 10
+                }}
+            />
+        )
+    }
+
+    return (        
+        <FlatList 
+            data={DATA}
+            renderItem={ renderItem }
+            ItemSeparatorComponent={renderSeparator}
+            keyExtractor={item => format(item, 'HH:mm')}
+
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+        />
+    );
 }
