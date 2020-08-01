@@ -12,8 +12,8 @@ class MedList extends Component {
 
     componentDidMount() {
         this.props.medsFetch();
-        // console.log("canceling all local notifications for updates");
-        // PushNotification.cancelAllLocalNotifications();
+        console.log("canceling all local notifications for updates");
+        PushNotification.cancelAllLocalNotifications();
     }
 
     /*componentWillUnmount() {
