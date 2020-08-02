@@ -7,9 +7,9 @@ const styles = StyleSheet.create({
     borderColor: colors.white,
     borderRadius: 30,
     height: 55,
-    width: 150,
+    width: 130,
     //minHeight: 376,
-  },
+  }
 });
 
 export default styles;
