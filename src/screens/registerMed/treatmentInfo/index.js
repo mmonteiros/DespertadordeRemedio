@@ -25,7 +25,7 @@ import RNRestart from 'react-native-restart'; // Import package from node module
 import Validate from './../validateMedicine'
 
 // Icons
-const CheckmarkIcon = style => <Icon {...style} name="checkmark" />;
+const CheckmarkIcon = style => <Icon {...style} name="checkmark"  width={35} height={35} />;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
 const InfoIcon = style => <Icon {...style} name='info'/>;
@@ -56,20 +56,6 @@ function treatmentInfo({ navigation }) {
     toggleTooltip(!isValidate);
 
     if (isValidate) { 
-
-      // Local Notification 
-
-      // const localNotify = notificationsManager
-      // localNotify.configure()
-      // localNotify._buildActions()
-
-      // localNotify.alarmNotification(
-      //   "Lembrete de Medicamento",
-      //   "DataMed.Name",
-      //   parseInt(DataMed.Frequency.text, 10),
-      //   {},
-      //   {}
-      // )
 
       firebaseConfig.updateData(DataMed);
 
@@ -176,7 +162,7 @@ function treatmentInfo({ navigation }) {
               <View style={styles.paneContainer}>
                 <Text style={styles.text}>{'Frequência'}</Text>
                 <DropDownMenu
-                  name={'- - - - - - - - - -'}
+                  name={'- - - - - - - -'}
                   options={optionsFrequency}
                   selectedOption={DataMed.Frequency.text}
                   setSelectedOption={handleChangeDataMed('Frequency')}
@@ -196,7 +182,7 @@ function treatmentInfo({ navigation }) {
                     value={DataMed.DurationOfTreatmentNum}
                     onChangeText={handleChangeDataMed('DurationOfTreatmentNum')}
                     style={[styles.cardContent, {width: 70}]}
-                    placeholder="- - - - - -"
+                    placeholder="- - -"
                     keyboardType="numeric"
                   />
                 </View>
@@ -237,8 +223,9 @@ function treatmentInfo({ navigation }) {
             </View>
             <Input
               placeholder="Digite as observações..."
-              style={styles.cardContainer}
+              style={[styles.cardContainer, {width: '100%'}]}
               textStyle={{marginBottom: 40}}
+              multiline={true}
               value={DataMed.Obs}
               onChangeText={handleChangeDataMed('Obs')}
             />

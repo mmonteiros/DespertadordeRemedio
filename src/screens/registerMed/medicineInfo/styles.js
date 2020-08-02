@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
 
   btnSection: {
-    width: 100,
+    width: 70,
     height: 50,
     backgroundColor: 'transparent',
     alignItems: 'center',

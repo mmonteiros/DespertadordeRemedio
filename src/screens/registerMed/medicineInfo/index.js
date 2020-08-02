@@ -26,10 +26,10 @@ import * as MagicMove from 'react-native-magic-move';
 import styles from './styles';
 
 // Icons
-const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" />;
+const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" width={30} height={30}/>;
 const BackIcon = style => <Icon {...style} name="arrow-back" />;
 const SearchIcon = style => <Icon {...style} name="search-outline" />;
-const CameraIcon = style => <Icon {...style} name="camera-outline" />;
+const CameraIcon = style => <Icon {...style} name="camera-outline" width={35} height={35} fill='#929bb8' />;
 const InfoIcon = style => <Icon {...style} name='info'/>;
 
 export default function medicineInfo({navigation}) {

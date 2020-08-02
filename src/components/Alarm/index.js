@@ -40,12 +40,12 @@ export default function Alarm (props) {
         if (frequency === 24) {
             
             hoursAlarms[1] = addHours(initialHour, frequency)
+            DATA[0] = initialHour;
+            DATA[1] = hoursAlarms[1];
             
             if (isBefore(now, initialHour)) {
-                DATA[0] = hoursAlarms[0];
                 return hoursAlarms[0];
             } else {
-                DATA[0] = hoursAlarms[1];
                 return hoursAlarms[1];
             }
         }
@@ -58,10 +58,6 @@ export default function Alarm (props) {
             hoursAlarms[index] = addHours(hoursAlarms[index - 1], frequency);
             DATA[index -1] = hoursAlarms[index -1];
         }
-
-        // console.log(hoursAlarms)
-        // console.log('INITIAL HOUR: ' + initialHour)
-        // console.log('NOW: ' + now)
         
         /* Check next alarm */
         for (let index = 0; index <= 24/frequency; index++) {
@@ -88,7 +84,7 @@ export default function Alarm (props) {
 
     }
 
-    const renderItem = ({ item }) => {
+    const renderItem = ({ item, index }) => {
         return (
             <AlarmItem
                 dataHours={item}
@@ -113,8 +109,9 @@ export default function Alarm (props) {
             data={DATA}
             renderItem={ renderItem }
             ItemSeparatorComponent={renderSeparator}
-            keyExtractor={item => format(item, 'HH:mm')}
+            keyExtractor={index => String(index)}
 
+            contentContainerStyle={{justifyContent: "center", flexGrow: 1}}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
         />
