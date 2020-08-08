@@ -8,7 +8,9 @@
 
 # Open in your simulator
   	npm run android
-
+    
+## Semantic Versioning
+Semantic Versioning Specification: https://semver.org/
 
 
 That's it! 
