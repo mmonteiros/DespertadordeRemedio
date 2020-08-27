@@ -19,6 +19,7 @@ import {NavigationActions, StackActions} from 'react-navigation';
 import firebaseConfig from '../../../firebase';
 import Validate from './../validateMedicine';
 import ImagePickerPage from './imagePicker';
+import ColorMenu from './colorMenu';
 
 import {DropDownMenu} from '../../../components/Common/DropDownMenu';
 import {DatepickerIcon} from '../../../components/Common/DatePicker';
@@ -107,8 +108,12 @@ export default function medicineInfo({navigation}) {
     ContainerAmount: '',
     ContainerUnit: {text: ''},
     ExpirationDate: null,
+    Color: '',
     Complete: false,
   });
+
+  console.log('Color: ' + DataMed.Color)
+  console.log('Name: ' + DataMed.Name)
 
   const handleChangeDataMed = name => event => {
     setDataMed({...DataMed, [name]: event});
@@ -158,6 +163,7 @@ export default function medicineInfo({navigation}) {
           >
           </Button>
           </View>
+
           <View style={styles.paneBorder}>
             <Text style={[styles.titlePaneBorder, styles.text]}>
               {'Recipiente contém'}
@@ -176,6 +182,7 @@ export default function medicineInfo({navigation}) {
               setSelectedOption={handleChangeDataMed('ContainerUnit')}
             />
           </View>
+
           <View style={styles.paneContainer}>
             <Text style={styles.text}>{'Validade do \nMedicamento'}</Text>
             <DatepickerIcon
@@ -183,6 +190,14 @@ export default function medicineInfo({navigation}) {
               date={DataMed.ExpirationDate}
             />
           </View>
+
+          <View style={styles.paneContainer}>
+            <Text style={styles.text}>{'Cor do \nMedicamento'}</Text>
+            <ColorMenu
+              onSelect={handleChangeDataMed('Color')}
+            />
+          </View>
+
         </Card>
         </MagicMove.View>
         </MagicMove.Scene>
