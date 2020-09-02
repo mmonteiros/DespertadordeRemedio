@@ -16,6 +16,7 @@ export const medsFetch = () => {
           const { 
                 Name,
                 imageUrl, 
+                Color,
                 ContainerAmount,
                 ContainerUnit,
                 ExpirationDate,
@@ -33,6 +34,7 @@ export const medsFetch = () => {
           meds.push({ id: doc.id, 
                 Name, 
                 imageUrl,
+                Color,
                 ContainerAmount,
                 ContainerUnit,
                 ExpirationDate,

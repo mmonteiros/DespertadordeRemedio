@@ -23,6 +23,10 @@ class MedList extends Component {
     renderItem(meds) {
         if(meds.item.Complete) {
 
+            if(meds.item.Color == undefined){
+                meds.item.Color = "#546de5";
+            }
+
             return (
                 <Fragment>
                     
@@ -39,6 +43,7 @@ class MedList extends Component {
                     dosageQuantity={meds.item.DosageQuantity}
                     instructions={meds.item.Instructions.text}
                     imageUrl={meds.item.imageUrl}
+                    color={meds.item.Color}
                     obs={meds.item.Obs}
                     InitialHour={meds.item.InitialHour}
                     onPressDelete={() => this.props.medsDelete({ meds })} />

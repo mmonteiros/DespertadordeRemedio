@@ -108,7 +108,7 @@ export default function medicineInfo({navigation}) {
     ContainerAmount: '',
     ContainerUnit: {text: ''},
     ExpirationDate: null,
-    Color: '',
+    Color: '#546de5',
     Complete: false,
   });
 
@@ -194,7 +194,8 @@ export default function medicineInfo({navigation}) {
           <View style={styles.paneContainer}>
             <Text style={styles.text}>{'Cor do \nMedicamento'}</Text>
             <ColorMenu
-              onSelect={handleChangeDataMed('Color')}
+              selectedColor={DataMed.Color}
+              setSelectedColor={handleChangeDataMed('Color')}
             />
           </View>
 

@@ -4,10 +4,9 @@ import { View, Modal, TouchableOpacity, TouchableWithoutFeedback } from 'react-n
 import styles from './styles';
 import { Button } from '@ui-kitten/components';
 
-export default function ColorMenu ({onSelect}) {
+export default function ColorMenu ({selectedColor, setSelectedColor}) {
     
     const [visible, setVisible] = useState(false);
-    const [selectedColor, setSelectedColor] = useState('#546de5');
     
     return (
         <Fragment>

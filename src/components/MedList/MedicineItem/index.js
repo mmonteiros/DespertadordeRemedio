@@ -55,7 +55,10 @@ class MedicineItem extends Component {
             {this.renderModal()}
             
             <View style={styles.container}>
-              <View style={styles.colorMedicine} />
+              <View style={{
+                  backgroundColor: this.props.color,
+                  height: '100%',
+                  width: 15,}} />
               <Image
                 source={this.showImage()}
                 style={styles.image}
