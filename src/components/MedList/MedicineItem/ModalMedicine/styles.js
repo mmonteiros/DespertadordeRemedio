@@ -99,12 +99,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 5,
   },
-  colorMedicineModal: {
-    backgroundColor: '#546de5',
-    height: 372,
-    width: 17,
-  },
-
   contentContainerModal: {
     flex: 1,
   },

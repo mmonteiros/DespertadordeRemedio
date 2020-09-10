@@ -52,7 +52,10 @@ class ModalMedicine extends Component {
                     <TouchableWithoutFeedback >
                       
                         <View style={styles.modalView}>
-                            <View style={styles.colorMedicineModal} />
+                            <View style={{
+                                backgroundColor: this.props.color,
+                                height: '100%',
+                                width: 20,}} />
                             <View>
                                 <View style={{flexDirection: 'row'}}>
                                     <Image

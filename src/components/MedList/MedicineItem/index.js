@@ -24,6 +24,7 @@ class MedicineItem extends Component {
           dosageUnit = {medicine.item.DosageUnit.text} 
           instructions = {medicine.item.Instructions.text}
           obs = {medicine.item.Obs}
+          color = {medicine.item.Color}
           onPressDelete={() => this.props.medsDelete({ item })}/>    
         )
       }
@@ -40,7 +41,7 @@ class MedicineItem extends Component {
     }
 
     render() {
-      const {medicine, selectMedicine} = this.props;
+      const {medicine, selectMedicine, color} = this.props;
       
       return (
         <Fragment>
@@ -56,9 +57,9 @@ class MedicineItem extends Component {
             
             <View style={styles.container}>
               <View style={{
-                  backgroundColor: this.props.color,
+                  backgroundColor: color,
                   height: '100%',
-                  width: 15,}} />
+                  width: 20,}} />
               <Image
                 source={this.showImage()}
                 style={styles.image}
