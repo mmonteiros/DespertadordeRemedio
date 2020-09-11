@@ -10,7 +10,7 @@ import moment from 'moment';
 import styles from './styles';
 import {Value} from 'react-native-reanimated';
 
-import firebaseConfig from '../../../firebase';
+import FirebaseService from '../../../services/FirebaseService';
 
 export const Time = (value, onSelect) => {
   const [date, setDate] = useState(new Date());
@@ -36,7 +36,7 @@ export const Time = (value, onSelect) => {
   };
 
   useEffect(() => {
-    firebaseConfig.updateInitialHour(moment(date).format('HH:mm'));
+    FirebaseService.updateInitialHour(moment(date).format('HH:mm'));
   });
 
   return (

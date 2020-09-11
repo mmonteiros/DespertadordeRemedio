@@ -1,5 +1,5 @@
 import { Alert } from 'react-native';
-import firebaseConfig from '../firebase';
+import FirebaseService from '../services/FirebaseService';
 import { MEDS_DELETE, MEDS_FETCH, MEDS_FETCH_SUCCESS } from './types';
 
 // Public
@@ -8,7 +8,7 @@ export const medsFetch = () => {
   return (dispatch) => {
     dispatch({ type: MEDS_FETCH });
 
-    const unsubscribe = firebaseConfig.medsCollection()
+    const unsubscribe = FirebaseService.medsCollection()
       .onSnapshot((querySnapshot) => {
         const meds = [];
 
@@ -77,7 +77,7 @@ export const medsDelete = ({ item }) => {
 // Private
 
 const onPressMedsDelete = (dispatch, id) => {
-  firebaseConfig.deleteMed(id)
+  FirebaseService.deleteMed(id)
     .then(() => {
       dispatch({ type: MEDS_DELETE });
     })

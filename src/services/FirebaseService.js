@@ -3,7 +3,7 @@ import md5 from 'md5';
 import DeviceInfo from 'react-native-device-info';
 import firebase, { firestore } from 'react-native-firebase';
 
-class firebaseConfig extends React.Component {
+class FirebaseService extends React.Component {
 
   state = {
     nameMed: '',
@@ -161,4 +161,4 @@ function imageId() {
   return md5(`${uniqueID}-${date}`);
 }
 
-export default new firebaseConfig;
+export default new FirebaseService;

@@ -19,7 +19,7 @@ import {DropDownMenu} from '../../../components/Common/DropDownMenu';
 import {DatepickerIcon} from '../../../components/Common/DatePicker';
 import {Time} from '../../../components/Common/TimePicker';
 import styles from '../medicineInfo/styles';
-import firebaseConfig from '../../../firebase';
+import FirebaseService from '../../../services/FirebaseService';
 import RNRestart from 'react-native-restart'; // Import package from node modules
 
 import Validate from './../validateMedicine'
@@ -57,7 +57,7 @@ function treatmentInfo({ navigation }) {
 
     if (isValidate) { 
 
-      firebaseConfig.updateData(DataMed);
+      FirebaseService.updateData(DataMed);
 
       setTooltipVisible(false);
 

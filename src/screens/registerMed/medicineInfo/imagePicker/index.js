@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import ImagePicker from 'react-native-image-picker';
-import FirebaseConfig from './../../../../firebase'
+import FirebaseService from '../../../../services/FirebaseService'
 
 import {
   SafeAreaView,
@@ -62,8 +62,8 @@ class ImagePickerPage extends Component {
 
   navigateImagePicker = () => {
 
-    FirebaseConfig.setImageUrl(this.state.fileUri);
-    FirebaseConfig.setfileData(this.state.fileData);
+    FirebaseService.setImageUrl(this.state.fileUri);
+    FirebaseService.setfileData(this.state.fileData);
     
     this.cleanState();
 

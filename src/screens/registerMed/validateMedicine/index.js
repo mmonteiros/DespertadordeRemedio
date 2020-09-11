@@ -1,5 +1,5 @@
 import React from 'react';
-import firebaseConfig from '../../../firebase';
+import FirebaseService from '../../../services/FirebaseService';
 
 class Validate extends React.Component {
   validateName(text) {
@@ -64,7 +64,7 @@ class Validate extends React.Component {
   }
 
   validateInitialHour() {
-    return firebaseConfig.getInitialHourValidated();
+    return FirebaseService.getInitialHourValidated();
   }
 }
 

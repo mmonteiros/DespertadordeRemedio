@@ -16,7 +16,7 @@ import {
 } from '@ui-kitten/components';
 
 import {NavigationActions, StackActions} from 'react-navigation';
-import firebaseConfig from '../../../firebase';
+import FirebaseService from '../../../services/FirebaseService';
 import Validate from './../validateMedicine';
 import ImagePickerPage from './imagePicker';
 import ColorMenu from './colorMenu';
@@ -79,7 +79,7 @@ export default function medicineInfo({navigation}) {
     toggleTooltip(!isValidate);
 
     if (isValidate) {
-      firebaseConfig.setData(DataMed.Name, DataMed);
+      FirebaseService.setData(DataMed.Name, DataMed);
 
       setTooltipVisible(false);
 
@@ -111,9 +111,6 @@ export default function medicineInfo({navigation}) {
     Color: '#546de5',
     Complete: false,
   });
-
-  console.log('Color: ' + DataMed.Color)
-  console.log('Name: ' + DataMed.Name)
 
   const handleChangeDataMed = name => event => {
     setDataMed({...DataMed, [name]: event});
