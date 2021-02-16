@@ -3,7 +3,6 @@ import {View, ScrollView} from 'react-native';
 import {SafeAreaView, NavigationActions, StackActions} from 'react-navigation';
 import {
   Divider,
-  Icon,
   Layout,
   Button,
   Card,
@@ -18,21 +17,15 @@ import {
 import {DropDownMenu} from '../../../components/Common/DropDownMenu';
 import {DatepickerIcon} from '../../../components/Common/DatePicker';
 import {Time} from '../../../components/Common/TimePicker';
-import styles from '../medicineInfo/styles';
 import FirebaseService from '../../../services/FirebaseService';
 import RNRestart from 'react-native-restart'; // Import package from node modules
-
 import Validate from './../validateMedicine'
 
-// Icons
-const CheckmarkIcon = style => <Icon {...style} name="checkmark"  width={35} height={35} />;
-const BackIcon = style => <Icon {...style} name="arrow-back" />;
-const SearchIcon = style => <Icon {...style} name="search-outline" />;
-const InfoIcon = style => <Icon {...style} name='info'/>;
+import {BackIcon, CheckmarkIcon, InfoIcon, SearchIcon} from '../../../components/Common/Icons';
+import styles from '../medicineInfo/styles';
 
 function treatmentInfo({ navigation }) {
   
-
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );

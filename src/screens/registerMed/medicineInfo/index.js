@@ -3,7 +3,6 @@ import {View, Dimensions,TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
   Divider,
-  Icon,
   Layout,
   Button,
   Card,
@@ -18,25 +17,19 @@ import {
 import {NavigationActions, StackActions} from 'react-navigation';
 import FirebaseService from '../../../services/FirebaseService';
 import Validate from './../validateMedicine';
-import ImagePickerPage from './imagePicker';
-import ColorMenu from './colorMenu';
+import * as MagicMove from 'react-native-magic-move';
 
 import {DropDownMenu} from '../../../components/Common/DropDownMenu';
 import {DatepickerIcon} from '../../../components/Common/DatePicker';
-import * as MagicMove from 'react-native-magic-move';
+
+import {ArrowForwardIcon, BackIcon, CameraIcon, InfoIcon, SearchIcon} from '../../../components/Common/Icons';
+import ColorMenu from './colorMenu';
 import styles from './styles';
 
-// Icons
-const ArrowForwardIcon = style => <Icon {...style} name="arrow-forward" width={30} height={30}/>;
-const BackIcon = style => <Icon {...style} name="arrow-back" />;
-const SearchIcon = style => <Icon {...style} name="search-outline" />;
-const CameraIcon = style => <Icon {...style} name="camera-outline" width={35} height={35} fill='#929bb8' />;
-const InfoIcon = style => <Icon {...style} name='info'/>;
 
 export default function medicineInfo({navigation}) {
 
   const BackAction = () => (<TopNavigationAction icon={BackIcon} onPress={navigateBack}/>);
-
   const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
 
   const Header = () => (

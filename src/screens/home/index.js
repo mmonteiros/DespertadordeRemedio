@@ -9,12 +9,10 @@ import {
   TopNavigationAction,
 } from '@ui-kitten/components';
 
-import styles from './styles';
 import MedList from '../../components/MedList';
+import { MenuIcon, SearchIcon } from '../../components/Common/Icons';
+import styles from './styles';
 
-const MenuIcon = (style) => <Icon {...style} name="menu-outline" />;
-
-const SearchIcon = (style) => <Icon {...style} name="search-outline" />;
 
 class HomeScreen extends React.Component {
   render() {

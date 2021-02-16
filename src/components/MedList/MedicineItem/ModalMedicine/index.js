@@ -5,19 +5,7 @@ import {Text, Icon, Button} from '@ui-kitten/components';
 
 import * as actions from '../../../../actions';
 import styles from './styles';
-
-// Icons
-const clockIcon = style => (
-    <Icon {...style} name="clock-outline" fill="#404040" width={37} height={36} />
-  );
-
-const CheckmarkIcon = style => (
-    <Icon {...style} name="checkmark" width={37} height={36} />
-  );
-
-const trashIcon = style => (
-<Icon {...style} name="trash-2" width={45} height={45} fill="#404040"/>
-);
+import { CheckmarkIcon, clockIcon, EditIcon, TrashIcon} from '../../../Common/Icons';
 
 //uri: 'https://reactnative.dev/img/tiny_logo.png'
 class ModalMedicine extends Component {
@@ -58,38 +46,39 @@ class ModalMedicine extends Component {
                                 width: 20,}} />
                             <View>
                                 <View style={{flexDirection: 'row'}}>
+
                                     <Image
                                     source={this.showImage()}
                                     style={styles.imageModal}
                                     />
                                     <View style={{flex: 1}}>
                                     <View style={styles.iconContainer}>
-                                        {/* 
-                                        <TouchableOpacity>
-                                        <Icon name={'settings'} width={45} height={45} fill="#404040" />
-                                        </TouchableOpacity>
-                                        */} 
-                                        <Button
+
+                                        <Button // Edit Button
+                                        onPress={() => {}}
+                                        appearance="ghost"
+                                        icon={EditIcon}
+                                        />
+
+                                        <Button //Trash Button
                                         onPress={() => {
                                             this.props.medsDelete({ item });
                                         }}
                                         appearance="ghost"
-                                        icon={trashIcon}
+                                        icon={TrashIcon}
                                         />
-                                        {/* <TouchableOpacity onPress={() => {
-                                        navigateHome();
-                                        }} style={{marginLeft: 15}}>
-                                        <Icon name={'trash-2'} width={45} height={45} fill="#404040" />
-                                        </TouchableOpacity>*/}
+                                        
                                     </View>
                                     <Text style={styles.titleModal}>{this.props.name}</Text>
                                     <Text style={[styles.text, {textAlign: 'center'}]}>
                                         {this.props.frequency}
                                     </Text>
                                     </View>
+
                                 </View>
                     
                                 <View style={styles.infoContainerModal}>
+
                                     <View style={styles.contentContainer}>
                                     {(this.props.dosageQuantity || this.props.dosageUnit)? 
                                     <Icon name={'alert-circle'} width={20} height={20} fill="#404040" /> : null}
@@ -115,9 +104,11 @@ class ModalMedicine extends Component {
                                     <Icon name={'alert-circle'} width={20} height={20} fill="#404040" /> : null}
                                     <Text style={styles.text}>{this.props.obs}</Text>
                                     </View>
+
                                 </View>
                     
                                 <View style={styles.buttonCantainer}>
+
                                     <View>
                                     <Button
                                         onPress={null}
@@ -136,6 +127,7 @@ class ModalMedicine extends Component {
                                     />
                                     <Text style={[styles.textModalBtt, {marginLeft: 10}]}>Tomar</Text>
                                     </View>
+
                                 </View>
                             </View>
                         </View>
