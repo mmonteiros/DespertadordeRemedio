@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import ModalEdit from '../components/MedList/MedicineItem/ModalMedicine/ModalEdit';
 
 const BackIcon = (style) => (
   <Icon {...style} name='arrow-back' />
@@ -35,6 +36,7 @@ class CalendarScreen extends React.Component {
         <Divider/>
         <Layout style={styles.body}>
           <Text category='h1'>Calendar</Text>
+          <ModalEdit />
         </Layout>
         
       </SafeAreaView>

@@ -20,6 +20,7 @@ import {Time} from '../../../components/Common/TimePicker';
 import FirebaseService from '../../../services/FirebaseService';
 import RNRestart from 'react-native-restart'; // Import package from node modules
 import Validate from './../validateMedicine'
+import {options, optionsDuration, optionsFrequency, optionsInstruction} from '../../../components/Common/DateOptions'
 
 import {BackIcon, CheckmarkIcon, InfoIcon, SearchIcon} from '../../../components/Common/Icons';
 import styles from '../medicineInfo/styles';
@@ -65,37 +66,6 @@ function treatmentInfo({ navigation }) {
   const navigateNext = () => {
     navigation.navigate('');
   };
-
-  const options = [
-    {text: 'Comprimido(s)'},
-    {text: 'Gota(s)'},
-    {text: 'Mg'},
-    {text: 'Ml'},
-    {text: 'Unidade(s)'},
-  ];
-
-  const optionsDuration = [
-    {text: 'Dia(s)'},
-    {text: 'Semana(s)'},
-    {text: 'Mês'},
-    //{text: 'Data'},
-  ];
-
-  const optionsFrequency = [
-    {text: '4h em 4h'},
-    {text: '6h em 6h'},
-    {text: '8h em 8h'},
-    {text: '12h em 12h'},
-    {text: '24h em 24h'},
-  ];
-
-  const optionsInstruction = [
-    {text: 'Tomar em jejum'},
-    {text: 'Antes das refeições'},
-    {text: 'Durante as refeições'},
-    {text: 'Após as refeições'},
-    {text: 'Não tomar com ...'},
-  ];
 
   const [DataMed, setDataMed] = useState({
     InitialDate: '',

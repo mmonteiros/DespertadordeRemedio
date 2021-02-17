@@ -10,7 +10,7 @@ import styles from './styles';
 class MedicineItem extends Component {
 
     renderModal() {
-      const {medicine, indexMedicine} = this.props;
+      const {medicine, indexMedicine, medsDelete} = this.props;
      
       if (indexMedicine != null) {
         
@@ -25,7 +25,7 @@ class MedicineItem extends Component {
           instructions = {medicine.item.Instructions.text}
           obs = {medicine.item.Obs}
           color = {medicine.item.Color}
-          onPressDelete={() => this.props.medsDelete({ item })}/>    
+          onPressDelete={() => medsDelete({ item })}/>    
         )
       }
     }
@@ -52,7 +52,7 @@ class MedicineItem extends Component {
               selectMedicine(medicine.item.id)
             }}
           >
-
+            
             {this.renderModal()}
             
             <View style={styles.container}>

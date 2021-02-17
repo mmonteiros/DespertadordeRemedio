@@ -21,6 +21,7 @@ import * as MagicMove from 'react-native-magic-move';
 
 import {DropDownMenu} from '../../../components/Common/DropDownMenu';
 import {DatepickerIcon} from '../../../components/Common/DatePicker';
+import {options} from '../../../components/Common/DateOptions'
 
 import {ArrowForwardIcon, BackIcon, CameraIcon, InfoIcon, SearchIcon} from '../../../components/Common/Icons';
 import ColorMenu from './colorMenu';
@@ -87,14 +88,6 @@ export default function medicineInfo({navigation}) {
   const navigateNext = () => {
     navigation.navigate('');
   };
-
-  const options = [
-    {text: 'Comprimido(s)'},
-    {text: 'Gota(s)'},
-    {text: 'Mg'},
-    {text: 'Ml'},
-    {text: 'Unidade(s)'},
-  ];
 
   const [DataMed, setDataMed] = useState({
     Name: '',

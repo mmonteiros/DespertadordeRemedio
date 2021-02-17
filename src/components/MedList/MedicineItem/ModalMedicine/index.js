@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {View, Image, Modal, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
 import { connect } from 'react-redux';
 import {Text, Icon, Button} from '@ui-kitten/components';
@@ -6,9 +6,18 @@ import {Text, Icon, Button} from '@ui-kitten/components';
 import * as actions from '../../../../actions';
 import styles from './styles';
 import { CheckmarkIcon, clockIcon, EditIcon, TrashIcon} from '../../../Common/Icons';
+import { ModalEdit } from './ModalEdit';
 
 //uri: 'https://reactnative.dev/img/tiny_logo.png'
 class ModalMedicine extends Component {
+
+    renderModalEdit () {
+        console.log("Entrou função");
+
+        return (
+            <ModalEdit />
+        )
+    };
 
     showImage() {
         if(this.props.imageUrl){
@@ -23,11 +32,11 @@ class ModalMedicine extends Component {
     render() {
 
         //const { name, frequency, dosageQuantity, dosageUnit, instructions, obs } = this.props.medicine.item;
+
         const { modalIsOpen } = this.props.modal;
         const item = this.props.name;
 
-        return (
-            
+        return (            
             <Modal
               transparent={true}
               visible={modalIsOpen}
@@ -44,6 +53,7 @@ class ModalMedicine extends Component {
                                 backgroundColor: this.props.color,
                                 height: '100%',
                                 width: 20,}} />
+                                
                             <View>
                                 <View style={{flexDirection: 'row'}}>
 
@@ -55,10 +65,16 @@ class ModalMedicine extends Component {
                                     <View style={styles.iconContainer}>
 
                                         <Button // Edit Button
-                                        onPress={() => {}}
+                                        onPress={() => {
+                                            // console.log("this.props.openModalEdit(): " + this.props.openModalEdit()),
+                                            // this.props.openModalEdit() 
+                                            //selectMedicine(medicine.item.id)
+                                        }}
                                         appearance="ghost"
                                         icon={EditIcon}
                                         />
+
+                                        {/* {this.renderModalEdit()} */}
 
                                         <Button //Trash Button
                                         onPress={() => {
