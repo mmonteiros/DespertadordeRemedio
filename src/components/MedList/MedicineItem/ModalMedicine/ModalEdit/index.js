@@ -3,25 +3,30 @@ import { connect } from 'react-redux';
 import { View, Modal, TouchableOpacity, TouchableWithoutFeedback, ScrollView } from 'react-native';
 
 import * as actions from '../../../../../actions';
-import { EditScreen } from '../../../../../screens/edit';
+import EditScreen from '../../../../../screens/edit';
 
-import styles from './styles';
+class ModalEdit extends Component {
 
-export default function ModalEdit () {
-    const [visible, setVisible] = useState(true)
+    render () {
+        const { modalEditIsOpen } = this.props.modalEdit;
 
-    return (
-        <View>
-            <Modal
-            transparent={true}
-            visible={visible}
-            onRequestClose={() => setVisible(false)}
-        >
-                <EditScreen />
-            </Modal>
-        </View>    
-
-    )
+        return (
+            <View>
+                <Modal
+                transparent={true}
+                visible={modalEditIsOpen}
+                onRequestClose={() => this.props.closeModalEdit()}
+            >
+                    <EditScreen />
+                </Modal>
+            </View>
+        )    
+    }
+    
 }
 
-export {ModalEdit}
+const mapStateToProps = state => {
+    return { modalEdit: state.modalEdit };
+}
+
+export default connect(mapStateToProps, actions)(ModalEdit);

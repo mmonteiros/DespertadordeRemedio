@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import ModalMedicine from './ModalMedicine'
 import styles from './styles';
+import ModalEdit from './ModalMedicine/ModalEdit';
 
 class MedicineItem extends Component {
 
@@ -30,6 +31,16 @@ class MedicineItem extends Component {
       }
     }
 
+    renderModalEdit () {
+      const { indexMedicine } = this.props;
+
+      if (indexMedicine != null) {
+        return (
+            <ModalEdit />
+        )
+      }
+    };
+
     showImage() {
       if(this.props.imageUrl){
         return {uri: this.props.imageUrl};
@@ -51,9 +62,11 @@ class MedicineItem extends Component {
               this.props.openModal(),
               selectMedicine(medicine.item.id)
             }}
+            onLongPress={() => {this.props.openModalEdit()}}
           >
             
             {this.renderModal()}
+            {this.renderModalEdit()}
             
             <View style={styles.container}>
               <View style={{

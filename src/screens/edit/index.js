@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {
@@ -15,6 +15,8 @@ import {
 } from '@ui-kitten/components';
 
 import {NavigationActions, StackActions} from 'react-navigation';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 import FirebaseService from '../../services/FirebaseService';
 import Validate from './../../screens/registerMed/validateMedicine';
 import * as MagicMove from 'react-native-magic-move';
@@ -29,9 +31,9 @@ import ColorMenu from '../../screens/registerMed/medicineInfo/colorMenu';
 import styles from './styles';
 
 
-export default function EditScreen({navigation}) {
+function EditScreen({navigation}, props) {
 
-  const BackAction = () => (<TopNavigationAction icon={BackIcon} onPress={navigateBack}/>);
+  const BackAction = () => (<TopNavigationAction icon={BackIcon} onPress={() => {}}/>); // Function "closeModalEdit()"
   const renderSearchAction = () => <TopNavigationAction icon={SearchIcon} />;
 
   const Header = () => (
@@ -109,6 +111,7 @@ export default function EditScreen({navigation}) {
     setTooltipVisible(status);
   };
 
+  //const { modalEditIsOpen } = this.props.modalEdit; 
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -118,7 +121,7 @@ export default function EditScreen({navigation}) {
           titleStyle={{fontWeight: "bold"}}
           alignment="start"
           backgroundColor="white"
-          //leftControl={BackAction()}
+          leftControl={BackAction()}
         />
         <Divider />
       </Layout>
@@ -283,4 +286,8 @@ export default function EditScreen({navigation}) {
   );
 }
 
-export {EditScreen};
+const mapStateToProps = state => {
+  return { modalEdit: state.modalEdit };
+}
+
+export default connect(mapStateToProps, actions)(EditScreen);
