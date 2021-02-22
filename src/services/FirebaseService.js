@@ -69,6 +69,186 @@ class FirebaseService extends React.Component {
 
   }
 
+  async editData(nameMed, DataMed){
+    if(DataMed.InitialHour) DataMed.InitialHour = this.state.initialHour;
+    
+    if(this.state.fileData) {
+      this.uploadImage(this.state.fileData);
+    }
+
+    if(DataMed.ContainerAmount){
+    firebase
+    .firestore()
+    .collection("Users")
+    .doc(`${firebase.auth().currentUser.uid}`)
+    .collection("Medicines")
+    .doc(`${nameMed}`)
+    .update({ContainerAmount: DataMed.ContainerAmount})
+    .then((ref) => {
+        console.log(ref) 
+    });
+    }
+
+    if(DataMed.ContainerUnit.text){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({ContainerUnit: DataMed.ContainerUnit})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.ExpirationDate){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({ExpirationDate: DataMed.ExpirationDate})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.Color){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({Color: DataMed.Color})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.InitialDate){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({InitialDate: DataMed.InitialDate})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.InitialHour){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({InitialHour: DataMed.InitialHour})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.Frequency.text){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({Frequency: DataMed.Frequency})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.DurationOfTreatmentType.text){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({DurationOfTreatmentType: DataMed.DurationOfTreatmentType})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.DurationOfTreatmentNum){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({DurationOfTreatmentNum: DataMed.DurationOfTreatmentNum})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.DosageQuantity){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({DosageQuantity: DataMed.DosageQuantity})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.DosageUnit.text){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({DosageUnit: DataMed.DosageUnit})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.Instructions.text){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({Instructions: DataMed.Instructions})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    if(DataMed.Obs) {
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({Obs: DataMed.Obs})
+      .then((ref) => {
+          console.log(ref) 
+      });
+    }
+
+    this.cleanState();
+
+  }
+
   updateInitialHour(hour){
     this.state.initialHour = hour;
   }

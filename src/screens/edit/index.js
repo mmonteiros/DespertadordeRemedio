@@ -76,8 +76,8 @@ function EditScreen({navigation}, props) {
     toggleTooltip(!isValidate);
 
     if (isValidate) {
-      FirebaseService.setData(DataMed.Name, DataMed);
 
+      FirebaseService.editData(DataMed.Name, DataMed);
       setTooltipVisible(false);
 
       //navigation.navigate('TreatmentInfo');
@@ -98,7 +98,16 @@ function EditScreen({navigation}, props) {
     ContainerUnit: {text: ''},
     ExpirationDate: null,
     Color: '#546de5',
-    Complete: false,
+    InitialDate: '',
+    InitialHour: '',
+    Frequency: {text: ''},
+    DurationOfTreatmentType: {text: ''},
+    DurationOfTreatmentNum: '',
+    DosageQuantity: '',
+    DosageUnit: {text: ''},
+    Instructions: {text: ''},
+    Obs: '',
+    Complete: true,
   });
 
   const handleChangeDataMed = name => event => {
@@ -208,7 +217,7 @@ function EditScreen({navigation}, props) {
                             <DropDownMenu
                             name={'- - - - - - - -'}
                             options={optionsFrequency}
-                            selectedOption={DataMed.Frequency}
+                            selectedOption={DataMed.Frequency.text}
                             setSelectedOption={handleChangeDataMed('Frequency')}
                             />
                         </View>
@@ -219,7 +228,7 @@ function EditScreen({navigation}, props) {
                                 name={'Dias'}
                                 options={optionsDuration}
                                 width={120}
-                                selectedOption={DataMed.DurationOfTreatmentType}
+                                selectedOption={DataMed.DurationOfTreatmentType.text}
                                 setSelectedOption={handleChangeDataMed('DurationOfTreatmentType')}
                             />
                             <Input
@@ -249,7 +258,7 @@ function EditScreen({navigation}, props) {
                             name={'Unidade'}
                             options={options}
                             controlStyle={{whidth: 300}}
-                            selectedOption={DataMed.DosageUnit}
+                            selectedOption={DataMed.DosageUnit.text}
                             setSelectedOption={handleChangeDataMed('DosageUnit')}
                         />
                     </View>
@@ -263,7 +272,7 @@ function EditScreen({navigation}, props) {
                             options={optionsInstruction}
                             style={styles.instruction}
                             width={330}
-                            selectedOption={DataMed.Instructions}
+                            selectedOption={DataMed.Instructions.text}
                             setSelectedOption={handleChangeDataMed('Instructions')}
                         />
                     </View>
