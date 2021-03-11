@@ -32,11 +32,11 @@ class MedicineItem extends Component {
     }
 
     renderModalEdit () {
-      const { indexMedicine } = this.props;
-
+      const { indexMedicine, medicine } = this.props;
+      
       if (indexMedicine != null) {
         return (
-            <ModalEdit />
+            <ModalEdit medicine={medicine} />
         )
       }
     };

@@ -10,6 +10,8 @@ class ModalEdit extends Component {
     render () {
         const { modalEditIsOpen } = this.props.modalEdit;
 
+        const { medicine } = this.props;
+        
         return (
             <View>
                 <Modal
@@ -17,7 +19,7 @@ class ModalEdit extends Component {
                 visible={modalEditIsOpen}
                 onRequestClose={() => this.props.closeModalEdit()}
             >
-                    <EditScreen />
+                    <EditScreen medicine={medicine}  />
                 </Modal>
             </View>
         )    

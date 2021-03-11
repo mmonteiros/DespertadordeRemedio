@@ -33,6 +33,7 @@ class FirebaseService extends React.Component {
     DataMed = {
       ...DataMed,
       imageUrl: this.state.imageUrl,
+      NameBackup: nameMed,
     }
 
     firebase
@@ -69,12 +70,26 @@ class FirebaseService extends React.Component {
 
   }
 
-  async editData(nameMed, DataMed){
+  editData(nameMed, DataMed){
+    
     if(DataMed.InitialHour) DataMed.InitialHour = this.state.initialHour;
     
-    if(this.state.fileData) {
+    /*if(this.state.fileData) {
       this.uploadImage(this.state.fileData);
+    }*/
+    if(DataMed.Name){
+      firebase
+      .firestore()
+      .collection("Users")
+      .doc(`${firebase.auth().currentUser.uid}`)
+      .collection("Medicines")
+      .doc(`${nameMed}`)
+      .update({Name: DataMed.Name})
+      .then((ref) => {
+          console.log(ref) 
+      });
     }
+
 
     if(DataMed.ContainerAmount){
     firebase
