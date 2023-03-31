@@ -1,7 +1,7 @@
 # Getting Started
 
 1. Clone and Install<p>
-  git clone https://github.com/YodaDevs/DespertadordeRemedio.git
+  git clone https://github.com/mmonteiros/DespertadordeRemedio.git
 
 2. Navigate to clonned folder and Install dependencies<p>
   cd DespertadordeRemedio && npm install
